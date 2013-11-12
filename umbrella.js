@@ -1,53 +1,68 @@
 	// JavaScript Document
 	// author: AJ Hinkens and Franklin Nelson
-	// version 0.03
+	// version 0.04
 		
 	//general variables
-	var canvas;
-	var context;
+	var stage;
+	var lineLayer;
+	var courseLayer;
 	var colors = ["rgba(0,80,106)","rgba(18,142,182,.8)","rgba(119,12,40,.8)","rgba(182,171,9,.8)","rgba(115,182,0,.8)"];//Dark Blue, Light Blue, Red, Yellow, Green
 	var statusEnum = Object.freeze({'PASSED':0, 'PLANNED':1,'INPROG':2,'INCOM':3});
 	var windowHeight = $(window).get(0).innerHeight; 
 	var windowWidth = $(window).get(0).innerWidth;
 	var classList;
 	var slots = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]; // use timeSlot here and longer arrays
-	
-	//Prepare the canvas
-	$(document).ready(function() {
-					canvas = $("#mainCanvas");
-					context = canvas.get(0).getContext("2d");
-					resizeCanvas();
-					drawLines();
-					makeClassList();
-					populateSidebar(classList);
-					//alert("Ready!");
 
+	//Prepare the canvas
+	$(document).ready(function()
+	{
+		createStage();
+		courseLayer = new Kinetic.Layer();
+		lineLayer = new Kinetic.Layer();
+		makeClassList();
+		drawLines();
+		populateSidebar(classList);
+		stage.add(lineLayer);
+		stage.add(courseLayer);
 	});
 
+	function createStage(){
+		stage = new Kinetic.Stage(
+		{
+			container: 'foreground',
+			width: windowWidth,
+			height: windowHeight
+		});
+	}
+	
 	function makeClassList(){
-		var course1 =  new course("Design",270,statusEnum.INCOM);
+		var course1 =  new course("Design",270,statusEnum.PASSED);
 		classList = [course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1];
 	}
 
-	function resizeCanvas() {
+	function resizeCanvas()
+	{
 		canvas.attr("width", $(window).get(0).innerWidth);
 		canvas.attr("height", $(window).get(0).innerHeight);
 	};
 
 	$(window).resize(updateSize);
 	
-	function updateSize() {
-			resizeCanvas();
-			windowHeight = canvas.height();
-			windowWidth = canvas.width();
-			//clears the canvas of all drawn elements
-			context.clearRect(0, 0, canvas.width, canvas.height);
-			populateSidebar(classList);
-			drawLines();
+	function updateSize()
+	{
+		windowHeight = $(window).get(0).innerHeight; 
+		windowWidth = $(window).get(0).innerWidth;
+		stage.setWidth(windowWidth);
+		stage.setHeight(windowHeight);
+		lineLayer.removeChildren();
+		courseLayer.removeChildren();
+		populateSidebar(classList);
+		drawLines();
 	}
 
 	//Draw the yellow semester-division lines on the canvas
-	function drawLines(){
+	function drawLines()
+	{
 		var lineY = windowHeight/8;
 		var lineX1 = windowWidth*.22;
 		if(lineX1<320){
@@ -55,38 +70,59 @@
 		}
 		var lineX2 = lineX1+windowWidth*.66;
 		for(var i = 1; i<=7; i++){
-		      context.beginPath();
-		      context.moveTo(lineX1, lineY*i);
-		      context.lineTo(lineX2, lineY*i);
-		      context.lineWidth = 2;
-		      context.strokeStyle = colors[3];
-		      context.stroke();
+		    var semesterLine = new Kinetic.Line(
+			{
+				points: [lineX1, lineY*i, lineX2, lineY*i],
+				stroke: colors[3],
+				strokeWidth: 2
+			});
+			lineLayer.add(semesterLine);
 	     }
 	}
 	
-	function populateSidebar(classList){
-		var location = [10,10,320,100];
+	function populateSidebar(classList)
+	{
+		var posData = [10,10,320,100]; // [x, y, width, height]
 		var maxSidebarCapacity;
-		location[2] = (windowWidth/5) - 20;
-		if(location[2]<320){
-			location[2]=285;
+		posData[2] = (windowWidth/5) - 20;
+		if(posData[2]<320){
+			posData[2]=285;
 		}
-		maxSidebarCapacity = Math.floor(windowHeight/(location[3]+10));
+		maxSidebarCapacity = Math.floor(windowHeight/(posData[3]+10));
 		for(var i = 0; i<classList.length; i++){
 			if(i==maxSidebarCapacity){
 				break;
 			}
-			drawClassRect(classList[i], location);
-			location[1]+=110;
+			drawClassRect(classList[i],posData);
+			posData[1]+=110;
 		}
 	}
 	
-	function drawClassRect(course, location){
+	function drawClassRect(course, posData)
+	{
+		x = posData[0];
+		y = posData[1];
 		var color = colors[2];
 		
-		context.beginPath();
-		switch(course.status){
-			case statusEnum.PASSED: 
+		var classGroup = new Kinetic.Group(
+		{
+			x: x,
+			y: y,
+			draggable: true
+		});
+		
+		var classText = new Kinetic.Text(
+		{
+			fontSize: 24,
+			fontFamily: 'Arial',
+			text: 'Class',
+			fill: 'white',
+			padding: 10
+		});
+		
+		switch(course.status)
+		{
+			case statusEnum.PASSED:
 				color = colors[4];
 				break;
 			case statusEnum.INPROG:
@@ -99,11 +135,20 @@
 				color = colors[2];
 				break;
 			default:
-				color = "rgb(255,0,0)";		
+				color = "rgb(255,0,0)";
+				break;
 		}
-		context.rect(location[0], location[1], location[2], location[3]);
-		context.fillStyle = color;
-		context.fill();
+		
+		var classRect = new Kinetic.Rect(
+		{
+			width: posData[2],
+			height: posData[3],
+			fill: color
+		});
+		
+		classGroup.add(classRect).add(classText);
+		courseLayer.add(classGroup);
+		stage.add(courseLayer);
 	}
 	
 	function course(program,name,status)
@@ -114,43 +159,3 @@
 		this.name = name;
 		this.getName = function(){return this.name;};
 	}
-	
-	/*
-				var stage = new Kinetic.Stage
-				({
-					container: 'container',
-					width: 1,
-					height: 1
-				});
-		
-				var layer = new Kinetic.Layer();
-
-				var classGroup = new Kinetic.Group
-				({
-					x: 100,
-					y: 70,
-					draggable: true
-				});
-				
-				var classText = new Kinetic.Text
-				({
-					fontSize: 26,
-					fontFamily: 'Calibri',
-					text: 'Class',
-					fill: 'black',
-					padding: 10
-				});
-				
-				var classRect = new Kinetic.Rect
-				({
-					width: classText.getWidth(),
-					height: classText.getHeight(),
-					fill: '#aaf',
-					stroke: 'black',
-					strokeWidth: 4
-				});
-
-				classGroup.add(classRect).add(classText);
-				layer.add(classGroup);
-				stage.add(layer);
-	*/

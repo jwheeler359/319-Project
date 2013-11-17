@@ -146,6 +146,21 @@
 			fill: color
 		});
 		
+		classGroup.on('dragstart', function()
+		{
+			
+		});
+		
+		classGroup.on('dragmove', function()
+		{
+			
+		});
+		
+		classGroup.on('dragend', function()
+		{
+			
+		});
+		
 		classGroup.add(classRect).add(classText);
 		courseLayer.add(classGroup);
 		stage.add(courseLayer);

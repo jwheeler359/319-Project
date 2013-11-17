@@ -168,18 +168,20 @@
 		courseLayer.add(classGroup);
 		stage.add(courseLayer);
 		
-		stage.find('#' + course.getProgram() + course.getName()).on('click', function()
+		stage.find('#' + course.getProgram() + course.getName()).on('dragend', function()
 		{
+			snap(this);
 		});
 	}
 	
-	function snapTo(obj)
+	function snap(shape) // http://stackoverflow.com/questions/18819077/kineticjs-drag-drop-keeping-attached-boxes-and-lines-intact
 	{
-		alert("snapping to!");
-		var newY = obj.getY();
-		var incr = windowHeight/8;
-		newY = Math.ceil(newY/ incr) * incr;
-		obj.setY(newY);
+		if(shape.getX()>windowWidth/5){
+			var newY = shape.getY()-(.5*shape.getHeight());
+			var incr = (windowHeight/8);
+			newY = (Math.ceil(newY/ incr) * incr)-(incr*.925);
+			shape.setY(newY);
+		}
 	}
 	
 	function course(program,name,status)

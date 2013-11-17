@@ -169,7 +169,8 @@
 	function snapTo(obj){
 		alert("snapping to!");
 		var newY = obj.getY();
-		newY = Math.ceil(newY/ 250.0) * 250;
+		var incr = windowHeight/8;
+		newY = Math.ceil(newY/ incr) * incr;
 		obj.setY(newY);
 	}
 	

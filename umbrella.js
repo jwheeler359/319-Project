@@ -166,6 +166,13 @@
 		stage.add(courseLayer);
 	}
 	
+	function snapTo(obj){
+		alert("snapping to!");
+		var newY = obj.getY();
+		newY = Math.ceil(newY/ 250.0) * 250;
+		obj.setY(newY);
+	}
+	
 	function course(program,name,status)
 	{
 		this.status = status;

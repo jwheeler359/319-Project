@@ -37,7 +37,9 @@
 	
 	function makeClassList(){
 		var course1 =  new course("Design",270,statusEnum.PASSED);
-		classList = [course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1,course1];
+		var course2 =  new course("ngiseD",72,statusEnum.INCOM);
+		var course3 =  new course("Desngi",27,statusEnum.PLANNED);
+		classList = [course1,course2,course3,course1,course2,course3,course1,course2,course3,course1,course2,course3,course1,course2,course3];
 	}
 
 	function resizeCanvas()
@@ -108,6 +110,7 @@
 		{
 			x: x,
 			y: y,
+			id: course.getProgram() + course.getName(),
 			draggable: true
 		});
 		
@@ -115,7 +118,7 @@
 		{
 			fontSize: 24,
 			fontFamily: 'Arial',
-			text: 'Class',
+			text: course.getProgram() + " " + course.getName(),
 			fill: 'white',
 			padding: 10
 		});
@@ -160,13 +163,18 @@
 		{
 			
 		});
-		
+
 		classGroup.add(classRect).add(classText);
 		courseLayer.add(classGroup);
 		stage.add(courseLayer);
+		
+		stage.find('#' + course.getProgram() + course.getName()).on('click', function()
+		{
+		});
 	}
 	
-	function snapTo(obj){
+	function snapTo(obj)
+	{
 		alert("snapping to!");
 		var newY = obj.getY();
 		var incr = windowHeight/8;

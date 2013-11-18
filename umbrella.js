@@ -12,6 +12,7 @@
 	var windowWidth = $(window).get(0).innerWidth;
 	var classList;
 	var slots = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]; // use timeSlot here and longer arrays
+	var career = [];
 
 	//Prepare the canvas
 	$(document).ready(function()
@@ -21,10 +22,30 @@
 		lineLayer = new Kinetic.Layer();
 		makeClassList();
 		drawLines();
+		buildSemesters();
 		populateSidebar(classList);
 		stage.add(lineLayer);
 		stage.add(courseLayer);
 	});
+	
+	function buildSemesters(){
+		var sem1 = new Semester();
+		career.push(sem1);
+		var sem2 = new Semester();
+		career.push(sem2);
+		var sem3 = new Semester();
+		career.push(sem3);
+		var sem4 = new Semester();
+		career.push(sem4);
+		var sem5 = new Semester();
+		career.push(sem5);
+		var sem6 = new Semester();
+		career.push(sem6);
+		var sem7 = new Semester();
+		career.push(sem7);
+		var sem8 = new Semester();
+		career.push(sem8);
+	}
 
 	function createStage(){
 		stage = new Kinetic.Stage(
@@ -169,8 +190,13 @@
 			var incr = (windowHeight/8);
 			newY = (Math.ceil(newY/ incr) * incr)-(incr*.89);
 			shape.setY(newY);
+			sem = Math.floor(windowHeight%newY);
+			var newX = career[sem].getSize()*320;
+			shape.setX(newX);
+			career[sem].addCourse(shape);
 		}
 	}
+
 	
 	function course(program,name,status)
 	{
@@ -179,4 +205,21 @@
 		this.getProgram = function(){return this.program;};
 		this.name = name;
 		this.getName = function(){return this.name;};
+	}
+	
+	function Semester(){
+		var courses = [];
+		
+		function addCourse(course){
+			courses.push(course);
+		}
+		
+		function removeCourse(course){
+			var index = courses.indexOf(course);
+			courses.splice(index);
+		}
+		
+		function getSize(){
+			return courses.length;
+		}
 	}

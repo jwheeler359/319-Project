@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Document>
+<Table>
+	<CourseCode>Cpre381</CourseCode>
+	<CourseName>Computer Organization and Assembly Level Programming</CourseName>
+	<PreReq>Cpre288</PreReq>
+  </Table>
+<Table>
+	<CourseCode>Engl314</CourseCode>
+	<CourseName>Technical Communication</CourseName>
+	<PreReq>Engl250</PreReq>
+  </Table>
+<Table>
+	<CourseCode>Cpre281</CourseCode>
+	<CourseName>Digital Logic</CourseName>
+	<PreReq>None</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>Stat330</CourseCode>
+	<CourseName>Probability and Statistics for Computer Science</CourseName>
+	<PreReq>None</PreReq>
+  </Table>
+  <Table>
+  <Table>
+	<CourseCode>Math165</CourseCode>
+	<CourseName>Calculus I</CourseName>
+	<PreReq>None</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>Engl150</CourseCode>
+	<CourseName>Critical Thinking & Communication</CourseName>
+	<PreReq>None</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>SE185</CourseCode>
+	<CourseName>Problem Solving in Software Engineering</CourseName>
+	<PreReq>None</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>SE101</CourseCode>
+	<CourseName>Software Engineering Orientation</CourseName>
+	<PreReq>None</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>Lib160</CourseCode>
+	<CourseName>Library Instruction</CourseName>
+	<PreReq>None</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>Math166</CourseCode>
+	<CourseName>Calculus II</CourseName>
+	<PreReq>Math165</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>SE166</CourseCode>
+	<CourseName>Careers in Software Engineering</CourseName>
+	<PreReq>None</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS227</CourseCode>
+    <CourseName>Introduction to Object Oriented Programming</CourseName>
+    <PreReq>None</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS228</CourseCode>
+    <CourseName>Introduction to Data Structures</CourseName>
+    <PreReq>CS227</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>Engl250</CourseCode>
+	<CourseName>Written, Oral, Visual, and Electronic Composition</CourseName>
+	<PreReq>None</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>Math 267</CourseCode>
+	<CourseName>Elementary Differential Equations and Laplace Transforms</CourseName>
+	<PreReq>Math165</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS309</CourseCode>
+    <CourseName>Software Development</CourseName>
+    <PreReq>CS228</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS311</CourseCode>
+    <CourseName>Design and Analysis of Algorithms</CourseName>
+    <PreReq>CS228</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS311</CourseCode>
+    <CourseName>Design and Analysis of Algorithms</CourseName>
+    <PreReq>CS330</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS321</CourseCode>
+    <CourseName>Computer Architecture</CourseName>
+    <PreReq>CS311</PreReq>
+  </Table>
+  <Table>
+	<CourseCode>Phys221</CourseCode>
+	<CourseName>Introduction to Classical Physics</CourseName>
+	<PreReq>Math165</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS330</CourseCode>
+    <CourseName>Discrete Mathematics</CourseName>
+    <PreReq>CS228</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS331</CourseCode>
+    <CourseName>Theory of Computation</CourseName>
+    <PreReq>CS228</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS342</CourseCode>
+    <CourseName>Programming languages</CourseName>
+    <PreReq>CS228</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS352</CourseCode>
+    <CourseName>Operating Systems</CourseName>
+    <PreReq>CS228</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS363</CourseCode>
+    <CourseName>Introduction to Database Systems</CourseName>
+    <PreReq>CS228</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS461</CourseCode>
+    <CourseName>Database Internals</CourseName>
+    <PreReq>CS311</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS461</CourseCode>
+    <CourseName>Database Internals</CourseName>
+    <PreReq>CS363</PreReq>
+  </Table>
+  <Table>
+    <CourseCode>CS511</CourseCode>
+    <CourseName>Advanced Design and Analysis of Algorithms</CourseName>
+    <PreReq>CS311</PreReq>
+  </Table>
+</Document>

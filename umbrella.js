@@ -87,6 +87,9 @@
 		var posData = [10,10,320,100]; // [x, y, width, height]
 		var maxSidebarCapacity;
 		posData[2] = (windowWidth/5) - 20;
+		posData[3] = (windowHeight/8)-(windowHeight*0.03);
+		var yIncr = posData[3]+windowHeight*0.01;
+		
 		if(posData[2]<320){
 			posData[2]=285;
 		}
@@ -96,7 +99,7 @@
 				break;
 			}
 			drawClassRect(classList[i],posData);
-			posData[1]+=110;
+			posData[1]+=yIncr;
 		}
 	}
 	
@@ -148,21 +151,6 @@
 			height: posData[3],
 			fill: color
 		});
-		
-		classGroup.on('dragstart', function()
-		{
-			
-		});
-		
-		classGroup.on('dragmove', function()
-		{
-			
-		});
-		
-		classGroup.on('dragend', function()
-		{
-			
-		});
 
 		classGroup.add(classRect).add(classText);
 		courseLayer.add(classGroup);
@@ -179,7 +167,7 @@
 		if(shape.getX()>windowWidth/5){
 			var newY = shape.getY()-(.5*shape.getHeight());
 			var incr = (windowHeight/8);
-			newY = (Math.ceil(newY/ incr) * incr)-(incr*.925);
+			newY = (Math.ceil(newY/ incr) * incr)-(incr*.89);
 			shape.setY(newY);
 		}
 	}

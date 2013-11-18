@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Document>
+<Table>
+	<CourseCode>Math165</CourseCode>
+	<CourseName>Calculus I</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>4</Credits>
+</Table>
+<Table>
+	<CourseCode>COMS101</CourseCode>
+	<CourseName>Orientation</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>R</Credits>
+</Table>
+<Table>
+	<CourseCode>COMS227</CourseCode>
+	<CourseName>Programming I</CourseName>
+	<PreReq>None</PreReq>
+	<Credits></Credits>
+</Table>
+<!--Figure out what to do for this, since there are several foreign language courses-->
+<Table>
+	<CourseCode>FORL101</CourseCode>
+	<CourseName>Foreign Lang</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>4</Credits>
+</Table>
+<Table>
+	<CourseCode>ENGL150</CourseCode>
+	<CourseName>English I</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>3</Credits>
+</Table>
+<!--Figure out what to do for electives-->
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+<Table>
+	<CourseCode></CourseCode>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+</Table>
+</Document>

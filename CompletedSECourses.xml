@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Document>
+<Table>
+	<CourseCode>Coms311</CourseCode>
+	<CourseName>Design and Analysis of Algorithms</CourseName>
+<PreReq>Coms330</PreReq>
+<Credits>3</Credits>
+</Table>
+<Table>
+	<CourseCode>SE329</CourseCode>
+	<CourseName>Software Project Management</CourseName>
+<PreReq>Coms309</PreReq>
+<Credits>3</Credits>
+</Table>
+<Table>
+	<CourseCode>SE339</CourseCode>
+	<CourseName>Software Architecture and Design</CourseName>
+<PreReq>SE319</PreReq>
+<Credits>3</Credits>
+</Table>
+<Table>
+	<CourseCode>SE319</CourseCode>
+	<CourseName>Software Construction and User Interfaces</CourseName>
+<PreReq>Coms228</PreReq>
+<Credits>3</Credits>
+  </Table>
+<Table>
+	<CourseCode>Chem167</CourseCode>
+	<CourseName>General Chemistry for Engineering Students</CourseName>
+<PreReq>None</PreReq>
+<Credits>4</Credits>
+  </Table>
+<Table>
+	<CourseCode>SPCM212</CourseCode>
+	<CourseName>Fundamentals of Public Speaking</CourseName>
+<PreReq>None</PreReq>
+<Credits>3</Credits>
+  </Table>
+<Table>
+	<CourseCode>Coms321</CourseCode>
+	<CourseName>Introduction to Computer Architecture and Machine-Level Programming</CourseName>
+<PreReq>Coms228</PreReq>
+<Credits>3</Credits>
+  </Table>
+<Table>
+	<CourseCode>Coms330</CourseCode>
+	<CourseName>Discrete Computational Structures</CourseName>
+<PreReq>Coms228</PreReq>
+<Credits>3</Credits>
+  </Table>
+<Table>
+	<CourseCode>Cpre310</CourseCode>
+	<CourseName>Theoretical Foundations of Computer Engineering</CourseName>
+	<PreReq>Coms228</PreReq>
+<Credits>3</Credits>
+  </Table>
+<Table>
+	<CourseCode>Coms229</CourseCode>
+	<CourseName>Advanced Programming Techniques</CourseName>
+	<PreReq>Cpre228</PreReq>
+<Credits>3</Credits>
+  </Table>
+<Table>
+	<CourseCode>Cpre381</CourseCode>
+	<CourseName>Computer Organization and Assembly Level Programming</CourseName>
+	<PreReq>Cpre288</PreReq>
+<Credits>4</Credits>
+  </Table>
+<Table>
+	<CourseCode>Engl314</CourseCode>
+	<CourseName>Technical Communication</CourseName>
+	<PreReq>Engl250</PreReq>
+<Credits>3</Credits>
+  </Table>
+<Table>
+	<CourseCode>Cpre281</CourseCode>
+	<CourseName>Digital Logic</CourseName>
+	<PreReq>None</PreReq>
+<Credits>4</Credits>
+  </Table>
+  <Table>
+	<CourseCode>Stat330</CourseCode>
+	<CourseName>Probability and Statistics for Computer Science</CourseName>
+	<PreReq>None</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+  <Table>
+	<CourseCode>Math165</CourseCode>
+	<CourseName>Calculus I</CourseName>
+	<PreReq>None</PreReq>
+<Credits>4</Credits>
+  </Table>
+  <Table>
+	<CourseCode>Engl150</CourseCode>
+	<CourseName>Critical Thinking & Communication</CourseName>
+	<PreReq>None</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+	<CourseCode>SE185</CourseCode>
+	<CourseName>Problem Solving in Software Engineering</CourseName>
+	<PreReq>None</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+	<CourseCode>SE101</CourseCode>
+	<CourseName>Software Engineering Orientation</CourseName>
+	<PreReq>None</PreReq>
+<Credits>R</Credits>
+  </Table>
+  <Table>
+	<CourseCode>Lib160</CourseCode>
+	<CourseName>Library Instruction</CourseName>
+	<PreReq>None</PreReq>
+<Credits>1</Credits>
+  </Table>
+  <Table>
+	<CourseCode>Math166</CourseCode>
+	<CourseName>Calculus II</CourseName>
+	<PreReq>Math165</PreReq>
+<Credits>4</Credits>
+  </Table>
+  <Table>
+	<CourseCode>SE166</CourseCode>
+	<CourseName>Careers in Software Engineering</CourseName>
+	<PreReq>None</PreReq>
+<Credits>R</Credits>
+  </Table>
+  <Table>
+    <CourseCode>CS227</CourseCode>
+    <CourseName>Introduction to Object Oriented Programming</CourseName>
+    <PreReq>None</PreReq>
+<Credits>4</Credits>
+  </Table>
+  <Table>
+    <CourseCode>CS228</CourseCode>
+    <CourseName>Introduction to Data Structures</CourseName>
+    <PreReq>CS227</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+	<CourseCode>Engl250</CourseCode>
+	<CourseName>Written, Oral, Visual, and Electronic Composition</CourseName>
+	<PreReq>None</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+	<CourseCode>Math 267</CourseCode>
+	<CourseName>Elementary Differential Equations and Laplace Transforms</CourseName>
+	<PreReq>Math165</PreReq>
+<Credits>4</Credits>
+  </Table>
+  <Table>
+    <CourseCode>CS309</CourseCode>
+    <CourseName>Software Development</CourseName>
+    <PreReq>CS228</PreReq>
+<Credits></Credits>
+  </Table>
+  <Table>
+    <CourseCode>CS311</CourseCode>
+    <CourseName>Design and Analysis of Algorithms</CourseName>
+    <PreReq>CS228</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>CS321</CourseCode>
+    <CourseName>Computer Architecture</CourseName>
+    <PreReq>CS311</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+	<CourseCode>Phys221</CourseCode>
+	<CourseName>Introduction to Classical Physics</CourseName>
+	<PreReq>Math165</PreReq>
+<Credits>5</Credits>
+  </Table>
+  <Table>
+    <CourseCode>CS330</CourseCode>
+    <CourseName>Discrete Mathematics</CourseName>
+    <PreReq>CS228</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>CS352</CourseCode>
+    <CourseName>Operating Systems</CourseName>
+    <PreReq>CS228</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>CS363</CourseCode>
+    <CourseName>Introduction to Database Systems</CourseName>
+    <PreReq>CS228</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>Cpre308</CourseCode>
+    <CourseName>Operating Systems</CourseName>
+    <PreReq>Coms330 or Cpre310</PreReq>
+<Credits>4</Credits>
+  </Table>
+  <Table>
+    <CourseCode>SE491</CourseCode>
+    <CourseName>Senior Design 1</CourseName>
+    <PreReq>SE329</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>SE494</CourseCode>
+    <CourseName>Portfolio</CourseName>
+    <PreReq>Senior</PreReq>
+<Credits>R</Credits>
+  </Table>
+  <Table>
+    <CourseCode>SE492</CourseCode>
+    <CourseName></CourseName>
+    <PreReq>SE491</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>ECON_ELECT</CourseCode>
+    <CourseName>Econ Elective</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>MATH_ELECT</CourseCode>
+    <CourseName>Math Elective</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>OPEN_ELECT</CourseCode>
+    <CourseName>Open Elective</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>ARTS_HUM1</CourseCode>
+    <CourseName>Arts and Humanities 1</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>ARTS_HUM2</CourseCode>
+    <CourseName>Arts and Humanities 2</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>SOC_SCI</CourseCode>
+    <CourseName>Social Science</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>ART_SOC</CourseCode>
+    <CourseName>Arts and Humanities or Social Sciences</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>TECH_ELECT</CourseCode>
+    <CourseName>Technical Elective</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>SE_ELECT1</CourseCode>
+    <CourseName>SE Elective 1</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>SE_ELECT2</CourseCode>
+    <CourseName>SE Elective 2</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>SPPLM_ELECT1</CourseCode>
+    <CourseName>Supplemental Elective 1</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+  <Table>
+    <CourseCode>SPPLM_ELECT2</CourseCode>
+    <CourseName>Supplemental Elective 2</CourseName>
+    <PreReq>TBD</PreReq>
+<Credits>3</Credits>
+  </Table>
+</Document>

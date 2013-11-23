@@ -261,3 +261,21 @@
 			return courses.length;
 		}
 	}
+	
+	function parseXML(xml)
+	{
+		var output = new Array();
+		
+		for(var i = 0; i < xml.getElementsByTagName("CourseCode").length; i++)
+		{
+			output[i] = [
+							xml.getElementsByTagName("CourseCode")[i].firstChild.nodeValue,
+							xml.getElementsByTagName("CourseName")[i].firstChild.nodeValue,
+							xml.getElementsByTagName("PreReq")[i].firstChild.nodeValue,
+							xml.getElementsByTagName("CoReq")[i].firstChild.nodeValue,
+							xml.getElementsByTagName("Credits")[i].firstChild.nodeValue
+						];
+		}
+		
+		return output;
+	}

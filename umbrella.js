@@ -1,7 +1,7 @@
 	// JavaScript Document
 	// author: AJ Hinkens and Franklin Nelson
 	// version 0.04
-		
+	
 	//general variables
 	var stage;
 	var lineLayer;
@@ -10,7 +10,7 @@
 	var statusEnum = Object.freeze({'PASSED':0, 'PLANNED':1,'INPROG':2,'INCOM':3});
 	var windowHeight = $(window).get(0).innerHeight;
 	var windowWidth = $(window).get(0).innerWidth;
-	var classList;
+	var classList = new Array();
 	var slots = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]; // use timeSlot here and longer arrays
 	var career = [];
 	
@@ -69,11 +69,12 @@
 	
 	function makeClassList()
 	{
-		var course1 =  new course("Design",270,statusEnum.PASSED);
-		var course2 =  new course("ngiseD",72,statusEnum.INCOM);
-		var course3 =  new course("Desngi",27,statusEnum.PLANNED);
+		var classXML = getXML("C:\Users\Frankie\Downloads\319-Project\trunk\COMSMajorCourses.xml");
 		
-		classList = [course1,course2,course3,course1,course2,course3,course1,course2,course3,course1,course2,course3,course1,course2,course3];
+		for(var i = 0; i < classXML.length; i++)
+		{
+			classList.push(new course(classXML[i][1], classXML[i][0], statusEnum.PASSED));
+		}
 	}
 	
 	function resizeCanvas()
@@ -102,21 +103,21 @@
 	//Draw the yellow semester-division lines on the canvas
 	function drawLines()
 	{
-		var lineY = windowHeight/8;
-		var lineX1 = windowWidth*.22;
+		var lineY = windowHeight / 8;
+		var lineX1 = windowWidth * .22;
 		
-		if(lineX1<320)
+		if(lineX1 < 320)
 		{
-			lineX1=320;
+			lineX1 = 320;
 		}
 		
-		var lineX2 = lineX1+windowWidth*.66;
+		var lineX2 = lineX1+windowWidth * .66;
 		
-		for(var i = 1; i<=7; i++)
+		for(var i = 1; i <= 7; i++)
 		{
 			var semesterLine = new Kinetic.Line(
-		    	{
-				points: [lineX1, lineY*i, lineX2, lineY*i],
+			{
+				points: [lineX1, lineY * i, lineX2, lineY * i],
 				stroke: colors[3],
 				strokeWidth: 2
 			});
@@ -130,28 +131,28 @@
 		var posData = [10,10,320,100]; // [x, y, width, height]
 		var maxSidebarCapacity;
 		
-		posData[2] = (windowWidth/5) - 20;
-		posData[3] = (windowHeight/8)-(windowHeight*0.03);
+		posData[2] = (windowWidth / 5) - 20;
+		posData[3] = (windowHeight / 8) - (windowHeight * 0.03);
 		
-		var yIncr = posData[3]+windowHeight*0.01;
+		var yIncr = posData[3] + windowHeight * 0.01;
 		
-		if(posData[2]<320)
+		if(posData[2] < 320)
 		{
-			posData[2]=285;
+			posData[2] = 285;
 		}
 		
-		maxSidebarCapacity = Math.floor(windowHeight/(posData[3]+10));
+		maxSidebarCapacity = Math.floor(windowHeight / (posData[3] + 10));
 		
-		for(var i = 0; i<classList.length; i++)
+		for(var i = 0; i < classList.length; i++)
 		{
-			if(i==maxSidebarCapacity)
+			if(i == maxSidebarCapacity)
 			{
 				break;
 			}
 			
-			drawClassRect(classList[i],posData);
+			drawClassRect(classList[i], posData);
 			
-			posData[1]+=yIncr;
+			posData[1] += yIncr;
 		}
 	}
 	
@@ -204,7 +205,7 @@
 			height: posData[3],
 			fill: color
 		});
-
+		
 		classGroup.add(classRect).add(classText);
 		courseLayer.add(classGroup);
 		stage.add(courseLayer);
@@ -217,22 +218,22 @@
 	
 	function snap(shape) // http://stackoverflow.com/questions/18819077/kineticjs-drag-drop-keeping-attached-boxes-and-lines-intact
 	{
-		if(shape.getX()>windowWidth/5)
+		if(shape.getX() > windowWidth / 5)
 		{
-			var newY = shape.getY()-(.5*shape.getHeight());
-			var incr = (windowHeight/8);
+			var newY = shape.getY() - (.5 * shape.getHeight());
+			var incr = (windowHeight / 8);
 			
-			newY = (Math.ceil(newY/ incr) * incr)-(incr*.89);
+			newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
 			shape.setY(newY);
 			
-			sem = Math.floor(windowHeight%newY);
-			var newX = career[sem].getSize()*320;
+			sem = Math.floor(windowHeight % newY);
+			var newX = career[sem].getSize() * 320;
 			shape.setX(newX);
 			career[sem].addCourse(shape);
 		}
 	}
 	
-	function course(program,name,status)
+	function course(program, name, status)
 	{
 		this.status = status;
 		this.program = program;
@@ -262,20 +263,28 @@
 		}
 	}
 	
-	function parseXML(xml)
+	function getXML(source)
 	{
-		var output = new Array();
+		var courseList = new Array();
 		
-		for(var i = 0; i < xml.getElementsByTagName("CourseCode").length; i++)
+		$.get(source, function(data)
 		{
-			output[i] = [
-							xml.getElementsByTagName("CourseCode")[i].firstChild.nodeValue,
-							xml.getElementsByTagName("CourseName")[i].firstChild.nodeValue,
-							xml.getElementsByTagName("PreReq")[i].firstChild.nodeValue,
-							xml.getElementsByTagName("CoReq")[i].firstChild.nodeValue,
-							xml.getElementsByTagName("Credits")[i].firstChild.nodeValue
-						];
-		}
+			var courseCode = data.getElementsByTagName("CourseCode");
+			var courseName = data.getElementsByTagName("CourseName");
+			var preReq = data.getElementsByTagName("PreReq");
+			var coReq = data.getElementsByTagName("CoReq");
+			var credits = data.getElementsByTagName("Credits");
+			
+			for(var i = 0; i < courseCode.length; i++)
+			{
+				courseList[i] = [courseCode[i].firstChild.nodeValue,
+							courseName[i].firstChild.nodeValue,
+							preReq[i].firstChild.nodeValue,
+							coReq[i].firstChild.nodeValue,
+							credits[i].firstChild.nodeValue];
+			}
+		},
+		"xml");
 		
-		return output;
+		return courseList;
 	}

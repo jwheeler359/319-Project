@@ -69,7 +69,9 @@
 	
 	function makeClassList()
 	{
-		var classXML = getXML("C:\Users\Frankie\Downloads\319-Project\trunk\COMSMajorCourses.xml");
+		var classXML = getXML("http://localhost:8080/TomcatProject/Project/COMSMajorCourses.xml");
+		
+		alert("List created"); // for some reason, it doesn't populate until this is done.
 		
 		for(var i = 0; i < classXML.length; i++)
 		{
@@ -277,11 +279,32 @@
 			
 			for(var i = 0; i < courseCode.length; i++)
 			{
-				courseList[i] = [courseCode[i].firstChild.nodeValue,
-							courseName[i].firstChild.nodeValue,
-							preReq[i].firstChild.nodeValue,
-							coReq[i].firstChild.nodeValue,
-							credits[i].firstChild.nodeValue];
+				courseList[i] = new Array();
+				
+				if(courseCode[i] != null && courseCode[i].firstChild != null)
+					courseList[i][0] = courseCode[i].firstChild.nodeValue;
+				else
+					courseList[i][0] = "Course";
+				
+				if(courseName[i] != null && courseName[i].firstChild != null)
+					courseList[i][1] = courseName[i].firstChild.nodeValue;
+				else
+					courseList[i][1] = "CRSE001";
+
+				if(preReq[i] != null && preReq[i].firstChild != null)
+					courseList[i][2] = preReq[i].firstChild.nodeValue;
+				else
+					courseList[i][2] = "None";
+				
+				if(coReq[i] != null && coReq[i].firstChild != null)
+					courseList[i][3] = coReq[i].firstChild.nodeValue;
+				else
+					courseList[i][3] = "None";
+				
+				if(credits[i] != null && credits[i].firstChild != null)
+					courseList[i][4] = credits[i].firstChild.nodeValue;
+				else
+					courseList[i][4] = "0";
 			}
 		},
 		"xml");

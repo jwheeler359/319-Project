@@ -21,7 +21,7 @@
 		courseLayer = new Kinetic.Layer();
 		lineLayer = new Kinetic.Layer();
 		
-		makeClassList();
+		makeClassList("http://localhost:8080/TomcatProject/Project/SEMajorCourses.xml");
 		drawLines();
 		buildSemesters();
 		populateSidebar(classList);
@@ -67,9 +67,9 @@
 		});
 	}
 	
-	function makeClassList()
+	function makeClassList(source)
 	{
-		var classXML = getXML("http://localhost:8080/TomcatProject/Project/COMSMajorCourses.xml");
+		var classXML = getXML(source);
 		
 		alert("List created"); // for some reason, it doesn't populate until this is done.
 		
@@ -106,16 +106,16 @@
 	function drawLines()
 	{
 		var lineY = windowHeight / 8;
-		var lineX1 = windowWidth * .22;
+		var lineX1 = windowWidth * 0.22;
 		
 		if(lineX1 < 320)
 		{
 			lineX1 = 320;
 		}
 		
-		var lineX2 = lineX1+windowWidth * .66;
+		var lineX2 = lineX1+windowWidth * 0.66;
 		
-		for(var i = 1; i <= 7; i++)
+		for(var i = 1; i < 8; i++)
 		{
 			var semesterLine = new Kinetic.Line(
 			{
@@ -173,15 +173,6 @@
 			draggable: true
 		});
 		
-		var classText = new Kinetic.Text(
-		{
-			fontSize: 24,
-			fontFamily: 'Arial',
-			text: course.getProgram() + " " + course.getName(),
-			fill: 'white',
-			padding: 10
-		});
-		
 		switch(course.status)
 		{
 			case statusEnum.PASSED:
@@ -208,6 +199,15 @@
 			fill: color
 		});
 		
+		var classText = new Kinetic.Text(
+		{
+			fontSize: (classRect.getWidth() + classRect.getHeight()) / 20,
+			fontFamily: 'Arial',
+			text: course.getName().replace(/(?!\D)(?=\d)/,' ') + '\n' + course.getProgram(),
+			fill: 'white',
+			padding: 10
+		});
+		
 		classGroup.add(classRect).add(classText);
 		courseLayer.add(classGroup);
 		stage.add(courseLayer);
@@ -218,14 +218,14 @@
 		});
 	}
 	
-	function snap(shape) // http://stackoverflow.com/questions/18819077/kineticjs-drag-drop-keeping-attached-boxes-and-lines-intact
+	function snap(shape)
 	{
 		if(shape.getX() > windowWidth / 5)
 		{
-			var newY = shape.getY() - (.5 * shape.getHeight());
+			var newY = shape.getY() - (0.5 * shape.getHeight());
 			var incr = (windowHeight / 8);
 			
-			newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
+			newY = (Math.ceil(newY / incr) * incr) - (incr * 0.89);
 			shape.setY(newY);
 			
 			sem = Math.floor(windowHeight % newY);
@@ -290,7 +290,7 @@
 					courseList[i][1] = courseName[i].firstChild.nodeValue;
 				else
 					courseList[i][1] = "CRSE001";
-
+				
 				if(preReq[i] != null && preReq[i].firstChild != null)
 					courseList[i][2] = preReq[i].firstChild.nodeValue;
 				else

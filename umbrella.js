@@ -21,10 +21,9 @@
 		courseLayer = new Kinetic.Layer();
 		lineLayer = new Kinetic.Layer();
 		
-		makeClassList("http://localhost:8080/TomcatProject/Project/SEMajorCourses.xml");
+		getXML("http://localhost:8080/TomcatProject/Project/SEMajorCourses.xml", 1);
 		drawLines();
 		buildSemesters();
-		populateSidebar(classList);
 		
 		stage.add(lineLayer);
 		stage.add(courseLayer);
@@ -67,15 +66,11 @@
 		});
 	}
 	
-	function makeClassList(source)
+	function makeClassList(courseList)
 	{
-		var classXML = getXML(source);
-		
-		alert("List created"); // for some reason, it doesn't populate until this is done.
-		
-		for(var i = 0; i < classXML.length; i++)
+		for(var i = 0; i < courseList.length; i++)
 		{
-			classList.push(new course(classXML[i][1], classXML[i][0], statusEnum.PASSED));
+			classList.push(new course(courseList[i][1], courseList[i][0], statusEnum.PASSED));
 		}
 	}
 	
@@ -106,16 +101,16 @@
 	function drawLines()
 	{
 		var lineY = windowHeight / 8;
-		var lineX1 = windowWidth * 0.22;
+		var lineX1 = windowWidth * .22;
 		
 		if(lineX1 < 320)
 		{
 			lineX1 = 320;
 		}
 		
-		var lineX2 = lineX1+windowWidth * 0.66;
+		var lineX2 = lineX1 + windowWidth * .66;
 		
-		for(var i = 1; i < 8; i++)
+		for(var i = 1; i <= 7; i++)
 		{
 			var semesterLine = new Kinetic.Line(
 			{
@@ -126,11 +121,12 @@
 			
 			lineLayer.add(semesterLine);
 		}
+		stage.add(lineLayer);
 	}
 	
 	function populateSidebar(classList)
 	{
-		var posData = [10,10,320,100]; // [x, y, width, height]
+		var posData = [10, 10, 320, 100]; // [x, y, width, height]
 		var maxSidebarCapacity;
 		
 		posData[2] = (windowWidth / 5) - 20;
@@ -203,7 +199,7 @@
 		{
 			fontSize: (classRect.getWidth() + classRect.getHeight()) / 20,
 			fontFamily: 'Arial',
-			text: course.getName().replace(/(?!\D)(?=\d)/,' ') + '\n' + course.getProgram(),
+			text: course.getName().replace(/(?!\D)(?=\d)/,' '),
 			fill: 'white',
 			padding: 10
 		});
@@ -212,7 +208,8 @@
 		courseLayer.add(classGroup);
 		stage.add(courseLayer);
 		
-		stage.find('#' + course.getProgram() + course.getName()).on('dragend', function()
+		alert(classGroup.getId());
+		stage.find('#' + classGroup.getId()).on('dragend', function()
 		{
 			snap(this);
 		});
@@ -222,10 +219,10 @@
 	{
 		if(shape.getX() > windowWidth / 5)
 		{
-			var newY = shape.getY() - (0.5 * shape.getHeight());
+			var newY = shape.getY() - ( .5 * shape.getHeight());
 			var incr = (windowHeight / 8);
 			
-			newY = (Math.ceil(newY / incr) * incr) - (incr * 0.89);
+			newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
 			shape.setY(newY);
 			
 			sem = Math.floor(windowHeight % newY);
@@ -265,7 +262,7 @@
 		}
 	}
 	
-	function getXML(source)
+	function getXML(source, updateView)
 	{
 		var courseList = new Array();
 		
@@ -307,7 +304,17 @@
 					courseList[i][4] = "0";
 			}
 		},
-		"xml");
-		
-		return courseList;
+		"xml").done(function()
+					{
+						makeClassList(courseList);
+						
+						switch(updateView) // create boxes of each course?
+						{
+							case 0:
+								break;
+							default:
+								populateSidebar(classList);
+								break;
+						}
+					});
 	}

@@ -11,8 +11,8 @@
 	var windowHeight = $(window).get(0).innerHeight;
 	var windowWidth = $(window).get(0).innerWidth;
 	var classList = new Array();
+	var career = new Array();
 	var slots = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]; // use timeSlot here and longer arrays
-	var career = [];
 	
 	//Prepare the canvas
 	$(document).ready(function()
@@ -212,13 +212,28 @@
 	{
 		if(shape.getX() > windowWidth / 5)
 		{
-			var newY = shape.getY() - ( .5 * shape.getHeight());
+			var newY = shape.getY() - (.5 * shape.getHeight());
 			var incr = (windowHeight / 8);
 			
+			if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16)))
+			{
+				newY += incr - (incr * .60);
+			}
+			
+			if(newY < 0)
+			{
+				newY += incr;
+			}
+			else if(newY > windowHeight)
+			{
+				newY -= incr;
+			}
+			
 			newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
+			
 			shape.setY(newY);
 			
-			sem = Math.floor(windowHeight % newY);
+			var sem = Math.floor(windowHeight % newY);
 			var newX = career[sem].getSize() * 320;
 			shape.setX(newX);
 			career[sem].addCourse(shape);

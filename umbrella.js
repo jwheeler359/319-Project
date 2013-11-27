@@ -166,7 +166,7 @@
 			y: y,
 			id: course.getProgram() + course.getName(),
 			draggable: true
-		});
+		}).on('dragend', function() { snap(this); });
 		
 		switch(course.status)
 		{
@@ -206,12 +206,6 @@
 		classGroup.add(classRect).add(classText);
 		courseLayer.add(classGroup);
 		stage.add(courseLayer);
-		
-		alert(classGroup.getId());
-		stage.find('#' + classGroup.getId()).on('dragend', function()
-		{
-			snap(this);
-		});
 	}
 	
 	function snap(shape)

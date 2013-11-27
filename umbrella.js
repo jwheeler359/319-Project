@@ -121,7 +121,6 @@
 			
 			lineLayer.add(semesterLine);
 		}
-		stage.add(lineLayer);
 	}
 	
 	function populateSidebar(classList)

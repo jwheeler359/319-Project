@@ -23,37 +23,18 @@
 		
 		getXML("http://localhost:8080/TomcatProject/Project/SEMajorCourses.xml", 1);
 		drawLines();
-		buildSemesters();
-		
+		buildSemesters(8);
+
 		stage.add(lineLayer);
 		stage.add(courseLayer);
 	});
 	
-	function buildSemesters()
+	function buildSemesters(numSemesters)
 	{
-		var sem1 = new Semester();
-		career.push(sem1);
-		
-		var sem2 = new Semester();
-		career.push(sem2);
-		
-		var sem3 = new Semester();
-		career.push(sem3);
-		
-		var sem4 = new Semester();
-		career.push(sem4);
-		
-		var sem5 = new Semester();
-		career.push(sem5);
-		
-		var sem6 = new Semester();
-		career.push(sem6);
-		
-		var sem7 = new Semester();
-		career.push(sem7);
-		
-		var sem8 = new Semester();
-		career.push(sem8);
+		for(var i = 0; i < numSemesters; i++)
+		{
+			career.push(new Semester());
+		}
 	}
 	
 	function createStage()
@@ -166,7 +147,7 @@
 			y: y,
 			id: course.getProgram() + course.getName(),
 			draggable: true
-		}).on('dragend', function() { snap(this); });
+		}).on('dragstart', function() { unsnap(this); }).on('dragend', function() { snap(this); });
 		
 		switch(course.status)
 		{
@@ -208,19 +189,19 @@
 		stage.add(courseLayer);
 	}
 	
-	function snap(shape)
+	function unsnap(shape)
 	{
 		if(shape.getX() > windowWidth / 5)
 		{
 			var newY = shape.getY() - (.5 * shape.getHeight());
 			var incr = (windowHeight / 8);
 			
-			if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16)))
+			if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16))) // formula for snap to nearest semester
 			{
 				newY += incr - (incr * .60);
 			}
 			
-			if(newY < 0)
+			if(newY < 0) // keep classes inside window
 			{
 				newY += incr;
 			}
@@ -229,14 +210,49 @@
 				newY -= incr;
 			}
 			
+			var sem = Math.floor((windowHeight / (windowHeight / (Math.ceil(newY / incr)))) - 1); // get semester number (0-7)
+			
+			if(career[sem].getCourses().indexOf(shape) != -1)
+			{
+				career[sem].removeCourse(shape);
+			}
+		}
+	}
+	
+	function snap(shape)
+	{
+		if(shape.getX() > windowWidth / 5)
+		{
+			var newY = shape.getY() - (.5 * shape.getHeight());
+			var incr = (windowHeight / 8);
+			
+			if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16))) // formula for snap to nearest semester
+			{
+				newY += incr - (incr * .60);
+			}
+			
+			if(newY < 0) // keep classes inside window
+			{
+				newY += incr;
+			}
+			else if(newY > windowHeight)
+			{
+				newY -= incr;
+			}
+			
+			var sem = Math.floor((windowHeight / (windowHeight / (Math.ceil(newY / incr)))) - 1); // get semester number (0-7)
+			
 			newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
 			
 			shape.setY(newY);
 			
-			var sem = Math.floor(windowHeight % newY);
-			var newX = career[sem].getSize() * 320;
+			if(career[sem].getCourses().indexOf(shape) == -1)
+			{
+				career[sem].addCourse(shape);
+			}
+			
+			var newX = (career[sem].getCourses().indexOf(shape) + 1) * 320;
 			shape.setX(newX);
-			career[sem].addCourse(shape);
 		}
 	}
 	
@@ -251,23 +267,20 @@
 	
 	function Semester()
 	{
-		var courses = [];
-		
-		function addCourse(course)
-		{
-			courses.push(course);
-		}
-		
-		function removeCourse(course)
-		{
-			var index = courses.indexOf(course);
-			courses.splice(index);
-		}
-		
-		function getSize()
-		{
-			return courses.length;
-		}
+		var courses = new Array();
+		this.getCourses = function getCourses(){return courses;};
+		this.getSize = function getSize(){return courses.length;};
+	}
+	
+	Semester.prototype.addCourse = function(course)
+	{
+		this.getCourses().push(course);
+	}
+	
+	Semester.prototype.removeCourse = function(course)
+	{
+		var index = this.getCourses().indexOf(course);
+		this.getCourses().splice(this.index);
 	}
 	
 	function getXML(source, updateView)

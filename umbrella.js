@@ -76,6 +76,7 @@
 		
 		populateSidebar(classList);
 		drawLines();
+		stage.draw(); // synchs display
 	}
 	
 	//Draw the yellow semester-division lines on the canvas
@@ -147,7 +148,7 @@
 			y: y,
 			id: course.getProgram() + course.getName(),
 			draggable: true
-		}).on('dragstart', function() { unsnap(this); }).on('dragend', function() { snap(this); });
+		}).on('dragstart', function() { snap(this, 0); }).on('dragend', function() { snap(this, 1); });
 		
 		switch(course.status)
 		{
@@ -189,7 +190,7 @@
 		stage.add(courseLayer);
 	}
 	
-	function unsnap(shape)
+	function snap(shape, choice)
 	{
 		if(shape.getX() > windowWidth / 5)
 		{
@@ -212,47 +213,41 @@
 			
 			var sem = Math.floor((windowHeight / (windowHeight / (Math.ceil(newY / incr)))) - 1); // get semester number (0-7)
 			
-			if(career[sem].getCourses().indexOf(shape) != -1)
-			{
-				career[sem].removeCourse(shape);
-			}
-		}
-	}
-	
-	function snap(shape)
-	{
-		if(shape.getX() > windowWidth / 5)
-		{
-			var newY = shape.getY() - (.5 * shape.getHeight());
-			var incr = (windowHeight / 8);
+			var border = windowWidth * .22;
 			
-			if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16))) // formula for snap to nearest semester
+			if(border < 320)
 			{
-				newY += incr - (incr * .60);
+				border = 320;
 			}
 			
-			if(newY < 0) // keep classes inside window
+			switch(choice)
 			{
-				newY += incr;
+				case 0: // remove course (use with dragstart)
+					if(career[sem].getCourses().indexOf(shape) != -1)
+					{
+						for(var i = career[sem].getCourses().indexOf(shape); i < career[sem].getSize(); i++)
+						{
+							career[sem].getCourses()[i+1].setX((i+1) * border);
+						}
+						career[sem].removeCourse(shape);
+					}
+					break;
+				default: // add course and snap to position (use with dragend)
+					newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
+					
+					shape.setY(newY);
+					
+					if(career[sem].getCourses().indexOf(shape) == -1)
+					{
+						career[sem].addCourse(shape);
+					}
+					
+					var newX = (career[sem].getCourses().indexOf(shape) + 1) * border;
+					shape.setX(newX);
+					break;
 			}
-			else if(newY > windowHeight)
-			{
-				newY -= incr;
-			}
 			
-			var sem = Math.floor((windowHeight / (windowHeight / (Math.ceil(newY / incr)))) - 1); // get semester number (0-7)
-			
-			newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
-			
-			shape.setY(newY);
-			
-			if(career[sem].getCourses().indexOf(shape) == -1)
-			{
-				career[sem].addCourse(shape);
-			}
-			
-			var newX = (career[sem].getCourses().indexOf(shape) + 1) * 320;
-			shape.setX(newX);
+			stage.draw(); // this updates the position
 		}
 	}
 	
@@ -279,8 +274,7 @@
 	
 	Semester.prototype.removeCourse = function(course)
 	{
-		var index = this.getCourses().indexOf(course);
-		this.getCourses().splice(this.index);
+		this.getCourses().splice(this.getCourses().indexOf(course), 1);
 	}
 	
 	function getXML(source, updateView)

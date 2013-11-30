@@ -51,7 +51,7 @@
 	{
 		for(var i = 0; i < courseList.length; i++)
 		{
-			classList.push(new course(courseList[i][0], courseList[i][1], courseList[i][2], courseList[i][3], courseList[i][4], statusEnum.PASSED));
+			classList.push(new course(courseList[i][0], courseList[i][1], courseList[i][2], courseList[i][3], statusEnum.PASSED));
 		}
 	}
 	
@@ -69,8 +69,12 @@
 		var scheduledClasses = new Array();
 		
 		for(var i = 0; i < Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)); i++)
+		{
 			if(classGroup[i].getX() > windowWidth / 5)
+			{
 				scheduledClasses.push(i);
+			}
+		}
 		
 		windowHeight = $(window).get(0).innerHeight;
 		windowWidth = $(window).get(0).innerWidth;
@@ -85,6 +89,8 @@
 		posData[0] = (windowWidth / 5) - 20;
 		posData[1] = (windowHeight / 8) - (windowHeight * 0.03);
 		
+		var yIncr = posData[1] + windowHeight * 0.01;
+		
 		if(posData[0] < 320)
 		{
 			posData[0] = 285;
@@ -97,6 +103,8 @@
 			
 			if(scheduledClasses.indexOf(i) != -1)
 				snap(classGroup[i], 2);
+			else
+				classGroup[i].setPosition(10, 10 + (yIncr * i));
 		}
 		
 		drawLines();
@@ -170,7 +178,7 @@
 		{
 			x: x,
 			y: y,
-			id: course.getName() + '\n' + course.getProgram() + '\n' + course.getPreReqs() + '\n' + course.getCoReqs() + '\n' + course.getCredits() + '\n' + course.getStatus(),
+			id: course.getName() + '\n' + course.getProgram() + '\n' + course.getPreReqs() + '\n' + course.getCredits() + '\n' + course.getStatus(),
 			draggable: true
 		}).on('dragstart', function() { snap(this, 0); }).on('dragend', function() { snap(this, 1); });
 		
@@ -314,19 +322,17 @@
 		}
 	}
 	
-	function course(name, program, preReqs, coReqs, credits, status)
+	function course(name, program, preReqs, credits, status)
 	{
 		this.name = name;
 		this.program = program;
 		this.preReqs = preReqs;
-		this.coReqs = coReqs;
 		this.credits = credits;
 		this.status = status;
 		
 		this.getName = function(){return this.name;};
 		this.getProgram = function(){return this.program;};
 		this.getPreReqs = function(){return this.preReqs;};
-		this.getCoReqs = function(){return this.coReqs;};
 		this.getCredits = function(){return this.credits;};
 		this.getStatus = function(){return this.status;};
 	}
@@ -351,7 +357,7 @@
 		this.getCourses().splice(this.getCourses().indexOf(course), 1);
 	}
 	
-	Semester.prototype.getCourseInfo = function(course)	// [0] = name, [1] = program, [2] = preReqs, [3] = coReqs, [4] = credits, [5] = status
+	Semester.prototype.getCourseInfo = function(course)	// [0] = name, [1] = program, [2] = preReqs, [3] = credits, [4] = status
 	{
 		return this.getCourses()[this.getCourses().indexOf(course)].getId().split(/(?!.)/);
 	}
@@ -365,7 +371,6 @@
 			var courseCode = data.getElementsByTagName("CourseCode");
 			var courseName = data.getElementsByTagName("CourseName");
 			var preReq = data.getElementsByTagName("PreReq");
-			var coReq = data.getElementsByTagName("CoReq");
 			var credits = data.getElementsByTagName("Credits");
 			
 			for(var i = 0; i < courseCode.length; i++)
@@ -373,29 +378,40 @@
 				courseList[i] = new Array();
 				
 				if(courseCode[i] != null && courseCode[i].firstChild != null)
+				{
 					courseList[i][0] = courseCode[i].firstChild.nodeValue;
+				}
 				else
+				{
 					courseList[i][0] = "Course";
+				}
 				
 				if(courseName[i] != null && courseName[i].firstChild != null)
+				{
 					courseList[i][1] = courseName[i].firstChild.nodeValue;
+				}
 				else
+				{
 					courseList[i][1] = "CRSE001";
+				}
 				
 				if(preReq[i] != null && preReq[i].firstChild != null)
+				{
 					courseList[i][2] = preReq[i].firstChild.nodeValue;
+				}
 				else
+				{
 					courseList[i][2] = "None";
-				
-				if(coReq[i] != null && coReq[i].firstChild != null)
-					courseList[i][3] = coReq[i].firstChild.nodeValue;
-				else
-					courseList[i][3] = "None";
+				}
 				
 				if(credits[i] != null && credits[i].firstChild != null)
-					courseList[i][4] = credits[i].firstChild.nodeValue;
+				{
+					courseList[i][3] = credits[i].firstChild.nodeValue;
+				}
 				else
-					courseList[i][4] = "0";
+				{
+					courseList[i][3] = "0";
+				}
 			}
 		},
 		"xml").done(function()

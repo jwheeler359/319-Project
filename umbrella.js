@@ -104,7 +104,7 @@
 			if(scheduledClasses.indexOf(i) != -1)
 				snap(classGroup[i], 2);
 			else
-				classGroup[i].setPosition(10, 10 + (yIncr * i));
+				classGroup[i].setPosition(10, 10 + (yIncr * (i+1)));
 		}
 		
 		drawLines();
@@ -368,7 +368,7 @@
 		
 		$.get(source, function(data)
 		{
-			var courseCode = data.getElementsByTagName("CourseCode");
+			var code = data.getElementsByTagName("Code");
 			var courseName = data.getElementsByTagName("CourseName");
 			var preReq = data.getElementsByTagName("PreReq");
 			var credits = data.getElementsByTagName("Credits");
@@ -377,9 +377,9 @@
 			{
 				courseList[i] = new Array();
 				
-				if(courseCode[i] != null && courseCode[i].firstChild != null)
+				if(code[i] != null && code[i].firstChild != null)
 				{
-					courseList[i][0] = courseCode[i].firstChild.nodeValue;
+					courseList[i][0] = code[i].firstChild.nodeValue;
 				}
 				else
 				{

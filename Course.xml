@@ -8,15 +8,15 @@
     <Column name="Credits" type="Text" />
   </Columns>
 <Entry>
-	<Code>Coms311</Code>
+	<Code>CS311</Code>
 	<CourseName>Design and Analysis of Algorithms</CourseName>
-	<PreReq>Coms330</PreReq>
+	<PreReq>CS330</PreReq>
 	<Credits>3</Credits>
 </Entry>
 <Entry>
 	<Code>SE329</Code>
 	<CourseName>Software Project Management</CourseName>
-	<PreReq>Coms309</PreReq>
+	<PreReq>CS309</PreReq>
 	<Credits>3</Credits>
 </Entry>
 <Entry>
@@ -28,7 +28,7 @@
 <Entry>
 	<Code>SE319</Code>
 	<CourseName>Software Construction and User Interfaces</CourseName>
-	<PreReq>Coms228</PreReq>
+	<PreReq>CS228</PreReq>
 	<Credits>3</Credits>
   </Entry>
 <Entry>
@@ -44,25 +44,25 @@
 	<Credits>3</Credits>
   </Entry>
 <Entry>
-	<Code>Coms321</Code>
+	<Code>CS321</Code>
 	<CourseName>Introduction to Computer Architecture and Machine Level Programming</CourseName>
-	<PreReq>Coms228</PreReq>
+	<PreReq>CS228</PreReq>
 	<Credits>3</Credits>
   </Entry>
 <Entry>
-	<Code>Coms330</Code>
+	<Code>CS330</Code>
 	<CourseName>Discrete Computational Structures</CourseName>
-	<PreReq>Coms228</PreReq>
+	<PreReq>CS228</PreReq>
 	<Credits>3</Credits>
   </Entry>
 <Entry>
 	<Code>Cpre310</Code>
 	<CourseName>Theoretical Foundations of Computer Engineering</CourseName>
-	<PreReq>Coms228</PreReq>
+	<PreReq>CS228</PreReq>
 	<Credits>3</Credits>
   </Entry>
 <Entry>
-	<Code>Coms229</Code>
+	<Code>CS229</Code>
 	<CourseName>Advanced Programming Techniques</CourseName>
 	<PreReq>Cpre228</PreReq>
 	<Credits>3</Credits>
@@ -152,7 +152,7 @@
 	<Credits>3</Credits>
   </Entry>
   <Entry>
-	<Code>Math 267</Code>
+	<Code>Math267</Code>
 	<CourseName>Elementary Differential Equations and Laplace Transforms</CourseName>
 	<PreReq>Math165</PreReq>
 	<Credits>4</Credits>
@@ -202,7 +202,7 @@
   <Entry>
     <Code>Cpre308</Code>
     <CourseName>Operating Systems</CourseName>
-    <PreReq>Coms330 or Cpre310</PreReq>
+    <PreReq>CS330 or Cpre310</PreReq>
 	<Credits>4</Credits>
   </Entry>
   <Entry>
@@ -297,4 +297,337 @@
   </Entry>
 </Relation>
 
+<Relation name= "SE">
+<Columns>
+    <Column name="Code" type="Text" />
+</Columns>
+<entry>
+    <Code>CS311</Code>
+</entry>
+<entry>
+    <Code>SE329</Code>
+</entry>
+<entry>
+    <Code>SE339</Code>
+</entry>
+<entry>
+    <Code>SE319</Code>
+</entry>
+<entry>
+    <Code>Chem167</Code>
+</entry>
+<entry>
+    <Code>SPCM212</Code>
+</entry>
+<entry>
+    <Code>CS321</Code>
+</entry>
+<entry>
+    <Code>CS330</Code>
+</entry>
+<entry>
+    <Code>Cpre310</Code>
+</entry>
+<entry>
+    <Code>CS229</Code>
+</entry>
+<entry>
+    <Code>Cpre381</Code>
+</entry>
+<entry>
+    <Code>Engl314</Code>
+</entry>
+<entry>
+    <Code>Cpre281</Code>
+</entry>
+<entry>
+    <Code>Stat330</Code>
+</entry>
+<entry>
+    <Code>Math165</Code>
+</entry>
+<entry>
+    <Code>Engl150</Code>
+</entry>
+<entry>
+    <Code>SE185</Code>
+</entry>
+<entry>
+    <Code>SE101</Code>
+</entry>
+<entry>
+    <Code>Lib160</Code>
+</entry>
+<entry>
+    <Code>Math166</Code>
+</entry>
+<entry>
+    <Code>SE166</Code>
+</entry>
+<entry>
+    <Code>CS227</Code>
+</entry>
+<entry>
+    <Code>CS228</Code>
+</entry>
+<entry>
+    <Code>Engl250</Code>
+</entry>
+<entry>
+    <Code>Math267</Code>
+</entry>
+<entry>
+    <Code>CS309</Code>
+</entry>
+<entry>
+    <Code>CS311</Code>
+</entry>
+<entry>
+    <Code>CS321</Code>
+</entry>
+<entry>
+    <Code>Phys221</Code>
+</entry>
+<entry>
+    <Code>CS330</Code>
+</entry>
+<entry>
+    <Code>CS352</Code>
+</entry>
+<entry>
+    <Code>CS363</Code>
+</entry>
+<entry>
+    <Code>Cpre308</Code>
+</entry>
+<entry>
+    <Code>SE491</Code>
+</entry>
+<entry>
+    <Code>SE494</Code>
+</entry>
+<entry>
+    <Code>SE492</Code>
+</entry>
+<entry>
+    <Code>ECON ELECT</Code>
+</entry>
+<entry>
+    <Code>MATH ELECT</Code>
+</entry>
+<entry>
+    <Code>OPEN ELECT</Code>
+</entry>
+<entry>
+    <Code>ARTS HUM1</Code>
+</entry>
+<entry>
+    <Code>ARTS HUM2</Code>
+</entry>
+<entry>
+    <Code>SOC SCI</Code>
+</entry>
+<entry>
+    <Code>ART SOC</Code>
+</entry>
+<entry>
+    <Code>TECH ELECT</Code>
+</entry>
+<entry>
+    <Code>SE ELECT1</Code>
+</entry>
+<entry>
+    <Code>SE ELECT2</Code>
+</entry>
+<entry>
+    <Code>SPPLM ELECT1</Code>
+</entry>
+<entry>
+    <Code>SPPLM ELECT2</Code>
+</entry>
+</Relation>
+<Relation name= "TechElect">
+    <entry>
+        <Code>Cpre426</Code>
+    </entry>
+    <entry>
+        <Code>CS430</Code>
+    </entry>
+    <entry>
+        <Code>Cpre450</Code>
+    </entry>
+    <entry>
+        <Code>Cpre458</Code>
+    </entry>
+    <entry>
+        <Code>CS454</Code>
+    </entry>
+    <entry>
+        <Code>CS461</Code>
+    </entry>
+    <entry>
+        <Code>CS486</Code>
+    </entry>
+    <entry>
+        <Code>CS437X</Code>
+    </entry>
+    <entry>
+        <Code>SE419X</Code>
+    </entry>
+</Relation>
+<Relation name= "SeElect">
+    <entry>
+        <Code>SE409</Code>
+    </entry>
+    <entry>
+        <Code>SE412</Code>
+    </entry>
+    <entry>
+        <Code>SE416</Code>
+    </entry>
+    <entry>
+        <Code>SE417</Code>
+    </entry>
+    <entry>
+        <Code>SE419X</Code>
+    </entry>
+    <entry>
+        <Code>SE342</Code>
+    </entry>
+</Relation>
+<Relation name="EconElect">
+   <entry>
+        <Code>Econ101</Code>
+    </entry>
+   <entry>
+        <Code>Econ102</Code>
+    </entry>
+   <entry>
+        <Code>IE305</Code>
+    </entry>
+</Relation>
+<Relation name="MathElect">
+    <entry>
+        <Code>Math304</Code>
+    </entry>
+    <entry>
+        <Code>Math307</Code>
+    </entry>
+    <entry>
+        <Code>Math314</Code>
+    </entry>
+    <entry>
+        <Code>Math317</Code>
+    </entry>
+</Relation>
+<Relation name="SupplElect">
+    <entry>
+        <Code>SE409</Code>
+    </entry>
+    <entry>
+        <Code>SE412</Code>
+    </entry>
+    <entry>
+        <Code>SE416</Code>
+    </entry>
+    <entry>
+        <Code>SE417</Code>
+    </entry>
+    <entry>
+        <Code>SE419X</Code>
+    </entry>
+    <entry>
+        <Code>CS229</Code>
+    </entry>
+    <entry>
+        <Code>CS331</Code>
+    </entry>
+    <entry>
+        <Code>CS342</Code>
+    </entry>
+    <entry>
+        <Code>CS336X</Code>
+    </entry>
+    <entry>
+        <Code>CS362</Code>
+    </entry>
+    <entry>
+        <Code>CS425</Code>
+    </entry>
+    <entry>
+        <Code>CS426</Code>
+    </entry>
+    <entry>
+        <Code>CS430</Code>
+    </entry>
+    <entry>
+        <Code>Cpre288</Code>
+    </entry>
+    <entry>
+        <Code>Cpre388</Code>
+    </entry>
+    <entry>
+        <Code>Cpre431</Code>
+    </entry>
+    <entry>
+        <Code>CS433</Code>
+    </entry>
+    <entry>
+        <Code>CS437X</Code>
+    </entry>
+    <entry>
+        <Code>CS440</Code>
+    </entry>
+    <entry>
+        <Code>CS450</Code>
+    </entry>
+    <entry>
+        <Code>CS454</Code>
+    </entry>
+    <entry>
+        <Code>CS455</Code>
+    </entry>
+    <entry>
+        <Code>CS461</Code>
+    </entry>
+    <entry>
+        <Code>CS472</Code>
+    </entry>
+    <entry>
+        <Code>CS477</Code>
+    </entry>
+    <entry>
+        <Code></Code>
+    </entry>
+    <entry>
+        <Code>CS481</Code>
+    </entry>
+    <entry>
+        <Code>Cpre483</Code>
+    </entry>
+    <entry>
+        <Code>CS486</Code>
+    </entry>
+    <entry>
+        <Code>Cpre488</Code>
+    </entry>
+    <entry>
+        <Code>Cpre289</Code>
+    </entry>
+    <entry>
+        <Code>CS490</Code>
+    </entry>
+    <entry>
+        <Code>Cpre418</Code>
+    </entry>
+    <entry>
+        <Code>CE388</Code>
+    </entry>
+    <entry>
+        <Code>ME484</Code>
+    </entry>
+    <entry>
+        <Code>Cpre530</Code>
+    </entry>
+</Relation>
 </Database>

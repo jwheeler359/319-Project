@@ -29,7 +29,7 @@
 		stage.add(courseLayer);
 	});
 	
-	function buildSemesters(numSemesters)
+	function buildSemesters(numSemesters) // builds semesters (8 normally)
 	{
 		for(var i = 0; i < numSemesters; i++)
 		{
@@ -51,7 +51,7 @@
 	{
 		for(var i = 0; i < courseList.length; i++)
 		{
-			classList.push(new course(courseList[i][1], courseList[i][0], statusEnum.PASSED));
+			classList.push(new course(courseList[i][0], courseList[i][1], courseList[i][2], courseList[i][3], courseList[i][4], statusEnum.PASSED));
 		}
 	}
 	
@@ -76,7 +76,7 @@
 		
 		populateSidebar(classList);
 		drawLines();
-		stage.draw(); // synchs display
+		stage.draw(); // sync display
 	}
 	
 	//Draw the yellow semester-division lines on the canvas
@@ -146,7 +146,7 @@
 		{
 			x: x,
 			y: y,
-			id: course.getProgram() + course.getName(),
+			id: course.getName() + '\n' + course.getProgram() + '\n' + course.getPreReqs() + '\n' + course.getCoReqs() + '\n' + course.getCredits() + '\n' + course.getStatus(),
 			draggable: true
 		}).on('dragstart', function() { snap(this, 0); }).on('dragend', function() { snap(this, 1); });
 		
@@ -225,10 +225,11 @@
 				case 0: // remove course (use with dragstart)
 					if(career[sem].getCourses().indexOf(shape) != -1)
 					{
-						for(var i = career[sem].getCourses().indexOf(shape); i < career[sem].getSize(); i++)
+						for(var i = career[sem].getCourses().indexOf(shape); i+1 < career[sem].getSize(); i++)
 						{
 							career[sem].getCourses()[i+1].setX((i+1) * border);
 						}
+						
 						career[sem].removeCourse(shape);
 					}
 					break;
@@ -242,7 +243,7 @@
 						career[sem].addCourse(shape);
 					}
 					
-					var newX = (career[sem].getCourses().indexOf(shape) + 1) * border;
+					var newX = (career[sem].getSize()) * border;
 					shape.setX(newX);
 					break;
 			}
@@ -251,20 +252,31 @@
 		}
 	}
 	
-	function course(program, name, status)
+	function course(name, program, preReqs, coReqs, credits, status)
 	{
-		this.status = status;
-		this.program = program;
-		this.getProgram = function(){return this.program;};
 		this.name = name;
+		this.program = program;
+		this.preReqs = preReqs;
+		this.coReqs = coReqs;
+		this.credits = credits;
+		this.status = status;
+		
 		this.getName = function(){return this.name;};
+		this.getProgram = function(){return this.program;};
+		this.getPreReqs = function(){return this.preReqs;};
+		this.getCoReqs = function(){return this.coReqs;};
+		this.getCredits = function(){return this.credits;};
+		this.getStatus = function(){return this.status;};
 	}
 	
 	function Semester()
 	{
 		var courses = new Array();
-		this.getCourses = function getCourses(){return courses;};
-		this.getSize = function getSize(){return courses.length;};
+		var totalCredits = new Array();
+		
+		this.getCourses = function(){return courses;};
+		this.getSize = function(){return courses.length;};
+		this.getTotalCredits = function(){return courses.length;};
 	}
 	
 	Semester.prototype.addCourse = function(course)
@@ -275,6 +287,11 @@
 	Semester.prototype.removeCourse = function(course)
 	{
 		this.getCourses().splice(this.getCourses().indexOf(course), 1);
+	}
+	
+	Semester.prototype.getCourseInfo = function(course)	// [0] = name, [1] = program, [2] = preReqs, [3] = coReqs, [4] = credits, [5] = status
+	{
+		return this.getCourses()[this.getCourses().indexOf(course)].getId().split(/(?!.)/);
 	}
 	
 	function getXML(source, updateView)

@@ -21,8 +21,8 @@
 		lineLayer = new Kinetic.Layer();
 		
 		getXML("http://localhost:8080/TomcatProject/Project/SEMajorCourses.xml", 1);
-		drawLines();
 		buildSemesters(8);
+		drawLines();
 		
 		stage.add(lineLayer);
 		stage.add(courseLayer);
@@ -129,7 +129,7 @@
 		
 		var lineX2 = lineX1 + windowWidth * .66;
 		
-		for(var i = 1; i <= career.length; i++)
+		for(var i = 1; i < career.length; i++)
 		{
 			var semesterLine = new Kinetic.Line(
 			{

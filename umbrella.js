@@ -65,6 +65,13 @@
 	
 	function updateSize()
 	{
+		var classGroup = stage.find("Group");
+		var scheduledClasses = new Array();
+		
+		for(var i = 0; i < Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)); i++)
+			if(classGroup[i].getX() > windowWidth / 5)
+				scheduledClasses.push(i);
+		
 		windowHeight = $(window).get(0).innerHeight;
 		windowWidth = $(window).get(0).innerWidth;
 		
@@ -72,9 +79,26 @@
 		stage.setHeight(windowHeight);
 		
 		lineLayer.removeChildren();
-		courseLayer.removeChildren();
 		
-		populateSidebar(classList);
+		var posData = [320, 100]; // [width, height]
+		
+		posData[0] = (windowWidth / 5) - 20;
+		posData[1] = (windowHeight / 8) - (windowHeight * 0.03);
+		
+		if(posData[0] < 320)
+		{
+			posData[0] = 285;
+		}
+		
+		for(var i = 0; i < Math.floor(windowHeight / (posData[1] + 10)); i++)
+		{
+			classGroup[i].getChildren()[0].setSize(posData[0], posData[1]);
+			classGroup[i].getChildren()[1].setFontSize((classGroup[i].getChildren()[0].getWidth() + classGroup[i].getChildren()[0].getHeight()) / 20);
+			
+			if(scheduledClasses.indexOf(i) != -1)
+				snap(classGroup[i], 2);
+		}
+		
 		drawLines();
 		stage.draw(); // sync display
 	}
@@ -192,63 +216,101 @@
 	
 	function snap(shape, choice)
 	{
-		if(shape.getX() > windowWidth / 5)
+		switch(choice)
 		{
-			var newY = shape.getY() - (.5 * shape.getHeight());
-			var incr = (windowHeight / 8);
-			
-			if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16))) // formula for snap to nearest semester
-			{
-				newY += incr - (incr * .60);
-			}
-			
-			if(newY < 0) // keep classes inside window
-			{
-				newY += incr;
-			}
-			else if(newY > windowHeight)
-			{
-				newY -= incr;
-			}
-			
-			var sem = Math.floor((windowHeight / (windowHeight / (Math.ceil(newY / incr)))) - 1); // get semester number (0-7)
-			
-			var border = windowWidth * .22;
-			
-			if(border < 320)
-			{
-				border = 320;
-			}
-			
-			switch(choice)
-			{
-				case 0: // remove course (use with dragstart)
-					if(career[sem].getCourses().indexOf(shape) != -1)
-					{
-						for(var i = career[sem].getCourses().indexOf(shape); i+1 < career[sem].getSize(); i++)
-						{
-							career[sem].getCourses()[i+1].setX((i+1) * border);
-						}
-						
-						career[sem].removeCourse(shape);
-					}
-					break;
-				default: // add course and snap to position (use with dragend)
-					newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
+			case 2:
+				var newY = shape.getY() - (.5 * shape.getHeight());
+				var incr = (windowHeight / 8);
+				
+				if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16))) // formula for snap to nearest semester
+				{
+					newY += incr - (incr * .60);
+				}
+				
+				if(newY < 0) // keep classes inside window
+				{
+					newY += incr;
+				}
+				else if(newY > windowHeight)
+				{
+					newY -= incr;
+				}
+				
+				var sem = Math.floor((windowHeight / (windowHeight / (Math.ceil(newY / incr)))) - 1); // get semester number (0-7)
+				
+				var border = windowWidth * .22;
+				
+				if(border < 320)
+				{
+					border = 320;
+				}
+				
+				newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
+				
+				shape.setY(newY);
+				
+				var newX = (career[sem].getCourses().indexOf(shape) + 1) * border;
+				shape.setX(newX);
+				break;
+			default:
+				if(shape.getX() > windowWidth / 5)
+				{
+					var newY = shape.getY() - (.5 * shape.getHeight());
+					var incr = (windowHeight / 8);
 					
-					shape.setY(newY);
-					
-					if(career[sem].getCourses().indexOf(shape) == -1)
+					if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16))) // formula for snap to nearest semester
 					{
-						career[sem].addCourse(shape);
+						newY += incr - (incr * .60);
 					}
 					
-					var newX = (career[sem].getSize()) * border;
-					shape.setX(newX);
-					break;
-			}
-			
-			stage.draw(); // this updates the position
+					if(newY < 0) // keep classes inside window
+					{
+						newY += incr;
+					}
+					else if(newY > windowHeight)
+					{
+						newY -= incr;
+					}
+					
+					var sem = Math.floor((windowHeight / (windowHeight / (Math.ceil(newY / incr)))) - 1); // get semester number (0-7)
+					
+					var border = windowWidth * .22;
+					
+					if(border < 320)
+					{
+						border = 320;
+					}
+					
+					switch(choice)
+					{
+						case 0: // remove course (use with dragstart)
+							if(career[sem].getCourses().indexOf(shape) != -1)
+							{
+								for(var i = career[sem].getCourses().indexOf(shape); i+1 < career[sem].getSize(); i++)
+								{
+									career[sem].getCourses()[i+1].setX((i+1) * border);
+								}
+								
+								career[sem].removeCourse(shape);
+							}
+							break;
+						case 1: // add course and snap to position (use with dragend)
+							newY = (Math.ceil(newY / incr) * incr) - (incr * .89);
+							
+							shape.setY(newY);
+							
+							if(career[sem].getCourses().indexOf(shape) == -1)
+							{
+								career[sem].addCourse(shape);
+							}
+							
+							var newX = (career[sem].getSize()) * border;
+							shape.setX(newX);
+							break;
+					}
+					stage.draw(); // this updates the position
+				}
+				break;
 		}
 	}
 	

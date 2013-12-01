@@ -6,14 +6,19 @@
 	var stage;
 	var lineLayer;
 	var courseLayer;
-	var colors = ["rgba(0,80,106)","rgba(18,142,182,.8)","rgba(119,12,40,.8)","rgba(182,171,9,.8)","rgba(115,182,0,.8)"];//Dark Blue, Light Blue, Red, Yellow, Green
-	var statusEnum = Object.freeze({'PASSED':0, 'PLANNED':1,'INPROG':2,'INCOM':3});
+	var colors = ["rgba(115, 182, 0, .8)",		// Green
+	              "rgba(18, 142, 182, .8)",		// Light Blue
+	              "rgba(182, 171, 9, .8)",		// Yellow
+	              "rgba(119, 12, 40, .8)",		// Red
+	              "rgba(0, 80, 106)"];		// Dark Blue
+	var statusEnum = Object.freeze({'PASSED':0, 'PLANNED':1, 'INPROG':2, 'INCOM':3});
 	var windowHeight = $(window).get(0).innerHeight;
 	var windowWidth = $(window).get(0).innerWidth;
 	var classList = new Array();
 	var career = new Array();
+	var currentSemester;
 	
-	//Prepare the canvas
+	// prepare the canvas
 	$(document).ready(function()
 	{
 		createStage();
@@ -22,6 +27,7 @@
 		
 		getXML("http://localhost:8080/TomcatProject/Project/SEMajorCourses.xml", 1);
 		buildSemesters(8);
+		setCurrentSemester(0);
 		drawLines();
 		
 		stage.add(lineLayer);
@@ -34,6 +40,11 @@
 		{
 			career.push(new Semester());
 		}
+	}
+	
+	function setCurrentSemester(semester)
+	{
+		currentSemester = semester;
 	}
 	
 	function createStage()
@@ -50,7 +61,7 @@
 	{
 		for(var i = 0; i < courseList.length; i++)
 		{
-			classList.push(new course(courseList[i][0], courseList[i][1], courseList[i][2], statusEnum.PASSED));
+			classList.push(new course(courseList[i][0], courseList[i][1], courseList[i][2], statusEnum.INCOM));
 		}
 	}
 	
@@ -116,8 +127,7 @@
 		stage.draw(); // sync display
 	}
 	
-	//Draw the yellow semester-division lines on the canvas
-	function drawLines()
+	function drawLines() // draw the yellow semester-division lines on the canvas
 	{
 		var lineY = windowHeight / 8;
 		var lineX1 = windowWidth * .22;
@@ -134,7 +144,7 @@
 			var semesterLine = new Kinetic.Line(
 			{
 				points: [lineX1, lineY * i, lineX2, lineY * i],
-				stroke: colors[3],
+				stroke: colors[statusEnum.INPROG],
 				strokeWidth: 2
 			});
 			
@@ -177,47 +187,26 @@
 		x = posData[0];
 		y = posData[1];
 		
-		var color = colors[2];
-		
 		var classGroup = new Kinetic.Group(
 		{
 			x: x,
 			y: y,
-			id: course.getName() + '\n' + course.getProgram() + '\n' + course.getPreReqs() + '\n' + course.getStatus(),
+			id: course.name + '\n' + course.program + '\n' + course.preReqs,
 			draggable: true
 		}).on('dragstart', function() { snap(this, -2); }).on('dragend', function() { snap(this, -1); });
-		
-		switch(course.status)
-		{
-			case statusEnum.PASSED:
-				color = colors[4];
-				break;
-			case statusEnum.INPROG:
-				color = colors[3];
-				break;
-			case statusEnum.PLANNED:
-				color = colors[1];
-				break;
-			case statusEnum.INCOM:
-				color = colors[2];
-				break;
-			default:
-				color = "rgb(255,0,0)";
-				break;
-		}
 		
 		var classRect = new Kinetic.Rect(
 		{
 			width: posData[2],
 			height: posData[3],
-			fill: color
+			fill: colors[course.status]
 		});
 		
 		var classText = new Kinetic.Text(
 		{
 			fontSize: (classRect.getWidth() + classRect.getHeight()) / 20,
 			fontFamily: 'Arial',
-			text: course.getName().replace(/(?!\D)(?=\d)/,' '),
+			text: course.name.replace(/(?!\D)(?=\d)/, ' '),
 			fill: 'white',
 			padding: 10
 		});
@@ -232,9 +221,6 @@
 		switch(choice)
 		{
 			default: // snap on resize, uses "choice" as the semester
-				var newY = shape.getY() - (.5 * shape.getHeight());
-				var incr = (windowHeight / 8);
-				
 				var border = windowWidth * .22;
 				
 				if(border < 320)
@@ -242,12 +228,7 @@
 					border = 320;
 				}
 				
-				newY = ((choice+1) * incr) - (incr * .89);
-				
-				shape.setY(newY);
-				
-				var newX = (career[choice].getCourses().indexOf(shape) + 1) * border;
-				shape.setX(newX);
+				shape.setPosition((career[choice].getCourses().indexOf(shape) + 1) * border, ((choice + 1) * (windowHeight / 8)) - ((windowHeight / 8) * .89))
 				break;
 			case -2: // negative so the semester number can't possibly run this case
 			case -1:
@@ -258,7 +239,7 @@
 					
 					if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16))) // formula for snap to nearest semester
 					{
-						newY += incr - (incr * .60);
+						newY += incr - (incr * .59);
 					}
 					
 					if(newY < 0) // keep classes inside window
@@ -284,7 +265,7 @@
 						case -2: // remove course (use with dragstart)
 							if(career[sem].getCourses().indexOf(shape) != -1)
 							{
-								for(var i = career[sem].getCourses().indexOf(shape); i+1 < career[sem].getSize(); i++)
+								for(var i = career[sem].getCourses().indexOf(shape); i+1 < career[sem].getCourses().length; i++)
 								{
 									career[sem].getCourses()[i+1].setX((i+1) * border);
 								}
@@ -300,14 +281,29 @@
 							if(career[sem].getCourses().indexOf(shape) == -1)
 							{
 								career[sem].addCourse(shape);
+								
+								if(sem == currentSemester)
+								{
+									shape.getChildren()[0].setFill(colors[statusEnum.INPROG]);
+								}
+								else
+								{
+									shape.getChildren()[0].setFill(colors[statusEnum.PLANNED]);
+								}
 							}
 							
-							var newX = (career[sem].getSize()) * border;
+							var newX = (career[sem].getCourses().length) * border;
 							shape.setX(newX);
 							break;
 					}
-					stage.draw(); // this updates the position
 				}
+				
+				else
+				{
+					shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
+				}
+				
+				stage.draw() // this updates the position
 				break;
 		}
 	}
@@ -318,21 +314,15 @@
 		this.program = program;
 		this.preReqs = preReqs;
 		this.status = status;
-		
-		this.getName = function(){return this.name;};
-		this.getProgram = function(){return this.program;};
-		this.getPreReqs = function(){return this.preReqs;};
-		this.getStatus = function(){return this.status;};
 	}
 	
 	function Semester()
 	{
 		var courses = new Array();
-		var totalCredits = new Array();
+		var credits = new Array();
 		
 		this.getCourses = function(){return courses;};
-		this.getSize = function(){return courses.length;};
-		this.getTotalCredits = function(){return courses.length;};
+		this.getCredits = function(){return credits;};
 	}
 	
 	Semester.prototype.addCourse = function(course)
@@ -345,7 +335,7 @@
 		this.getCourses().splice(this.getCourses().indexOf(course), 1);
 	}
 	
-	Semester.prototype.getCourseInfo = function(course)	// [0] = name, [1] = program, [2] = preReqs, [3] = status
+	Semester.prototype.getCourseInfo = function(course) // [0] = name, [1] = program, [2] = preReqs
 	{
 		return this.getCourses()[this.getCourses().indexOf(course)].getId().split(/(?!.)/); // split based on newline
 	}

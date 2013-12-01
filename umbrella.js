@@ -6,11 +6,11 @@
 	var stage;
 	var lineLayer;
 	var courseLayer;
-	var colors = ["rgba(115, 182, 0, .8)",		// Green
-	              "rgba(18, 142, 182, .8)",		// Light Blue
-	              "rgba(182, 171, 9, .8)",		// Yellow
-	              "rgba(119, 12, 40, .8)",		// Red
-	              "rgba(0, 80, 106)"];		// Dark Blue
+	var colors = ["rgba(115, 182, 0, .8)",	// Green
+	              "rgba(18, 142, 182, .8)",	// Light Blue
+	              "rgba(182, 171, 9, .8)",	// Yellow
+	              "rgba(119, 12, 40, .8)",	// Red
+	              "rgba(0, 80, 106, 1)"];	// Dark Blue
 	var statusEnum = Object.freeze({'PASSED':0, 'PLANNED':1, 'INPROG':2, 'INCOM':3});
 	var windowHeight = $(window).get(0).innerHeight;
 	var windowWidth = $(window).get(0).innerWidth;
@@ -108,10 +108,16 @@
 			posData[0] = 285;
 		}
 		
-		for(var i = 0; i < Math.floor(windowHeight / (posData[1] + 10)); i++)
+		for(var i = 0, j = 0; i < classGroup.length; i++)
 		{
+			if(i >= Math.floor(windowHeight / (posData[1] + 10)))
+			{
+				break;
+			}
+			
 			classGroup[i].getChildren()[0].setSize(posData[0], posData[1]);
-			classGroup[i].getChildren()[1].setFontSize((classGroup[i].getChildren()[0].getWidth() + classGroup[i].getChildren()[0].getHeight()) / 20);
+			classGroup[i].getChildren()[1].setFontSize(classGroup[i].getChildren()[0].getHeight() / 3);
+			classGroup[i].getChildren()[1].setOffsetY(-(classGroup[i].getChildren()[0].getHeight() / 3));
 			
 			if(scheduledClasses.indexOf(i) != -1)
 			{
@@ -171,7 +177,7 @@
 		
 		for(var i = 0; i < classList.length; i++)
 		{
-			if(i == maxSidebarCapacity)
+			if(i >= maxSidebarCapacity)
 			{
 				break;
 			}
@@ -184,14 +190,11 @@
 	
 	function drawClassRect(course, posData)
 	{
-		x = posData[0];
-		y = posData[1];
-		
 		var classGroup = new Kinetic.Group(
 		{
-			x: x,
-			y: y,
-			id: course.name + '\n' + course.program + '\n' + course.preReqs,
+			x: posData[0],
+			y: posData[1],
+			id: course.name + '\n' + course.program + '\n' + course.preReqs, // this is used to store the information for the course
 			draggable: true
 		}).on('dragstart', function() { snap(this, -2); }).on('dragend', function() { snap(this, -1); });
 		
@@ -204,11 +207,11 @@
 		
 		var classText = new Kinetic.Text(
 		{
-			fontSize: (classRect.getWidth() + classRect.getHeight()) / 20,
+			fontSize: classRect.getHeight() / 3,
 			fontFamily: 'Arial',
 			text: course.name.replace(/(?!\D)(?=\d)/, ' '),
-			fill: 'white',
-			padding: 10
+			offset: [-10, -(classRect.getHeight() / 3)],
+			fill: 'white'
 		});
 		
 		classGroup.add(classRect).add(classText);
@@ -220,16 +223,6 @@
 	{
 		switch(choice)
 		{
-			default: // snap on resize, uses "choice" as the semester
-				var border = windowWidth * .22;
-				
-				if(border < 320)
-				{
-					border = 320;
-				}
-				
-				shape.setPosition((career[choice].getCourses().indexOf(shape) + 1) * border, ((choice + 1) * (windowHeight / 8)) - ((windowHeight / 8) * .89))
-				break;
 			case -2: // negative so the semester number can't possibly run this case
 			case -1:
 				if(shape.getX() > windowWidth / 5)
@@ -300,10 +293,26 @@
 				
 				else
 				{
-					shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
+					switch(choice)
+					{
+						case -1:
+							shape.setPosition(10, 10 + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find("Group").indexOf(shape))));
+							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
+							break;
+					}
 				}
 				
 				stage.draw() // this updates the position
+				break;
+			default: // snap on resize, uses "choice" as the semester
+				var border = windowWidth * .22;
+				
+				if(border < 320)
+				{
+					border = 320;
+				}
+				
+				shape.setPosition((career[choice].getCourses().indexOf(shape) + 1) * border, ((choice + 1) * (windowHeight / 8)) - ((windowHeight / 8) * .89))
 				break;
 		}
 	}

@@ -8,6 +8,41 @@
     <Column name="Credits" type="Text" />
   </Columns>
 <Entry>
+	<Code>Math307</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Math301</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Math201</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Math267</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Math265</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
 	<Code>CS437X</Code>
 	<CourseName></CourseName>
 	<PreReq></PreReq>
@@ -1182,6 +1217,29 @@
   </Entry>
   <Entry>
     <Code>WS203</Code>
+  </Entry>
+</Relation>
+<Relation name="Math Minor">
+  <Entry>
+    <Code>Math165</Code>
+  </Entry>
+  <Entry>
+    <Code>Math166</Code>
+  </Entry>
+  <Entry>
+    <Code>Math265</Code>
+  </Entry>
+  <Entry>
+    <Code>Math267</Code>
+  </Entry>
+  <Entry>
+    <Code>Math201</Code>
+  </Entry>
+  <Entry>
+    <Code>Math301</Code>
+  </Entry>
+  <Entry>
+    <Code>Math307</Code>
   </Entry>
 </Relation>
 </Database>

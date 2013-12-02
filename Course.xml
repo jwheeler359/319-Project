@@ -114,17 +114,17 @@
 </Entry> 
 <Entry>
 	<Code>CprE426</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<CourseName>Introduction to Parallel Algorithms and Programming</CourseName>
+	<PreReq>CprE308</PreReq>
+	<Credits>4</Credits>
+	<Description>Models of parallel computation, performance measures, basic parallel constructs and communication primitives, parallel programming using MPI, parallel algorithms for selected problems including sorting, matrix, tree and graph problems, fast Fourier transforms. Nonmajor graduate credit.</Description>
 </Entry> 
 <Entry>
 	<Code>SE342</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
+	<CourseName>Principles of Programming Languages</CourseName>
+	<PreReq>ComS321</PreReq>
 	<Credits></Credits>
-	<Description></Description>
+	<Description>Study of concepts in programming languages and major programming paradigms, especially functional programming. Special emphasis on design tradeoffs that enable students to make sound choices of programming languages for a given software development task. Programming projects. Nonmajor graduate credit.</Description>
 </Entry> 
 <Entry>
 	<Code>SE419X</Code>

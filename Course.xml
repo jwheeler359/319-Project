@@ -9,111 +9,111 @@
   </Columns>
 <Entry>
 	<Code>Econ302</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<CourseName>Intermediate Macroeconomics</CourseName>
+	<PreReq>Econ102</PreReq>
+	<Credits>3</Credits>
+	<Description>Theory of income, employment, interest rates, and the price level; fiscal and monetary policy; budget and trade deficits; money and capital inflows, interest rates, and inflation. Nonmajor graduate credit.</Description>
 </Entry>
 <Entry>
 	<Code>Econ230</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<CourseName>Farm Business Management</CourseName>
+	<PreReq>Econ101</PreReq>
+	<Credits>3</Credits>
+	<Description>Business and economic principles applied to decision making and problem solving in the management of a farm business. Cash flow, partial, enterprise, and whole farm budgeting. Information systems for farm accounting, analysis, and control. Obtaining and managing land, capital, and labor resources. Alternatives for farm business organization and risk management.</Description>
 </Entry>
 <Entry>
 	<Code>Econ301</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<CourseName>Intermediate Microeconomics</CourseName>
+	<PreReq>Econ207</PreReq>
+	<Credits>3</Credits>
+	<Description>Theory of consumer and business behavior; optimal consumption choices and demand; theory of firm behavior; costs, production, and supply; competitive and imperfectly competitive markets; theory of demand for and supply of factors of production; general equilibrium analysis. Recitation required for 4 credits. Nonmajor graduate credit.</Description>
 </Entry>
 <Entry>
-	<Code>Math307</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<Code>Math317</Code>
+	<CourseName>Theory of Linear Algebra</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>4</Credits>
+	<Description>Systems of linear equations, determinants, vector spaces, inner product spaces, linear transformations, eigenvalues and eigenvectors. Emphasis on writing proofs and results. Nonmajor graduate credit. Only one of MATH 207, MATH 307, MATH 317 may be counted toward graduation.</Description>
 </Entry>
 <Entry>
 	<Code>Math301</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<CourseName>Abstract Algebra I</CourseName>
+	<PreReq>Math317</PreReq>
+	<Credits>3</Credits>
+	<Description>Theory of groups. Homomorphisms. Quotient groups. Introduction to rings. Emphasis on writing proofs. Nonmajor graduate credit.</Description>
 </Entry>
 <Entry>
 	<Code>Math201</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<CourseName>Introduction to Proofs</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>3</Credits>
+	<Description>Logic and techniques of proof including induction. Communicating mathematics. Writing proofs about sets, functions, real numbers, limits, sequences, infinite series and continuous functions.</Description>
 </Entry>
 <Entry>
 	<Code>Math267</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<CourseName>Elementary Differential Equations and Laplace Transforms</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>4</Credits>
+	<Description>Solution methods for ordinary differential equations. First order equations, linear equations, constant coefficient equations. Eigenvalue methods for systems of first order linear equations. Introduction to stability and phase plane analysis. Also includes Laplace transforms and series solutions to ordinary differential equations.</Description>
 </Entry>
 <Entry>
 	<Code>Math265</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<CourseName>Calculus III</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>4</Credits>
+	<Description>Analytic geometry and vectory, differential calculus of functions of several variables, multiple integrals, vector calculus.</Description>
 </Entry>
 <Entry>
-	<Code>CS437X</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<Code>ComS437X</Code>
+	<CourseName>Computer Game and Media Programming</CourseName>
+	<PreReq>ComS362</PreReq>
+	<Credits>3</Credits>
+	<Description>Students will learn video game programming using current game engine interfaces with real hardware. Particular attention is paid to the console architecture, development environment, tool chains, 2D graphics, 3D graphics, controllers, memory management, and audio systems. Students will complete the course by writing a simple game that runs on console hardware. Nonmajor graduate credit.</Description>
 </Entry> 
 <Entry>
-	<Code>CS486</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<Code>ComS486</Code>
+	<CourseName>Fundamental Concepts in Computer Networking</CourseName>
+	<PreReq>ComS352</PreReq>
+	<Credits>3</Credits>
+	<Description>An introduction to fundamental concepts in the design and implementation of computer communication in both the wired and wireless networks, their protocols, and applications. Layered network architecture in the Internet, applications, transport, Socket APIs, network, and data link layers and their protocols, multimedia networking, and network security. Nonmajor graduate credit.</Description>
 </Entry> 
 <Entry>
-	<Code>CS461</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<Code>ComS461</Code>
+	<CourseName>Principles and Internals of Database Systems</CourseName>
+	<PreReq>ComS311</PreReq>
+	<Credits>3</Credits>
+	<Description>Models for structured and semistructured data. Algebraic, first order, and user-oriented query languages. Database schema design. Physical storage, access methods, and query processing. Transaction management, concurrency control, and crash recovery. Database security. Information integration using data warehouses, mediators, wrappers, and data mining. Parallel and distributed databases, and special purpose databases. Oral and written reports. Nonmajor graduate credit.</Description>
 </Entry> 
 <Entry>
-	<Code>CS454</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<Code>ComS454</Code>
+	<CourseName>Distributed and Network Operating Systems</CourseName>
+	<PreReq>ComS311</PreReq>
+	<Credits>3</Credits>
+	<Description>Laboratory course dealing with practical issues of design and implementation of distributed and network operating systems and distributed computing environments (DCE). The client server paradigm, inter-process communications, layered communication protocols, synchronization and concurrency control, and distributed file systems. Graduate credit requires additional in-depth study of advanced operating systems. Written reports.</Description>
 </Entry> 
 <Entry>
-	<Code>Cpre458</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<Code>CprE458</Code>
+	<CourseName>Real Time Systems</CourseName>
+	<PreReq>CprE308</PreReq>
+	<Credits>3</Credits>
+	<Description>Fundamental concepts in real-time systems. Real time task scheduling paradigms. Resource management in uniprocessor, multiprocessor, and distributed real-time systems. Fault-tolerance, resource reclaiming, and overload handling. Real-time channel, packet scheduling, and real-time LAN protocols. Case study of real-time operating systems. Laboratory experiments. Nonmajor graduate credit.</Description>
 </Entry> 
 <Entry>
-	<Code>Cpre450</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<Code>CprE450</Code>
+	<CourseName>Distributed Systems and Middleware</CourseName>
+	<PreReq>CprE308</PreReq>
+	<Credits>3</Credits>
+	<Description>Fundamentals of distributed computing, software agents, naming services, distributed transactions, security management, distributed object-based systems, web-based systems, middleware-based application design and development, case studies of middleware and internet applications. Nonmajor graduate credit.</Description>
 </Entry> 
 <Entry>
-	<Code>CS430</Code>
-	<CourseName></CourseName>
-	<PreReq></PreReq>
-	<Credits></Credits>
-	<Description></Description>
+	<Code>ComS430</Code>
+	<CourseName>Advanced Programming Tools</CourseName>
+	<PreReq>ComS311</PreReq>
+	<Credits>3</Credits>
+	<Description>Topics in advanced programming techniques and tools widely used by industry (e.g., event-driven programming and graphical user interfaces, standard libraries, client/server architectures and techniques for distributed applications). Emphasis on programming projects in a modern integrated development environment. Oral and written reports. Nonmajor graduate credit.</Description>
 </Entry> 
 <Entry>
-	<Code>Cpre426</Code>
+	<Code>CprE426</Code>
 	<CourseName></CourseName>
 	<PreReq></PreReq>
 	<Credits></Credits>

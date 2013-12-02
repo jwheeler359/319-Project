@@ -61,7 +61,7 @@
 	{
 		for(var i = 0; i < courseList.length; i++)
 		{
-			classList.push(new course(courseList[i][0], courseList[i][1], courseList[i][2], statusEnum.INCOM));
+			classList.push(new course(courseList[i][0], courseList[i][1], courseList[i][2], courseList[i][3], statusEnum.INCOM));
 		}
 	}
 	
@@ -194,7 +194,7 @@
 		{
 			x: posData[0],
 			y: posData[1],
-			id: course.name + '\n' + course.program + '\n' + course.preReqs, // this is used to store the information for the course
+			id: course.name + '\n' + course.program + '\n' + course.preReqs + '\n' + course.credits, // this is used to store the information for the course
 			draggable: true
 		}).on('dragstart', function() { snap(this, -2); }).on('dragend', function() { snap(this, -1); });
 		
@@ -317,34 +317,45 @@
 		}
 	}
 	
-	function course(name, program, preReqs, status)
+	function course(name, program, preReqs, credits, status)
 	{
 		this.name = name;
 		this.program = program;
 		this.preReqs = preReqs;
+		this.credits = credits;
 		this.status = status;
 	}
 	
 	function Semester()
 	{
+		var credits = 0;
 		var courses = new Array();
-		var credits = new Array();
 		
-		this.getCourses = function(){return courses;};
 		this.getCredits = function(){return credits;};
+		this.getCourses = function(){return courses;};
 	}
 	
 	Semester.prototype.addCourse = function(course)
 	{
 		this.getCourses().push(course);
+		
+		if(!isNaN(course.getId().split(/(?!.)/)[3]))
+		{
+			this.credits += parseFloat(course.getId().split(/(?!.)/)[3]);
+		}
 	}
 	
 	Semester.prototype.removeCourse = function(course)
 	{
 		this.getCourses().splice(this.getCourses().indexOf(course), 1);
+		
+		if(!isNaN(course.getId().split(/(?!.)/)[3]))
+		{
+			this.credits -= parseFloat(course.getId().split(/(?!.)/)[3]);
+		}
 	}
 	
-	Semester.prototype.getCourseInfo = function(course) // [0] = name, [1] = program, [2] = preReqs
+	Semester.prototype.getCourseInfo = function(course) // [0] = name, [1] = program, [2] = preReqs, [3] = credits
 	{
 		return this.getCourses()[this.getCourses().indexOf(course)].getId().split(/(?!.)/); // split based on newline
 	}
@@ -355,9 +366,10 @@
 		
 		$.get(source, function(data)
 		{
-			var courseCode = data.getElementsByTagName("CourseCode");
-			var courseName = data.getElementsByTagName("CourseName");
-			var preReq = data.getElementsByTagName("PreReq");
+			var courseCode = data.getElementsByTagName("CourseCode"); // name
+			var courseName = data.getElementsByTagName("CourseName"); // program
+			var preReq = data.getElementsByTagName("PreReq"); // preReq
+			var credits = data.getElementsByTagName("Credits"); // credits
 			
 			for(var i = 0; i < courseCode.length; i++)
 			{
@@ -388,6 +400,15 @@
 				else
 				{
 					courseList[i][2] = "None";
+				}
+				
+				if(credits[i] != null && credits[i].firstChild != null)
+				{
+					courseList[i][3] = credits[i].firstChild.nodeValue;
+				}
+				else
+				{
+					courseList[i][3] = '0';
 				}
 			}
 		},

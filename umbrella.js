@@ -75,12 +75,17 @@
 	
 	function updateSize()
 	{
-		var classGroup = stage.find("Group");
+		var classGroup = stage.find(".ClassGroup");
 		var scheduledClasses = new Array();
 		var semester = new Array();
 		
-		for(var i = 0, j = 0; i < Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)); i++)
+		for(var i = 0; i < classGroup.length; i++)
 		{
+			if(i >= Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)))
+			{
+				break;
+			}
+			
 			if(classGroup[i].getX() > windowWidth / 5)
 			{
 				scheduledClasses.push(i);
@@ -194,6 +199,7 @@
 		{
 			x: posData[0],
 			y: posData[1],
+			name: "ClassGroup",
 			id: course.name + '\n' + course.program + '\n' + course.preReqs + '\n' + course.credits, // this is used to store the information for the course
 			draggable: true
 		}).on('dragstart', function() { snap(this, -2); }).on('dragend', function() { snap(this, -1); });
@@ -296,7 +302,7 @@
 					switch(choice)
 					{
 						case -1:
-							shape.setPosition(10, 10 + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find("Group").indexOf(shape))));
+							shape.setPosition(10, 10 + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
 							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
 							break;
 					}

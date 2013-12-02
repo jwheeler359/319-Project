@@ -25,7 +25,8 @@
 		courseLayer = new Kinetic.Layer();
 		lineLayer = new Kinetic.Layer();
 		
-		getXML("http://localhost:8080/TomcatProject/Project/Course.xml", 1);
+		//getXML("http://localhost:8080/TomcatProject/Project/Course.xml", 1); //for server use
+		getXML("Courses.xml", 1);
 		buildSemesters(8);
 		setCurrentSemester(0);
 		drawLines();

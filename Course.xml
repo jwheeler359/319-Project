@@ -8,6 +8,27 @@
     <Column name="Credits" type="Text" />
   </Columns>
 <Entry>
+	<Code>Econ302</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Econ230</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Econ301</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
 	<Code>Math307</Code>
 	<CourseName></CourseName>
 	<PreReq></PreReq>
@@ -469,7 +490,7 @@
 	<Credits></Credits>
 	<Description></Description>
 </Entry>
-  <Entry>
+<Entry>
 	<Code>Econ101</Code>
 	<CourseName></CourseName>
 	<PreReq></PreReq>
@@ -1240,6 +1261,23 @@
   </Entry>
   <Entry>
     <Code>Math307</Code>
+  </Entry>
+</Relation>
+<Relation name="Econ Minor">
+  <Entry>
+    <Code>Econ101</Code>
+  </Entry>
+  <Entry>
+    <Code>Econ102</Code>
+  </Entry>
+  <Entry>
+    <Code>Econ301</Code>
+  </Entry>
+  <Entry>
+    <Code>Econ230</Code>
+  </Entry>
+  <Entry>
+    <Code>Econ302</Code>
   </Entry>
 </Relation>
 </Database>

@@ -205,7 +205,7 @@
 			x: posData[0],
 			y: posData[1],
 			name: "ClassGroup", // for selection by "shape.find()"
-			id: course.name + '\n' + course.program + '\n' + course.preReqs + '\n' + course.credits, // this is used to store the information for the course
+			id: course.name + '\n' + course.program + '\n' + course.preReqs + '\n' + course.credits + '\n' + course.description, // this is used to store the information for the course
 			draggable: true
 		}).on('dragstart', function() { snap(this, -2); }).on('dragend', function() { snap(this, -1); }); // set drag functions
 		
@@ -328,12 +328,13 @@
 		}
 	}
 	
-	function course(name, program, preReqs, credits, status)
+	function course(name, program, preReqs, credits, description, status)
 	{
 		this.name = name;
 		this.program = program;
 		this.preReqs = preReqs;
 		this.credits = credits;
+		this.description = description;
 		this.status = status;
 	}
 	

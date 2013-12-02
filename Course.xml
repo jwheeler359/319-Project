@@ -8,292 +8,809 @@
     <Column name="Credits" type="Text" />
   </Columns>
 <Entry>
+	<Code>CS437X</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS486</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS461</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS454</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre458</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre450</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS430</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre426</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>SE342</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>SE419X</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>SE417</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>SE416</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>SE409</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>SE412</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>SE416</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>SE417</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>SE419X</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS229</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS331</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS342</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS336X</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS362</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS342</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS425</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS426</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS430</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre288</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre388</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre431</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS433</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS437X</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS440</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS450</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS454</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS455</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS461</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS477</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS481</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre483</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS486</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre488</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre289</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS490</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre418</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CS490</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CE388</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>ME484</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Cpre530</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>AFAM201</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CHIN304</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>DSNS181</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>ENVS334</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>ECON312</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>HIST201</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Phil235</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Relig210</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>AGRON342</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>CJ241</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry> 
+<Entry>
+	<Code>Relig340</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>  
+<Entry>
+	<Code>WS203</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>  
+<Entry>
+	<Code>Math317</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+  <Entry>
+	<Code>Econ101</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Econ102</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>IE305</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Math304</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Math307</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
+	<Code>Math314</Code>
+	<CourseName></CourseName>
+	<PreReq></PreReq>
+	<Credits></Credits>
+	<Description></Description>
+</Entry>
+<Entry>
 	<Code>CS311</Code>
 	<CourseName>Design and Analysis of Algorithms</CourseName>
 	<PreReq>CS330</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
 </Entry>
 <Entry>
 	<Code>SE329</Code>
 	<CourseName>Software Project Management</CourseName>
 	<PreReq>CS309</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
 </Entry>
 <Entry>
 	<Code>SE339</Code>
 	<CourseName>Software Architecture and Design</CourseName>
 	<PreReq>SE319</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
 </Entry>
 <Entry>
 	<Code>SE319</Code>
 	<CourseName>Software Construction and User Interfaces</CourseName>
 	<PreReq>CS228</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
 <Entry>
 	<Code>Chem167</Code>
 	<CourseName>General Chemistry for Engineering Students</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>4</Credits>
+	<Description></Description>
   </Entry>
 <Entry>
 	<Code>SPCM212</Code>
 	<CourseName>Fundamentals of Public Speaking</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
 <Entry>
 	<Code>CS321</Code>
 	<CourseName>Introduction to Computer Architecture and Machine Level Programming</CourseName>
 	<PreReq>CS228</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
 <Entry>
 	<Code>CS330</Code>
 	<CourseName>Discrete Computational Structures</CourseName>
 	<PreReq>CS228</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
 <Entry>
 	<Code>Cpre310</Code>
 	<CourseName>Theoretical Foundations of Computer Engineering</CourseName>
 	<PreReq>CS228</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
 <Entry>
 	<Code>CS229</Code>
 	<CourseName>Advanced Programming Techniques</CourseName>
 	<PreReq>Cpre228</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
 <Entry>
 	<Code>Cpre381</Code>
 	<CourseName>Computer Organization and Assembly Level Programming</CourseName>
 	<PreReq>Cpre288</PreReq>
 	<Credits>4</Credits>
+	<Description></Description>
   </Entry>
 <Entry>
 	<Code>Engl314</Code>
 	<CourseName>Technical Communication</CourseName>
 	<PreReq>Engl250</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
 <Entry>
 	<Code>Cpre281</Code>
 	<CourseName>Digital Logic</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>4</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
 	<Code>Stat330</Code>
 	<CourseName>Probability and Statistics for Computer Science</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
 	<Code>Math165</Code>
 	<CourseName>Calculus I</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>4</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
 	<Code>Engl150</Code>
 	<CourseName>Critical Thinking and Communication</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
 	<Code>SE185</Code>
 	<CourseName>Problem Solving in Software Engineering</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
 	<Code>SE101</Code>
 	<CourseName>Software Engineering Orientation</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>0</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
 	<Code>Lib160</Code>
 	<CourseName>Library Instruction</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>1</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
 	<Code>Math166</Code>
 	<CourseName>Calculus II</CourseName>
 	<PreReq>Math165</PreReq>
 	<Credits>4</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
 	<Code>SE166</Code>
 	<CourseName>Careers in Software Engineering</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>0</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
     <Code>CS227</Code>
     <CourseName>Introduction to Object Oriented Programming</CourseName>
     <PreReq>None</PreReq>
-	<Credits>4</Credits>
+    <Credits>4</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>CS228</Code>
     <CourseName>Introduction to Data Structures</CourseName>
     <PreReq>CS227</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
 	<Code>Engl250</Code>
 	<CourseName>Written, Oral, Visual, and Electronic Composition</CourseName>
 	<PreReq>None</PreReq>
 	<Credits>3</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
 	<Code>Math267</Code>
 	<CourseName>Elementary Differential Equations and Laplace Transforms</CourseName>
 	<PreReq>Math165</PreReq>
 	<Credits>4</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
     <Code>CS309</Code>
     <CourseName>Software Development</CourseName>
     <PreReq>CS228</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>CS311</Code>
     <CourseName>Design and Analysis of Algorithms</CourseName>
     <PreReq>CS228</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>CS321</Code>
     <CourseName>Computer Architecture</CourseName>
     <PreReq>CS311</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
 	<Code>Phys221</Code>
 	<CourseName>Introduction to Classical Physics</CourseName>
 	<PreReq>Math165</PreReq>
 	<Credits>5</Credits>
+	<Description></Description>
   </Entry>
   <Entry>
     <Code>CS330</Code>
     <CourseName>Discrete Mathematics</CourseName>
     <PreReq>CS228</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>CS352</Code>
     <CourseName>Operating Systems</CourseName>
     <PreReq>CS228</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>CS363</Code>
     <CourseName>Introduction to Database Systems</CourseName>
     <PreReq>CS228</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>Cpre308</Code>
     <CourseName>Operating Systems</CourseName>
     <PreReq>CS330 or Cpre310</PreReq>
-	<Credits>4</Credits>
+    <Credits>4</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>SE491</Code>
     <CourseName>Senior Design 1</CourseName>
     <PreReq>SE329</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>SE494</Code>
     <CourseName>Portfolio</CourseName>
     <PreReq>Senior</PreReq>
-	<Credits>0</Credits>
+    <Credits>0</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>SE492</Code>
     <CourseName>Senior Design 2</CourseName>
     <PreReq>SE491</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>ECON ELECT</Code>
     <CourseName>Econ Elective</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>MATH ELECT</Code>
     <CourseName>Math Elective</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>OPEN ELECT</Code>
     <CourseName>Open Elective</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>ARTS HUM1</Code>
     <CourseName>Arts and Humanities 1</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>ARTS HUM2</Code>
     <CourseName>Arts and Humanities 2</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>SOC SCI</Code>
     <CourseName>Social Science</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>ART SOC</Code>
     <CourseName>Arts and Humanities or Social Sciences</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>TECH ELECT</Code>
     <CourseName>Technical Elective</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>SE ELECT1</Code>
     <CourseName>SE Elective 1</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>SE ELECT2</Code>
     <CourseName>SE Elective 2</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>SPPLM ELECT1</Code>
     <CourseName>Supplemental Elective 1</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
   <Entry>
     <Code>SPPLM ELECT2</Code>
     <CourseName>Supplemental Elective 2</CourseName>
     <PreReq>TBD</PreReq>
-	<Credits>3</Credits>
+    <Credits>3</Credits>
+    <Description></Description>
   </Entry>
 </Relation>
 
@@ -597,9 +1114,6 @@
         <Code>CS477</Code>
     </entry>
     <entry>
-        <Code></Code>
-    </entry>
-    <entry>
         <Code>CS481</Code>
     </entry>
     <entry>
@@ -629,5 +1143,45 @@
     <entry>
         <Code>Cpre530</Code>
     </entry>
+</Relation>
+<Relation name="Arts and Humanities">
+  <Entry>
+    <Code>AFAM201</Code>
+  </Entry>
+  <Entry>
+    <Code>CHIN304</Code>
+  </Entry>
+  <Entry>
+    <Code>DSNS181</Code>
+  </Entry>
+  <Entry>
+    <Code>ENVS334</Code>
+  </Entry>
+  <Entry>
+    <Code>ECON312</Code>
+  </Entry>
+  <Entry>
+    <Code>HIST201</Code>
+  </Entry>
+  <Entry>
+    <Code>Phil235</Code>
+  </Entry>
+  <Entry>
+    <Code>Relig210</Code>
+  </Entry>
+</Relation>
+<Relation name="Social Sciences">
+  <Entry>
+    <Code>AGRON342</Code>
+  </Entry>
+  <Entry>
+    <Code>CJ241</Code>
+  </Entry>
+  <Entry>
+    <Code>Relig340</Code>
+  </Entry>
+  <Entry>
+    <Code>WS203</Code>
+  </Entry>
 </Relation>
 </Database>

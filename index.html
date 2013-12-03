@@ -6,7 +6,6 @@
 		<script src="jquery-2.0.2.min.js"></script>
 		<script src="umbrella.js"></script>
 		<script src="kinetic-v4.7.2.min.js"></script>
-		<script src="canvasjs.min.js"></script>
 	</head>
 	<body>
 		<div id="background">
@@ -41,66 +40,5 @@
 			</table>
 		</div>
 		<div id="foreground"></div>
-		<script>
-			window.onload = function()
-			{
-				var chart = new CanvasJS.Chart("chartContainer",
-				{
-					backgroundColor: "rgba(0, 0, 0, 0)",
-					
-					axisX:
-					{
-						labelFontColor: "rgba(0, 0, 0, 0)",
-						tickColor: "rgba(0, 0, 0, 0)",
-						lineColor: "rgba(0, 0, 0, 0)",
-						interlacedColor: "rgba(0, 0, 0, 0)",
-						gridColor: "rgba(0, 0, 0, 0)"
-					},
-					
-					axisY:
-					{
-						labelFontColor: "rgba(0, 0, 0, 0)",
-						tickColor: "rgba(0, 0, 0, 0)",
-						lineColor: "rgba(0, 0, 0, 0)",
-						interlacedColor: "rgba(0, 0, 0, 0)",
-						gridColor: "rgba(0, 0, 0, 0)"
-					},
-					
-					data:
-					[
-						{
-							type: "stackedBar100",
-							color: "rgba(115, 182, 0, .8)",
-							name: "Passed",
-							dataPoints: [{y: 1, label: "Passed"}]
-						},
-						
-						{
-							type: "stackedBar100",
-							color: "rgba(18, 142, 182, .8)",
-							name: "Planned",
-							dataPoints: [{y: 1, label: "Planned"}]
-						},
-						
-						{
-							type: "stackedBar100",
-							color: "rgba(182, 171, 9, .8)",
-							name: "In Progress",
-							dataPoints: [{y: 1, label: "In Progress"}]
-						},
-						
-						{
-							type: "stackedBar100",
-							color: "rgba(119, 12, 40, .8)",
-							name: "Incomplete",
-							dataPoints: [{y: 1, label: "Incomplete"}]
-						}
-					]
-				});
-				
-				chart.render();
-			}
-		</script>
 	</body>
-	<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 </html>

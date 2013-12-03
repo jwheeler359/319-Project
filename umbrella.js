@@ -25,8 +25,8 @@
 		courseLayer = new Kinetic.Layer();
 		lineLayer = new Kinetic.Layer();
 		
-		//getXML("http://localhost:8080/TomcatProject/Project/Course.xml", 1); //for server use
-		getXML("Courses.xml", 1);
+		//getXML("http://localhost:8080/TomcatProject/Project/Course.xml", 1); // for server use
+		getXML("Course.xml", 1);
 		buildSemesters(8);
 		setCurrentSemester(0);
 		drawLines();
@@ -296,7 +296,6 @@
 									shape.getChildren()[0].setFill(colors[statusEnum.PLANNED]);
 								}
 							}
-							alert(career[sem].getCredits());
 							var newX = (career[sem].getCourses().length) * border;
 							shape.setX(newX);
 							break;
@@ -341,20 +340,21 @@
 	
 	function Semester()
 	{
-		var credits = 0;
 		var courses = new Array();
+		var credits = 0;
 		
-		this.getCredits = function(){return credits;}; // credits of every course in semester combined
 		this.getCourses = function(){return courses;}; // courses in this semester
+		this.getCredits = function(){return credits;}; // credits of every course in semester combined
+		this.setCredits = function(value){credits = value;}; // set credits
 	}
 	
 	Semester.prototype.addCourse = function(course)
 	{
 		this.getCourses().push(course);
 		
-		if(!isNaN(course.getId().split(/(?!.)/)[3])) // exclude courses that are required "R"
+		if(isFinite(course.getId().split(/(?!.)/)[3])) // exclude courses that are required "R"
 		{
-			this.credits += parseFloat(course.getId().split(/(?!.)/)[3]);
+			this.setCredits(this.getCredits() + parseFloat(course.getId().split(/(?!.)/)[3]));
 		}
 	}
 	
@@ -362,9 +362,9 @@
 	{
 		this.getCourses().splice(this.getCourses().indexOf(course), 1);
 		
-		if(!isNaN(course.getId().split(/(?!.)/)[3])) // exclude courses that are required "R"
+		if(isFinite(course.getId().split(/(?!.)/)[3])) // exclude courses that are required "R"
 		{
-			this.credits -= parseFloat(course.getId().split(/(?!.)/)[3]);
+			this.setCredits(this.getCredits() - parseFloat(course.getId().split(/(?!.)/)[3]));
 		}
 	}
 	

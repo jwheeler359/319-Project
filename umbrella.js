@@ -231,6 +231,49 @@
 		stage.add(courseLayer);
 	}
 	
+	function drawProgressBar()
+	{
+		stage.find(".ProgressBar").destroy();
+		
+		var barGroup = new Kinetic.Group(
+		{
+			x: 10,
+			y: windowHeight - 40,
+			name: "ProgressBar",
+		});
+		
+		var barData = [0, 0, 0, 0, 0]; // # of boxes of each color (+5th one in case of break)
+		
+		for(var i = 0; i < stage.find(".ClassGroup").length; i++)
+		{
+			barData[colors.indexOf(stage.find(".ClassGroup")[i].getChildren()[0].getFill())]++; // index of the color that the rect currently is
+		}
+		
+		posData = (windowWidth / 5) - 20;
+		
+		if(posData < 320)
+		{
+			posData = 285;
+		}
+		
+		for(var i = 0, j = 0; i < barData.length - 1; i++)
+		{
+			var barRect = new Kinetic.Rect(
+			{
+				x: j,
+				width: (posData * barData[i]) / stage.find(".ClassGroup").length, // number of classes with this status
+				height: (windowHeight / 16) - (windowHeight * 0.03),
+				fill: colors[i]
+			});
+			
+			j += barRect.getWidth(); // shifts next rect to right of previous one
+			barGroup.add(barRect);
+		}
+		
+		courseLayer.add(barGroup);
+		stage.add(courseLayer);
+	}
+	
 	function snap(shape, choice) // choice serves as semester number when >= 0
 	{
 		switch(choice)
@@ -276,6 +319,7 @@
 								}
 								
 								career[sem].removeCourse(shape); // GET RID OF THIS COURSE
+								drawProgressBar(); // this runs slow, placeholder
 							}
 							break;
 						case -1: // add course and snap to position (use with dragend)
@@ -298,6 +342,7 @@
 							}
 							var newX = (career[sem].getCourses().length) * border;
 							shape.setX(newX);
+							drawProgressBar(); // this runs slow, placeholder
 							break;
 					}
 				}
@@ -309,6 +354,7 @@
 						case -1:
 							shape.setPosition(10, 10 + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
 							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
+							drawProgressBar(); // this runs slow, placeholder
 							break;
 					}
 				}
@@ -445,6 +491,7 @@
 								break;
 							default:
 								populateSidebar(classList);
+								drawProgressBar();
 								break;
 						}
 					});

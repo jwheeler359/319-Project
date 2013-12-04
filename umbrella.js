@@ -81,21 +81,21 @@
 	
 	function updateSize()
 	{
-		var classGroup = stage.find(".ClassGroup"); // all the draggable classes
+		// draggable classes
 		var scheduledClasses = new Array(); // classes that are in semester rows
 		var semester = new Array(); // array of values which courses are placed in
 		
-		for(var i = 0; i < classGroup.length; i++)
+		for(var i = 0; i < stage.find(".ClassGroup").length; i++)
 		{
 			if(i >= Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10))) // sidebar capacity
 			{
 				break;
 			}
 			
-			if(classGroup[i].getX() > windowWidth / 5) // if not in sidebar
+			if(stage.find(".ClassGroup")[i].getX() > windowWidth / 5) // if not in sidebar
 			{
 				scheduledClasses.push(i);
-				semester.push(Math.floor((windowHeight / (windowHeight / (Math.ceil((classGroup[i].getY() - (.5 * classGroup[i].getHeight())) / (windowHeight / 8))))) - 1));
+				semester.push(Math.floor((windowHeight / (windowHeight / (Math.ceil((stage.find(".ClassGroup")[i].getY() - (.5 * stage.find(".ClassGroup")[i].getHeight())) / (windowHeight / 8))))) - 1));
 			}
 		}
 		
@@ -119,27 +119,46 @@
 			posData[0] = 285;
 		}
 		
-		for(var i = 0, j = 0; i < classGroup.length; i++)
+		for(var i = 0, j = 0; i < stage.find(".ClassGroup").length; i++)
 		{
 			if(i >= Math.floor(windowHeight / (posData[1] + 10)))
 			{
 				break;
 			}
 			
-			classGroup[i].getChildren()[0].setSize(posData[0], posData[1]); // size of rectangle
-			classGroup[i].getChildren()[1].setFontSize(classGroup[i].getChildren()[0].getHeight() / 3); // font size
-			classGroup[i].getChildren()[1].setOffsetY(-(classGroup[i].getChildren()[0].getHeight() / 3)); // center text
+			stage.find(".ClassGroup")[i].getChildren()[0].setSize(posData[0], posData[1]); // size of rectangle
+			stage.find(".ClassGroup")[i].getChildren()[1].setFontSize(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() / 3); // font size
+			stage.find(".ClassGroup")[i].getChildren()[1].setOffsetY(-(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() / 3)); // center text
 			
 			if(scheduledClasses.indexOf(i) != -1) // if on semester row
 			{
-				snap(classGroup[i], semester[j++]);
+				snap(stage.find(".ClassGroup")[i], semester[j++]);
 			}
 			else // if on sidebar
 			{
-				classGroup[i].setPosition(10, 10 + (yIncr * i)); // snap on sidebar
+				stage.find(".ClassGroup")[i].setPosition(10, 10 + (yIncr * i)); // snap on sidebar
 			}
 		}
 		
+		// progress bar
+		var barData = [0, 0, 0, 0, 0]; // # of boxes of each color (+5th one in case of break)
+		
+		for(var i = 0; i < stage.find(".ClassGroup").length; i++)
+		{
+			barData[colors.indexOf(stage.find(".ClassGroup")[i].getChildren()[0].getFill())]++; // index of the color that the rect currently is
+		}
+		
+		for(var i = 0, j = 0; i < barData.length - 1; i++)
+		{
+			stage.find(".BarGroup")[0].getChildren()[i].setSize((posData[0] * barData[i]) / stage.find(".ClassGroup").length, (windowHeight / 16) - (windowHeight * 0.03));
+			stage.find(".BarGroup")[0].getChildren()[i].setX(j);
+			
+			j += stage.find(".BarGroup")[0].getChildren()[i].getWidth();
+		}
+		
+		stage.find(".BarGroup")[0].setY(windowHeight - 40);
+		
+		// lines
 		drawLines();
 		stage.draw(); // sync display
 	}
@@ -231,17 +250,8 @@
 		stage.add(courseLayer);
 	}
 	
-	function drawProgressBar()
+	function drawProgressBar(update)
 	{
-		stage.find(".ProgressBar").destroy();
-		
-		var barGroup = new Kinetic.Group(
-		{
-			x: 10,
-			y: windowHeight - 40,
-			name: "ProgressBar",
-		});
-		
 		var barData = [0, 0, 0, 0, 0]; // # of boxes of each color (+5th one in case of break)
 		
 		for(var i = 0; i < stage.find(".ClassGroup").length; i++)
@@ -256,22 +266,45 @@
 			posData = 285;
 		}
 		
-		for(var i = 0, j = 0; i < barData.length - 1; i++)
+		switch(update)
 		{
-			var barRect = new Kinetic.Rect(
-			{
-				x: j,
-				width: (posData * barData[i]) / stage.find(".ClassGroup").length, // number of classes with this status
-				height: (windowHeight / 16) - (windowHeight * 0.03),
-				fill: colors[i]
-			});
-			
-			j += barRect.getWidth(); // shifts next rect to right of previous one
-			barGroup.add(barRect);
+			case 0: // first creation
+				var barGroup = new Kinetic.Group(
+				{
+					x: 10,
+					y: windowHeight - 40,
+					name: "BarGroup",
+				});
+				
+				for(var i = 0, j = 0; i < barData.length - 1; i++)
+				{
+					var barRect = new Kinetic.Rect(
+					{
+						x: j,
+						width: (posData * barData[i]) / stage.find(".ClassGroup").length, // number of classes with this status
+						height: (windowHeight / 16) - (windowHeight * 0.03),
+						fill: colors[i]
+					});
+					
+					j += barRect.getWidth(); // shifts next rect to right of previous one
+					barGroup.add(barRect);
+				}
+				
+				courseLayer.add(barGroup);
+				stage.add(courseLayer);
+				break;
+			default: // update
+				for(var i = 0, j = 0; i < barData.length - 1; i++)
+				{
+					stage.find(".BarGroup")[0].getChildren()[i].setSize((posData * barData[i]) / stage.find(".ClassGroup").length, (windowHeight / 16) - (windowHeight * 0.03));
+					stage.find(".BarGroup")[0].getChildren()[i].setX(j);
+					
+					j += stage.find(".BarGroup")[0].getChildren()[i].getWidth();
+				}
+				
+				stage.find(".BarGroup")[0].setY(windowHeight - 40);
+				break;
 		}
-		
-		courseLayer.add(barGroup);
-		stage.add(courseLayer);
 	}
 	
 	function snap(shape, choice) // choice serves as semester number when >= 0
@@ -319,7 +352,7 @@
 								}
 								
 								career[sem].removeCourse(shape); // GET RID OF THIS COURSE
-								drawProgressBar(); // this runs slow, placeholder
+								drawProgressBar(1);
 							}
 							break;
 						case -1: // add course and snap to position (use with dragend)
@@ -342,7 +375,7 @@
 							}
 							var newX = (career[sem].getCourses().length) * border;
 							shape.setX(newX);
-							drawProgressBar(); // this runs slow, placeholder
+							drawProgressBar(1);
 							break;
 					}
 				}
@@ -354,7 +387,7 @@
 						case -1:
 							shape.setPosition(10, 10 + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
 							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
-							drawProgressBar(); // this runs slow, placeholder
+							drawProgressBar(1);
 							break;
 					}
 				}
@@ -490,8 +523,8 @@
 							case 0:
 								break;
 							default:
-								populateSidebar(classList);
-								drawProgressBar();
+								populateSidebar(classList); // fill sidebar
+								drawProgressBar(0); // draw progress bar
 								break;
 						}
 					});

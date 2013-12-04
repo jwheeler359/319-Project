@@ -396,6 +396,7 @@
 
 							var newX = border + separationDistance*(career[sem].getCourses().length-1);
 							shape.setX(newX);
+							drawProgressBar(1);
 							break;
 					}
 				}

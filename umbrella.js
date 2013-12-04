@@ -390,7 +390,7 @@
 								shape.getChildren()[i].setWidth(shapeWidth);
 							}
 							currentShapeWidth = shape.getChildren()[0].getWidth();
-							alert("shape.getWidth() = " + currentShapeWidth);
+							//alert("shape.getWidth() = " + currentShapeWidth);
 							var separationDistance = currentShapeWidth+ currentShapeWidth*0.13;
 							resizeSemester(sem);
 

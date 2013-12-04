@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Database name="UniversityDB">
+<Relation name="Math Minor">
+  <Columns>
+    <Column name="Code" type="Text" />
+    <Column name="CourseName" type="Text" />
+    <Column name="PreReq" type="Text" />
+    <Column name="Credits" type="Text" />
+  </Columns>
+<Entry>
+	<Code>Math317</Code>
+	<CourseName>Theory of Linear Algebra</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>4</Credits>
+	<Description>Systems of linear equations, determinants, vector spaces, inner product spaces, linear transformations, eigenvalues and eigenvectors. Emphasis on writing proofs and results. Nonmajor graduate credit. Only one of MATH 207, MATH 307, MATH 317 may be counted toward graduation.</Description>
+</Entry>
+<Entry>
+	<Code>Math301</Code>
+	<CourseName>Abstract Algebra I</CourseName>
+	<PreReq>Math317</PreReq>
+	<Credits>3</Credits>
+	<Description>Theory of groups. Homomorphisms. Quotient groups. Introduction to rings. Emphasis on writing proofs. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>Math201</Code>
+	<CourseName>Introduction to Proofs</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>3</Credits>
+	<Description>Logic and techniques of proof including induction. Communicating mathematics. Writing proofs about sets, functions, real numbers, limits, sequences, infinite series and continuous functions.</Description>
+</Entry>
+<Entry>
+	<Code>Math267</Code>
+	<CourseName>Elementary Differential Equations and Laplace Transforms</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>4</Credits>
+	<Description>Solution methods for ordinary differential equations. First order equations, linear equations, constant coefficient equations. Eigenvalue methods for systems of first order linear equations. Introduction to stability and phase plane analysis. Also includes Laplace transforms and series solutions to ordinary differential equations.</Description>
+</Entry>
+<Entry>
+	<Code>Math265</Code>
+	<CourseName>Calculus III</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>4</Credits>
+	<Description>Analytic geometry and vectory, differential calculus of functions of several variables, multiple integrals, vector calculus.</Description>
+</Entry>
+  <Entry>
+	<Code>Math166</Code>
+	<CourseName>Calculus II</CourseName>
+	<PreReq>Math165</PreReq>
+	<Credits>4</Credits>
+	<Description>Integral calculus, applications of the integral, infinite series. Only one of MATH 151, MATH 160, the sequence MATH 165-MATH 166, or the sequence MATH 181-MATH 182 may be counted towards graduation.</Description>
+  </Entry>
+  <Entry>
+	<Code>Math165</Code>
+	<CourseName>Calculus I</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>4</Credits>
+	<Description>Differential calculus, applications of the derivative, introduction to integral calculus. Only one of Math 151 or 160 or the sequence MATH 165-MATH 166, or the sequence MATH 181-MATH 182 may be counted towards graduation.</Description>
+  </Entry>
+</Relation>
+</Database>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Database name="UniversityDB">
+<Relation name="SE Elective">
+  <Columns>
+    <Column name="Code" type="Text" />
+    <Column name="CourseName" type="Text" />
+    <Column name="PreReq" type="Text" />
+    <Column name="Credits" type="Text" />
+  </Columns>
+<Entry>
+	<Code>SE409</Code>
+	<CourseName>Software Requirements Engineering.</CourseName>
+	<PreReq>Coms309</PreReq>
+	<Credits>3</Credits>
+	<Description>The requirements engineering process, including identification of stakeholders, requirements elicitation techniques such as interviews and prototyping, analysis fundamentals, requirements specification, and validation. Use of Models: State-oriented, Function-oriented, and Object-oriented. Documentation for Software Requirements. Informal, semi-formal, and formal representations. Structural, informational, and behavioral requirements. Non-functional requirements. Use of requirements repositories to manage and track requirements through the life cycle. Case studies, software projects, written reports, and oral presentations will be required. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>SE412</Code>
+	<CourseName>Formal Aspects of Specification and Verification.</CourseName>
+	<PreReq>SE319</PreReq>
+	<Credits>3</Credits>
+	<Description>Introduction to prepositional/predicate/temporal logic, program verification using theorem proving, model-based verification using model checking, and tools for verification. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>SE416</Code>
+	<CourseName>Software Evolution and Maintenance.</CourseName>
+	<PreReq>Coms309</PreReq>
+	<Credits>3</Credits>
+	<Description>Practical importance of software evolution and maintenance, systematic defect analysis and debugging techniques, tracing and understanding large software, impact analysis, program migration and transformation, refactoring, tools for software evolution and maintenance, experimental studies and quantitative measurements of software evolution. Written reports and oral presentation. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>SE417</Code>
+	<CourseName>Software Testing.</CourseName>
+	<PreReq>Coms309</PreReq>
+	<Credits>3</Credits>
+	<Description>Comprehensive study of software testing, principles, methodologies, management strategies and techniques. Test models, test design techniques (black box and white box testing techniques), integration, regression, system testing methods, and software testing tools. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>SE342</Code>
+	<CourseName>Principles of Programming Languages</CourseName>
+	<PreReq>ComS321</PreReq>
+	<Credits></Credits>
+	<Description>Study of concepts in programming languages and major programming paradigms, especially functional programming. Special emphasis on design tradeoffs that enable students to make sound choices of programming languages for a given software development task. Programming projects. Nonmajor graduate credit.</Description>
+</Entry> 
+</Relation>
+</Database>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Database name="UniversityDB">
+<Relation name="Econ Elective">
+  <Columns>
+    <Column name="Code" type="Text" />
+    <Column name="CourseName" type="Text" />
+    <Column name="PreReq" type="Text" />
+    <Column name="Credits" type="Text" />
+  </Columns>
+
+<Entry>
+	<Code>Econ102</Code>
+	<CourseName>Principles of Macroeconomics.</CourseName>
+	<PreReq>Econ101</PreReq>
+	<Credits>3</Credits>
+	<Description>Measurement of macro variables and general macro identities. Classical models of full employment. Production and growth. Savings and investment. Employment and unemployment. Money, inflation, and price levels. Operation of the U.S. banking system. Fiscal and monetary policy. Elements of international finance.</Description>
+</Entry>
+<Entry>
+	<Code>Econ101</Code>
+	<CourseName>Principles of Microeconomics.</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>3</Credits>
+	<Description>Resource allocation, opportunity cost, comparative and absolute advantage. Supply and demand. Marginal analysis. Theories of production and consumption, pricing, and the market system. Perfect and imperfect competition and strategic behavior. Factor markets. Present discounted value.</Description>
+</Entry>
+<Entry>
+	<Code>IE305</Code>
+	<CourseName>Engineering Economic Analysis.</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>3</Credits>
+	<Description>Economic analysis of engineering decisions under uncertainty. Financial engineering basics including time value of money, cash flow estimation, and asset evaluation. Make versus buy decisions. Comparison of project alternatives accounting for taxation, depreciation, inflation, and risk. Nonmajor graduate credit.</Description>
+</Entry>
+</Relation>
+</Database>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Database name="UniversityDB">
+<Relation name="Tech Elective">
+  <Columns>
+    <Column name="Code" type="Text" />
+    <Column name="CourseName" type="Text" />
+    <Column name="PreReq" type="Text" />
+    <Column name="Credits" type="Text" />
+  </Columns>
+<Entry>
+	<Code>CprE426</Code>
+	<CourseName>Introduction to Parallel Algorithms and Programming</CourseName>
+	<PreReq>CprE308</PreReq>
+	<Credits>4</Credits>
+	<Description>Models of parallel computation, performance measures, basic parallel constructs and communication primitives, parallel programming using MPI, parallel algorithms for selected problems including sorting, matrix, tree and graph problems, fast Fourier transforms. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>ComS430</Code>
+	<CourseName>Advanced Programming Tools</CourseName>
+	<PreReq>ComS311</PreReq>
+	<Credits>3</Credits>
+	<Description>Topics in advanced programming techniques and tools widely used by industry (e.g., event-driven programming and graphical user interfaces, standard libraries, client/server architectures and techniques for distributed applications). Emphasis on programming projects in a modern integrated development environment. Oral and written reports. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>CprE450</Code>
+	<CourseName>Distributed Systems and Middleware</CourseName>
+	<PreReq>CprE308</PreReq>
+	<Credits>3</Credits>
+	<Description>Fundamentals of distributed computing, software agents, naming services, distributed transactions, security management, distributed object-based systems, web-based systems, middleware-based application design and development, case studies of middleware and internet applications. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>CprE458</Code>
+	<CourseName>Real Time Systems</CourseName>
+	<PreReq>CprE308</PreReq>
+	<Credits>3</Credits>
+	<Description>Fundamental concepts in real-time systems. Real time task scheduling paradigms. Resource management in uniprocessor, multiprocessor, and distributed real-time systems. Fault-tolerance, resource reclaiming, and overload handling. Real-time channel, packet scheduling, and real-time LAN protocols. Case study of real-time operating systems. Laboratory experiments. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>ComS454</Code>
+	<CourseName>Distributed and Network Operating Systems</CourseName>
+	<PreReq>ComS311</PreReq>
+	<Credits>3</Credits>
+	<Description>Laboratory course dealing with practical issues of design and implementation of distributed and network operating systems and distributed computing environments (DCE). The client server paradigm, inter-process communications, layered communication protocols, synchronization and concurrency control, and distributed file systems. Graduate credit requires additional in-depth study of advanced operating systems. Written reports.</Description>
+</Entry> 
+<Entry>
+	<Code>ComS461</Code>
+	<CourseName>Principles and Internals of Database Systems</CourseName>
+	<PreReq>ComS311</PreReq>
+	<Credits>3</Credits>
+	<Description>Models for structured and semistructured data. Algebraic, first order, and user-oriented query languages. Database schema design. Physical storage, access methods, and query processing. Transaction management, concurrency control, and crash recovery. Database security. Information integration using data warehouses, mediators, wrappers, and data mining. Parallel and distributed databases, and special purpose databases. Oral and written reports. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>ComS486</Code>
+	<CourseName>Fundamental Concepts in Computer Networking</CourseName>
+	<PreReq>ComS352</PreReq>
+	<Credits>3</Credits>
+	<Description>An introduction to fundamental concepts in the design and implementation of computer communication in both the wired and wireless networks, their protocols, and applications. Layered network architecture in the Internet, applications, transport, Socket APIs, network, and data link layers and their protocols, multimedia networking, and network security. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>ComS437X</Code>
+	<CourseName>Computer Game and Media Programming</CourseName>
+	<PreReq>ComS362</PreReq>
+	<Credits>3</Credits>
+	<Description>Students will learn video game programming using current game engine interfaces with real hardware. Particular attention is paid to the console architecture, development environment, tool chains, 2D graphics, 3D graphics, controllers, memory management, and audio systems. Students will complete the course by writing a simple game that runs on console hardware. Nonmajor graduate credit.</Description>
+</Entry> 
+</Relation>
+</Database>

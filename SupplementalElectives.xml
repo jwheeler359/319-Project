@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Database name="UniversityDB">
+<Relation name="Supplemental Electives">
+  <Columns>
+    <Column name="Code" type="Text" />
+    <Column name="CourseName" type="Text" />
+    <Column name="PreReq" type="Text" />
+    <Column name="Credits" type="Text" />
+  </Columns>
+<Entry>
+	<Code>SE409</Code>
+	<CourseName>Software Requirements Engineering.</CourseName>
+	<PreReq>Coms309</PreReq>
+	<Credits>3</Credits>
+	<Description>The requirements engineering process, including identification of stakeholders, requirements elicitation techniques such as interviews and prototyping, analysis fundamentals, requirements specification, and validation. Use of Models: State-oriented, Function-oriented, and Object-oriented. Documentation for Software Requirements. Informal, semi-formal, and formal representations. Structural, informational, and behavioral requirements. Non-functional requirements. Use of requirements repositories to manage and track requirements through the life cycle. Case studies, software projects, written reports, and oral presentations will be required. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>SE412</Code>
+	<CourseName>Formal Aspects of Specification and Verification.</CourseName>
+	<PreReq>SE319</PreReq>
+	<Credits>3</Credits>
+	<Description>Introduction to prepositional/predicate/temporal logic, program verification using theorem proving, model-based verification using model checking, and tools for verification. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>SE417</Code>
+	<CourseName>Software Testing.</CourseName>
+	<PreReq>Coms309</PreReq>
+	<Credits>3</Credits>
+	<Description>Comprehensive study of software testing, principles, methodologies, management strategies and techniques. Test models, test design techniques (black box and white box testing techniques), integration, regression, system testing methods, and software testing tools. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>Coms331</Code>
+	<CourseName>Theory of Computing.</CourseName>
+	<PreReq>Coms228</PreReq>
+	<Credits>3</Credits>
+	<Description>Models of computation: finite state automata, pushdown automata and Turing machines. Study of grammars and their relation to automata. Limits of digital computation, unsolvability and Church-Turing thesis. Chomsky hierarchy and relations between classes of languages. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>CS490</Code>
+	<CourseName>Independent Study.</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>3</Credits>
+	<Description>Cr. arr. Repeatable, maximum of 9 credits. F.S. Prereq: 6 credits in computer science, permission of instructor
+Offered on a satisfactory-fail basis only. No more than 9 credits of Com S 490 may be counted toward graduation.</Description>
+</Entry> 
+
+</Relation>
+</Database>

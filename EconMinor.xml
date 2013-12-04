@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Database name="UniversityDB">
+<Relation name="Econ Minor">
+  <Columns>
+    <Column name="Code" type="Text" />
+    <Column name="CourseName" type="Text" />
+    <Column name="PreReq" type="Text" />
+    <Column name="Credits" type="Text" />
+  </Columns>
+<Entry>
+	<Code>Econ302</Code>
+	<CourseName>Intermediate Macroeconomics</CourseName>
+	<PreReq>Econ102</PreReq>
+	<Credits>3</Credits>
+	<Description>Theory of income, employment, interest rates, and the price level; fiscal and monetary policy; budget and trade deficits; money and capital inflows, interest rates, and inflation. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>Econ230</Code>
+	<CourseName>Farm Business Management</CourseName>
+	<PreReq>Econ101</PreReq>
+	<Credits>3</Credits>
+	<Description>Business and economic principles applied to decision making and problem solving in the management of a farm business. Cash flow, partial, enterprise, and whole farm budgeting. Information systems for farm accounting, analysis, and control. Obtaining and managing land, capital, and labor resources. Alternatives for farm business organization and risk management.</Description>
+</Entry>
+<Entry>
+	<Code>Econ301</Code>
+	<CourseName>Intermediate Microeconomics</CourseName>
+	<PreReq>Econ207</PreReq>
+	<Credits>3</Credits>
+	<Description>Theory of consumer and business behavior; optimal consumption choices and demand; theory of firm behavior; costs, production, and supply; competitive and imperfectly competitive markets; theory of demand for and supply of factors of production; general equilibrium analysis. Recitation required for 4 credits. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>Econ101</Code>
+	<CourseName>Principles of Microeconomics.</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>3</Credits>
+	<Description>Resource allocation, opportunity cost, comparative and absolute advantage. Supply and demand. Marginal analysis. Theories of production and consumption, pricing, and the market system. Perfect and imperfect competition and strategic behavior. Factor markets. Present discounted value.</Description>
+</Entry>
+<Entry>
+	<Code>Econ102</Code>
+	<CourseName>Principles of Macroeconomics.</CourseName>
+	<PreReq>Econ101</PreReq>
+	<Credits>3</Credits>
+	<Description>Measurement of macro variables and general macro identities. Classical models of full employment. Production and growth. Savings and investment. Employment and unemployment. Money, inflation, and price levels. Operation of the U.S. banking system. Fiscal and monetary policy. Elements of international finance.</Description>
+</Entry>
+</Relation>
+</Database>

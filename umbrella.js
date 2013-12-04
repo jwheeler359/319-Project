@@ -163,6 +163,14 @@
 		stage.draw(); // sync display
 	}
 	
+	function resizeSemester(semesterNum){//resizes all tiles in a semester NEEDS WORK
+		var courses = career[semseterNum].getCourses(); //gets an array of all the course tiles within a semester
+		for(var i=0; i<courses.length; i++){
+			//snap(courses[i], -2);
+			//snap(courses[i], -1);
+		}
+	}
+	
 	function drawLines() // draw the yellow semester-division lines on the canvas
 	{
 		var lineY = windowHeight / 8;
@@ -373,9 +381,21 @@
 									shape.getChildren()[0].setFill(colors[statusEnum.PLANNED]);
 								}
 							}
-							var newX = (career[sem].getCourses().length) * border;
+							//change shape width to fit screen, etc.
+							var shapeWidth = ((windowWidth*.6)/4);
+							if(career[sem].getCourses().length>4){
+								shapeWidth = (windowWidth*.6)/career[sem].getCourses().length;
+							}
+							for(var i=0; i<shape.getChildren().length; i++){
+								shape.getChildren()[i].setWidth(shapeWidth);
+							}
+							currentShapeWidth = shape.getChildren()[0].getWidth();
+							alert("shape.getWidth() = " + currentShapeWidth);
+							var separationDistance = currentShapeWidth+ currentShapeWidth*0.13;
+							resizeSemester(sem);
+
+							var newX = border + separationDistance*(career[sem].getCourses().length-1);
 							shape.setX(newX);
-							drawProgressBar(1);
 							break;
 					}
 				}

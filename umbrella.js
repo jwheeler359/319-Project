@@ -71,11 +71,11 @@
 		}
 	}
 	
-	function resizeCanvas()
+/*	function resizeCanvas()
 	{
 		canvas.attr("width", $(window).get(0).innerWidth);
 		canvas.attr("height", $(window).get(0).innerHeight);
-	};
+	};*/ //obsolete?
 	
 	$(window).resize(updateSize);
 	

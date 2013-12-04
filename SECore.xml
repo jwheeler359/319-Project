@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Database name="UniversityDB">
+<Relation name="Tech Elective">
+  <Columns>
+    <Column name="Code" type="Text" />
+    <Column name="CourseName" type="Text" />
+    <Column name="PreReq" type="Text" />
+    <Column name="Credits" type="Text" />
+  </Columns>
+<Entry>
+	<Code>ComS311</Code>
+	<CourseName>Design and Analysis of Algorithms</CourseName>
+	<PreReq>ComS330</PreReq>
+	<Credits>3</Credits>
+	<Description>Basic techniques for design and analysis of efficient algorithms. Sorting, searching, graph algorithms, computational geometry, string processing and NP-completeness. Design techniques such as dynamic programming and the greedy method. Asymptotic, worst-case, average-case and amortized analyses. Data structures including heaps, hash tables, binary search trees and red-black trees. Programming projects. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>SE329</Code>
+	<CourseName>Software Project Management</CourseName>
+	<PreReq>CS309</PreReq>
+	<Credits>3</Credits>
+	<Description>Process-based software development. Capability Maturity Model (CMM). Project planning, cost estimation, and scheduling. Project management tools. Factors influencing productivity and success. Productivity metrics. Analysis of options and risks. Version control and configuration management. Inspections and reviews. Managing the testing process. Software quality metrics. Modern software engineering techniques and practices. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>SE339</Code>
+	<CourseName>Software Architecture and Design</CourseName>
+	<PreReq>SE319</PreReq>
+	<Credits>3</Credits>
+	<Description>Modeling and design of software at the architectural level. Architectural styles. Basics of model-driven architecture. Object-oriented design and analysis. Iterative development and unified process. Design patterns. Design by contract. Component based design. Product families. Measurement theory and appropriate use of metrics in design. Designing for qualities such as performance, safety, security, reliability, reusability, etc. Analysis and evaluation of software architectures. Introduction to architecture definition languages. Basics of software evolution, reengineering, and reverse engineering. Case studies. Introduction to distributed system software. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>SE319</Code>
+	<CourseName>Software Construction and User Interfaces</CourseName>
+	<PreReq>ComS228</PreReq>
+	<Credits>3</Credits>
+	<Description>Basic theory of grammars, parsing. Language paradigms. State transition and table-based software design. Review of principles of object orientation, object oriented analysis using UML. Frameworks and APIs. User interface architecture, evaluation of user interface. Design of windows, menus, and commands. Introduction to formal specification and model-based software design. Introduction to domain-specific software engineering. Nonmajor graduate credit.</Description>
+  </Entry>
+<Entry>
+	<Code>Chem167</Code>
+	<CourseName>General Chemistry for Engineering Students</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>4</Credits>
+	<Description>Principles of chemistry and properties of matter explained in terms of modern chemical theory with emphasis on topics of general interest to the engineer. Only one of Chem 163, 167, 177, or 201 may count toward graduation.</Description>
+  </Entry>
+<Entry>
+	<Code>SPCM212</Code>
+	<CourseName>Fundamentals of Public Speaking</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>3</Credits>
+	<Description>Theory and practice of basic speech communication principles applied to public speaking. Practice in the preparation and delivery of extemporaneous speeches.</Description>
+ </Entry>
+<Entry>
+	<Code>SE342</Code>
+	<CourseName>Principles of Programming Languages</CourseName>
+	<PreReq>ComS321</PreReq>
+	<Credits></Credits>
+	<Description>Study of concepts in programming languages and major programming paradigms, especially functional programming. Special emphasis on design tradeoffs that enable students to make sound choices of programming languages for a given software development task. Programming projects. Nonmajor graduate credit.</Description>
+</Entry> 
+<Entry>
+	<Code>ComS330</Code>
+	<CourseName>Discrete Computational Structures</CourseName>
+	<PreReq>ComS228</PreReq>
+	<Credits>3</Credits>
+	<Description>Concepts in discrete mathematics as applied to computer science. Logic, proof techniques, set theory, relations, graphs, combinatorics, discrete probability and number theory. Nonmajor graduate credit.</Description>
+  </Entry>
+<Entry>
+	<Code>Cpre310</Code>
+	<CourseName>Theoretical Foundations of Computer Engineering</CourseName>
+	<PreReq>ComS228</PreReq>
+	<Credits>3</Credits>
+	<Description>Propositional logic and methods of proof; set theory and its applications; mathematical induction and recurrence relations; functions and relations; and counting; trees and graphs; applications in computer engineering.</Description>
+  </Entry>
+<Entry>
+	<Code>ComS229</Code>
+	<CourseName>Advanced Programming Techniques</CourseName>
+	<PreReq>Cpre228</PreReq>
+	<Credits>3</Credits>
+	<Description>Object-oriented programming experience using a language suitable for exploring advanced topics in programming. Topics include memory management, parameter passing, inheritance, compiling, debugging, and maintaining programs. Significant programming projects.</Description>
+  </Entry>
+<Entry>
+	<Code>Cpre381</Code>
+	<CourseName>Computer Organization and Assembly Level Programming</CourseName>
+	<PreReq>Cpre288</PreReq>
+	<Credits>4</Credits>
+	<Description>Introduction to computer organization, evaluating performance of computer systems, instruction set design. Assembly level programming: arithmetic operations, control flow instructions, procedure calls, stack management. Processor design. Datapath and control, scalar pipelines, introduction to memory and I/O systems.</Description>
+  </Entry>
+<Entry>
+	<Code>Engl314</Code>
+	<CourseName>Technical Communication</CourseName>
+	<PreReq>Engl250</PreReq>
+	<Credits>3</Credits>
+	<Description>Theories, principles, and processes of effective written, oral, visual, and electronic communication of technical information. Attention to major strategies for analyzing and adapting to audiences in various communication situations and composing technical discourse including organizing visual and verbal information. Extensive practice in many areas of technical communication, including instructions and procedures, proposals and reports, website analysis and design, and individual and team presentations.</Description>
+</Entry>
+<Entry>
+	<Code>Cpre281</Code>
+	<CourseName>Digital Logic</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>4</Credits>
+	<Description>Number systems and representation. Boolean algebra and logic minimization. Combinational and sequential logic design. Arithmetic circuits and finite state machines. Use of programmable logic devices. Introduction to computer-aided schematic capture systems, simulation tools, and hardware description languages. Design of simple digital systems.</Description>
+</Entry>
+<Entry>
+	<Code>Stat330</Code>
+	<CourseName>Probability and Statistics for Computer Science</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>3</Credits>
+	<Description>Topics from probability and statistics applicable to computer science. Basic probability; Random variables and their distributions; Stochastic processes including Markov chains; Queuing models; Basic statistical inference; Introduction to regression. Nonmajor graduate credit.</Description>
+</Entry>
+<Entry>
+	<Code>Math165</Code>
+	<CourseName>Calculus I</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>4</Credits>
+	<Description>Differential calculus, applications of the derivative, introduction to integral calculus. Only one of Math 151 or 160 or the sequence MATH 165-MATH 166, or the sequence MATH 181-MATH 182 may be counted towards graduation.</Description>
+</Entry>
+<Entry>
+	<Code>Engl150</Code>
+	<CourseName>Critical Thinking and Communication</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>3</Credits>
+	<Description>Application of critical reading and thinking abilities to topics of civic and cultural importance. Introduction of basic oral, visual, and electronic communication principles to support writing development. Initiation of communication portfolio.</Description>
+</Entry>
+<Entry>
+	<Code>SE185</Code>
+	<CourseName>Problem Solving in Software Engineering</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>3</Credits>
+	<Description>Introduction to software engineering and computer programming. Systematic thinking process for problem solving in the context of software engineering. Group problem solving. Solving software engineering problems and presenting solutions through computer programs, written documents and oral presentations. Introduction to principles of programming, software design, and extensive practice in design, writing, running, debugging, and reasoning about programs.</Description>
+</Entry>
+<Entry>
+	<Code>SE101</Code>
+	<CourseName>Software Engineering Orientation</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>0</Credits>
+	<Description>Introduction to the procedures, policies, and resources of Iowa State University and the department of Computer Science and Electrical and Computer Engineering. Information on engineering and computer-based professions.</Description>
+</Entry>
+  <Entry>
+	<Code>Lib160</Code>
+	<CourseName>Library Instruction</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>1</Credits>
+	<Description>Eight-week course required for undergraduate degree. Provides a solid understanding of information literacy and the research process with emphases on finding, evaluating, and using scholarly information; the ethical and legal framework related to information use; and utilization of library discovery tools. To be taken as early as possible in the student's undergraduate career. See course descriptions of ENGL 150 and ENGL 250 for requirements related to LIB 160. Offered on a satisfactory-fail basis only.</Description>
+  </Entry>
+  <Entry>
+	<Code>Math166</Code>
+	<CourseName>Calculus II</CourseName>
+	<PreReq>Math165</PreReq>
+	<Credits>4</Credits>
+	<Description>Integral calculus, applications of the integral, infinite series. Only one of MATH 151, MATH 160, the sequence MATH 165-MATH 166, or the sequence MATH 181-MATH 182 may be counted towards graduation.</Description>
+  </Entry>
+  <Entry>
+	<Code>SE166</Code>
+	<CourseName>Careers in Software Engineering</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>0</Credits>
+	<Description>Overview of the nature and scope of the software engineering profession. Relationship of coursework to careers. Departmental rules, student services operations, degree requirements, program of study planning, career options, and student organizations.</Description>
+  </Entry>
+  <Entry>
+    <Code>ComS227</Code>
+    <CourseName>Introduction to Object Oriented Programming</CourseName>
+    <PreReq>None</PreReq>
+    <Credits>4</Credits>
+    <Description>An introduction to object-oriented design and programming techniques. Symbolic and numerical computation. Recursion and iteration. Modularity procedural and data abstraction, specifications and subtyping. Object-oriented techniques. Imperative programming. Emphasis on principles of programming and object-oriented design through extensive practice in design, writing, running, debugging, and reasoning about programs. This course is designed for majors. Credit may not be applied toward graduation for both Com S 207 and 227.</Description>
+  </Entry>
+<Entry>
+	<Code>ComS321</Code>
+	<CourseName>Introduction to Computer Architecture and Machine Level Programming</CourseName>
+	<PreReq>ComS228</PreReq>
+	<Credits>3</Credits>
+	<Description>Introduction to computer architecture and organization. Emphasis on evaluation of performance, instruction set architecture, datapath and control, memory-hierarchy design, and pipelining. Assembly language on a simulator. Nonmajor graduate credit.</Description>
+  </Entry>
+  <Entry>
+	<Code>Engl250</Code>
+	<CourseName>Written, Oral, Visual, and Electronic Composition</CourseName>
+	<PreReq>None</PreReq>
+	<Credits>3</Credits>
+	<Description>Analyzing, composing, and reflecting on written, oral, visual, and electronic (WOVE) discourse within academic, civic, and cultural contexts. Emphasis on supporting a claim and using primary and secondary sources. Continued development of communication portfolio.</Description>
+  </Entry>
+<Entry>
+	<Code>Math267</Code>
+	<CourseName>Elementary Differential Equations and Laplace Transforms</CourseName>
+	<PreReq>Math166</PreReq>
+	<Credits>4</Credits>
+	<Description>Solution methods for ordinary differential equations. First order equations, linear equations, constant coefficient equations. Eigenvalue methods for systems of first order linear equations. Introduction to stability and phase plane analysis. Also includes Laplace transforms and series solutions to ordinary differential equations.</Description>
+</Entry>
+  <Entry>
+    <Code>ComS309</Code>
+    <CourseName>Software Development</CourseName>
+    <PreReq>ComS228</PreReq>
+    <Credits>3</Credits>
+    <Description>A practical introduction to methods for managing software development. Process models, requirements analysis, structured and object-oriented design, coding, testing, maintenance, cost and schedule estimation, metrics. Programming projects. Nonmajor graduate credit.</Description>
+  </Entry>
+<Entry>
+	<Code>ComS311</Code>
+	<CourseName>Design and Analysis of Algorithms</CourseName>
+	<PreReq>ComS330</PreReq>
+	<Credits>3</Credits>
+	<Description>Basic techniques for design and analysis of efficient algorithms. Sorting, searching, graph algorithms, computational geometry, string processing and NP-completeness. Design techniques such as dynamic programming and the greedy method. Asymptotic, worst-case, average-case and amortized analyses. Data structures including heaps, hash tables, binary search trees and red-black trees. Programming projects. Nonmajor graduate credit.</Description>
+</Entry>
+  <Entry>
+	<Code>Phys221</Code>
+	<CourseName>Introduction to Classical Physics</CourseName>
+	<PreReq>Math165</PreReq>
+	<Credits>5</Credits>
+	<Description>For engineering and science majors. 3 hours of lecture each week plus 3 recitations and 1 laboratory every 2 weeks. Elementary mechanics including kinematics and dynamics of particles, work and energy, linear and angular momentum, conservation laws, rotational motion, oscillations, gravitation. Heat, thermodynamics, kinetic theory of gases; waves and sound.</Description>
+  </Entry>
+  <Entry>
+    <Code>ComS330</Code>
+    <CourseName>Discrete Mathematics</CourseName>
+    <PreReq>ComS228</PreReq>
+    <Credits>3</Credits>
+    <Description>Concepts in discrete mathematics as applied to computer science. Logic, proof techniques, set theory, relations, graphs, combinatorics, discrete probability and number theory. Nonmajor graduate credit.</Description>
+  </Entry>
+  <Entry>
+    <Code>ComS352</Code>
+    <CourseName>Operating Systems</CourseName>
+    <PreReq>ComS228</PreReq>
+    <Credits>3</Credits>
+    <Description>Survey of operating system issues. Introduction to hardware and software components including: processors, peripherals, interrupts, management of processes, threads and memory, deadlocks, file systems, protection, virtual machines and system organization, and introduction to distributed operating systems. Programming projects. Nonmajor graduate credit.</Description>
+  </Entry>
+  <Entry>
+    <Code>ComS363</Code>
+    <CourseName>Introduction to Database Systems</CourseName>
+    <PreReq>ComS228</PreReq>
+    <Credits>3</Credits>
+    <Description>Relational, object-oriented, and semistructured data models and query languages. SQL, ODMG, and XML standards. Database design using entity-relationship model, data dependencies and object definition language. Application development in SQL-like languages and general purpose host languages with application program interfaces. Information integration using data warehouses, mediators and wrappers. Programming Projects. Nonmajor graduate credit.</Description>
+  </Entry>
+  <Entry>
+    <Code>SE491</Code>
+    <CourseName>Senior Design 1</CourseName>
+    <PreReq>SE329</PreReq>
+    <Credits>3</Credits>
+    <Description>Preparing for entry to the workplace. Selected professional topics. Use of technical writing skills in developing project plan and design report; project poster. First of two-semester team-oriented, project design and implementation experience.</Description>
+  </Entry>
+  <Entry>
+    <Code>SE494</Code>
+    <CourseName>Portfolio</CourseName>
+    <PreReq>Senior</PreReq>
+    <Credits>0</Credits>
+    <Description>Portfolio assessment for Software Engineers. Guidelines and Advice to improve software engineering portfolios and to better use portfolios as a tool to enhance career opportunities.</Description>
+  </Entry>
+  <Entry>
+    <Code>SE492</Code>
+    <CourseName>Senior Design 2</CourseName>
+    <PreReq>SE491</PreReq>
+    <Credits>3</Credits>
+    <Description>Second semester of a team design project experience. Emphasis on the successful implementation and demonstration of the design completed in S E 491 and the evaluation of project results. Technical writing of final project report; oral presentation of project achievements.</Description>
+  </Entry>
+  <Entry>
+    <Code>ECON ELECT</Code>
+    <CourseName>Econ Elective</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>MATH ELECT</Code>
+    <CourseName>Math Elective</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>OPEN ELECT</Code>
+    <CourseName>Open Elective</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>ARTS HUM1</Code>
+    <CourseName>Arts and Humanities 1</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>ARTS HUM2</Code>
+    <CourseName>Arts and Humanities 2</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>SOC SCI</Code>
+    <CourseName>Social Science</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>ART SOC</Code>
+    <CourseName>Arts and Humanities or Social Sciences</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>TECH ELECT</Code>
+    <CourseName>Technical Elective</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>SE ELECT1</Code>
+    <CourseName>SE Elective 1</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>SE ELECT2</Code>
+    <CourseName>SE Elective 2</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>SPPLM ELECT1</Code>
+    <CourseName>Supplemental Elective 1</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+  <Entry>
+    <Code>SPPLM ELECT2</Code>
+    <CourseName>Supplemental Elective 2</CourseName>
+    <PreReq>TBD</PreReq>
+    <Credits>3</Credits>
+    <Description></Description>
+  </Entry>
+</Relation>
+</Database>

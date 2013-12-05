@@ -27,9 +27,11 @@
 		
 		//getXML("http://localhost:8080/TomcatProject/Project/Course.xml", 1); // for server use
 		getXML("SECore.xml", 1);
+		
 		buildSemesters(8);
 		setCurrentSemester(0);
 		drawLines();
+		drawScrollBar();
 		
 		stage.add(lineLayer);
 		stage.add(courseLayer);
@@ -71,17 +73,14 @@
 		}
 	}
 	
-/*	function resizeCanvas()
-	{
-		canvas.attr("width", $(window).get(0).innerWidth);
-		canvas.attr("height", $(window).get(0).innerHeight);
-	};*/ //obsolete?
-	
 	$(window).resize(updateSize);
 	
 	function updateSize()
 	{
-		// draggable classes
+		/////////////
+		// Classes //
+		/////////////
+		
 		var scheduledClasses = new Array(); // classes that are in semester rows
 		var semester = new Array(); // array of values which courses are placed in
 		
@@ -107,16 +106,16 @@
 		
 		lineLayer.removeChildren();
 		
-		var posData = [320, 100]; // [width, height]
+		var posData = [305, 100]; // [width, height]
 		
-		posData[0] = (windowWidth / 5) - 20; // width
+		posData[0] = (windowWidth / 5) - 35; // width
 		posData[1] = (windowHeight / 8) - (windowHeight * 0.03); // height
 		
 		var yIncr = posData[1] + windowHeight * 0.01; // distance between elements in sidebar
 		
-		if(posData[0] < 320)
+		if(posData[0] < 305)
 		{
-			posData[0] = 285;
+			posData[0] = 270;
 		}
 		
 		for(var i = 0, j = 0; i < stage.find(".ClassGroup").length; i++)
@@ -136,11 +135,14 @@
 			}
 			else // if on sidebar
 			{
-				stage.find(".ClassGroup")[i].setPosition(10, 10 + (yIncr * i)); // snap on sidebar
+				stage.find(".ClassGroup")[i].setPosition(25, 10 + (yIncr * i)); // snap on sidebar
 			}
 		}
 		
-		// progress bar
+		//////////////////
+		// Progress Bar //
+		//////////////////
+		
 		var barData = [0, 0, 0, 0, 0]; // # of boxes of each color (+5th one in case of break)
 		
 		for(var i = 0; i < stage.find(".ClassGroup").length; i++)
@@ -150,22 +152,40 @@
 		
 		for(var i = 0, j = 0; i < barData.length - 1; i++)
 		{
-			stage.find(".BarGroup")[0].getChildren()[i].setSize((posData[0] * barData[i]) / stage.find(".ClassGroup").length, (windowHeight / 16) - (windowHeight * 0.03));
-			stage.find(".BarGroup")[0].getChildren()[i].setX(j);
+			stage.find(".ProgressBarGroup")[0].getChildren()[i].setSize((posData[0] * barData[i]) / stage.find(".ClassGroup").length, (windowHeight / 16) - (windowHeight * 0.03));
+			stage.find(".ProgressBarGroup")[0].getChildren()[i].setX(j);
 			
-			j += stage.find(".BarGroup")[0].getChildren()[i].getWidth();
+			j += stage.find(".ProgressBarGroup")[0].getChildren()[i].getWidth();
 		}
 		
-		stage.find(".BarGroup")[0].setY(windowHeight - 40);
+		stage.find(".ProgressBarGroup")[0].setY(windowHeight - 40);
 		
-		// lines
+		////////////////
+		// Scroll Bar //
+		////////////////
+		
+		var sliderLocation = (stage.find(".ScrollBarGroup")[0].getChildren()[1].getY()) / (stage.find(".ScrollBarGroup")[0].getChildren()[0].getHeight() - stage.find(".ScrollBarGroup")[0].getChildren()[1].getHeight());
+		
+		stage.find(".ScrollBarGroup")[0].getChildren()[0].setHeight(windowHeight - 20); // background of scroll bar
+		stage.find(".ScrollBarGroup")[0].getChildren()[1].setHeight(windowHeight + 30 - stage.find(".ScrollBarGroup")[0].getChildren()[0].getHeight()); // the scroll bar slider
+		stage.find(".ScrollBarGroup")[0].getChildren()[1].setY((stage.find(".ScrollBarGroup")[0].getChildren()[0].getHeight() - stage.find(".ScrollBarGroup")[0].getChildren()[1].getHeight()) * sliderLocation); // set slider to equivalent positon when resized
+		
+		///////////
+		// Lines //
+		///////////
 		drawLines();
-		stage.draw(); // sync display
+		
+		/////////////////
+		// Update View //
+		/////////////////
+		stage.draw();
 	}
 	
-	function resizeSemester(semesterNum){//resizes all tiles in a semester NEEDS WORK
+	function resizeSemester(semesterNum) // resizes all tiles in a semester NEEDS WORK
+	{
 		var courses = career[semseterNum].getCourses(); //gets an array of all the course tiles within a semester
-		for(var i=0; i<courses.length; i++){
+		for(var i = 0; i < courses.length; i++)
+		{
 			//snap(courses[i], -2);
 			//snap(courses[i], -1);
 		}
@@ -198,17 +218,17 @@
 	
 	function populateSidebar(classList)
 	{
-		var posData = [10, 10, 320, 100]; // [x, y, width, height]
+		var posData = [25, 10, 310, 100]; // [x, y, width, height]
 		var maxSidebarCapacity;
 		
-		posData[2] = (windowWidth / 5) - 20;
+		posData[2] = (windowWidth / 5) - 35;
 		posData[3] = (windowHeight / 8) - (windowHeight * 0.03);
 		
 		var yIncr = posData[3] + windowHeight * 0.01;
 		
-		if(posData[2] < 320)
+		if(posData[2] < 305)
 		{
-			posData[2] = 285;
+			posData[2] = 270;
 		}
 		
 		maxSidebarCapacity = Math.floor(windowHeight / (posData[3] + 10));
@@ -267,11 +287,11 @@
 			barData[colors.indexOf(stage.find(".ClassGroup")[i].getChildren()[0].getFill())]++; // index of the color that the rect currently is
 		}
 		
-		posData = (windowWidth / 5) - 20;
+		posData = (windowWidth / 5) - 35;
 		
-		if(posData < 320)
+		if(posData < 305)
 		{
-			posData = 285;
+			posData = 270;
 		}
 		
 		switch(update)
@@ -279,9 +299,9 @@
 			case 0: // first creation
 				var barGroup = new Kinetic.Group(
 				{
-					x: 10,
+					x: 25,
 					y: windowHeight - 40,
-					name: "BarGroup",
+					name: "ProgressBarGroup",
 				});
 				
 				for(var i = 0, j = 0; i < barData.length - 1; i++)
@@ -304,15 +324,63 @@
 			default: // update
 				for(var i = 0, j = 0; i < barData.length - 1; i++)
 				{
-					stage.find(".BarGroup")[0].getChildren()[i].setSize((posData * barData[i]) / stage.find(".ClassGroup").length, (windowHeight / 16) - (windowHeight * 0.03));
-					stage.find(".BarGroup")[0].getChildren()[i].setX(j);
+					stage.find(".ProgressBarGroup")[0].getChildren()[i].setSize((posData * barData[i]) / stage.find(".ClassGroup").length, (windowHeight / 16) - (windowHeight * 0.03));
+					stage.find(".ProgressBarGroup")[0].getChildren()[i].setX(j);
 					
-					j += stage.find(".BarGroup")[0].getChildren()[i].getWidth();
+					j += stage.find(".ProgressBarGroup")[0].getChildren()[i].getWidth();
 				}
 				
-				stage.find(".BarGroup")[0].setY(windowHeight - 40);
+				stage.find(".ProgressBarGroup")[0].setY(windowHeight - 40);
 				break;
 		}
+	}
+	
+	function drawScrollBar()
+	{
+		var scrollBarGroup = new Kinetic.Group(
+		{
+			x: 5,
+			y: 10,
+			name: "ScrollBarGroup"
+		});
+		
+		var scrollBarArea = new Kinetic.Rect(
+		{
+			width: 15,
+			height: windowHeight - 20,
+			fill: 'black',
+			opacity: 0.3
+		});
+		
+		var scrollBar = new Kinetic.Rect(
+		{
+			width: 15,
+			height: windowHeight + 30 - scrollBarArea.getHeight(),
+			fill: '#9f005b',
+			draggable: true,
+			dragBoundFunc: function(pos)
+			{
+				var newY = pos.y;
+				
+				if(newY < 10)
+				{
+					newY = 10;
+				}
+				else if(newY > scrollBarArea.getHeight() - this.getHeight() + 10)
+				{
+					newY = scrollBarArea.getHeight() - this.getHeight() + 10;
+				}
+				
+				return {x: this.getAbsolutePosition().x, y: newY}
+			},
+			opacity: 0.9,
+			stroke: 'black',
+			strokeWidth: 1
+		}).on('dragmove', function() {}); // set drag functions
+		
+		scrollBarGroup.add(scrollBarArea).add(scrollBar);
+		courseLayer.add(scrollBarGroup);
+		stage.add(courseLayer);
 	}
 	
 	function snap(shape, choice) // choice serves as semester number when >= 0
@@ -328,7 +396,7 @@
 					
 					if(newY > ((Math.ceil(newY / incr) * incr) - (windowHeight / 16))) // formula for snap to nearest semester
 					{
-						newY += incr - (incr * .59);
+						newY += incr - (incr * .60);
 					}
 					
 					if(newY < 0) // keep classes inside window
@@ -382,19 +450,21 @@
 								}
 							}
 							//change shape width to fit screen, etc.
-							var shapeWidth = ((windowWidth*.6)/4);
-							if(career[sem].getCourses().length>4){
-								shapeWidth = (windowWidth*.6)/career[sem].getCourses().length;
+							var shapeWidth = ((windowWidth * .6) / 4);
+							if(career[sem].getCourses().length > 4)
+							{
+								shapeWidth = (windowWidth * .6) / career[sem].getCourses().length;
 							}
-							for(var i=0; i<shape.getChildren().length; i++){
+							for(var i = 0; i < shape.getChildren().length; i++)
+							{
 								shape.getChildren()[i].setWidth(shapeWidth);
 							}
 							currentShapeWidth = shape.getChildren()[0].getWidth();
 							//alert("shape.getWidth() = " + currentShapeWidth);
-							var separationDistance = currentShapeWidth+ currentShapeWidth*0.13;
+							var separationDistance = currentShapeWidth + currentShapeWidth * 0.13;
 							resizeSemester(sem);
-
-							var newX = border + separationDistance*(career[sem].getCourses().length-1);
+							
+							var newX = border + separationDistance * (career[sem].getCourses().length - 1);
 							shape.setX(newX);
 							drawProgressBar(1);
 							break;
@@ -406,7 +476,7 @@
 					switch(choice) // snaps to sidebar if placed over it
 					{
 						case -1:
-							shape.setPosition(10, 10 + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
+							shape.setPosition(25, 10 + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
 							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
 							drawProgressBar(1);
 							break;

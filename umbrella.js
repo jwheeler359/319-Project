@@ -21,17 +21,17 @@
 	// prepare the canvas
 	$(document).ready(function()
 	{
-		createStage();
+		createStage(); // build stage for KineticJS elements
 		courseLayer = new Kinetic.Layer();
 		lineLayer = new Kinetic.Layer();
 		
 		//getXML("http://localhost:8080/TomcatProject/Project/Course.xml", 1); // for server use
 		getXML("SECore.xml", 1);
 		
-		buildSemesters(8);
-		setCurrentSemester(0);
-		drawLines();
-		drawScrollBar();
+		buildSemesters(8); // create semesters
+		setCurrentSemester(0); // change current semester
+		drawLines(); // draw semester lines
+		drawScrollBar(); // drag scroll bar on left end of sidebar
 		
 		stage.add(lineLayer);
 		stage.add(courseLayer);
@@ -80,7 +80,6 @@
 		/////////////
 		// Classes //
 		/////////////
-		
 		var scheduledClasses = new Array(); // classes that are in semester rows
 		var semester = new Array(); // array of values which courses are placed in
 		
@@ -103,8 +102,6 @@
 		
 		stage.setWidth(windowWidth);
 		stage.setHeight(windowHeight);
-		
-		lineLayer.removeChildren();
 		
 		var posData = [305, 100]; // [width, height]
 		
@@ -135,14 +132,13 @@
 			}
 			else // if on sidebar
 			{
-				stage.find(".ClassGroup")[i].setPosition(25, 10 + (yIncr * i)); // snap on sidebar
+				stage.find(".ClassGroup")[i].setPosition(25, -(stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() - 10) + (yIncr * i)); // snap on sidebar
 			}
 		}
 		
 		//////////////////
 		// Progress Bar //
 		//////////////////
-		
 		var barData = [0, 0, 0, 0, 0]; // # of boxes of each color (+5th one in case of break)
 		
 		for(var i = 0; i < stage.find(".ClassGroup").length; i++)
@@ -158,12 +154,11 @@
 			j += stage.find(".ProgressBarGroup")[0].getChildren()[i].getWidth();
 		}
 		
-		stage.find(".ProgressBarGroup")[0].setY(windowHeight - 40);
+		stage.find(".ProgressBarGroup")[0].setY(windowHeight * .955);
 		
 		////////////////
 		// Scroll Bar //
 		////////////////
-		
 		var sliderLocation = (stage.find(".ScrollBarGroup")[0].getChildren()[1].getY()) / (stage.find(".ScrollBarGroup")[0].getChildren()[0].getHeight() - stage.find(".ScrollBarGroup")[0].getChildren()[1].getHeight());
 		
 		stage.find(".ScrollBarGroup")[0].getChildren()[0].setHeight(windowHeight - 20); // background of scroll bar
@@ -173,6 +168,7 @@
 		///////////
 		// Lines //
 		///////////
+		lineLayer.removeChildren();
 		drawLines();
 		
 		/////////////////
@@ -255,7 +251,9 @@
 			name: "ClassGroup", // for selection by "shape.find()"
 			id: course.name + '\n' + course.program + '\n' + course.preReqs + '\n' + course.credits + '\n' + course.description, // this is used to store the information for the course
 			draggable: true
-		}).on('dragstart', function() { snap(this, -2); }).on('dragend', function() { snap(this, -1); }); // set drag functions
+		})
+		.on('dragstart', function(){snap(this, -2);}) // removes class when picked up
+		.on('dragend', function(){snap(this, -1);}); // adds class if placed on semester bar, snaps regardless
 		
 		var classRect = new Kinetic.Rect(
 		{
@@ -300,7 +298,7 @@
 				var barGroup = new Kinetic.Group(
 				{
 					x: 25,
-					y: windowHeight - 40,
+					y: windowHeight * .955,
 					name: "ProgressBarGroup",
 				});
 				
@@ -330,7 +328,7 @@
 					j += stage.find(".ProgressBarGroup")[0].getChildren()[i].getWidth();
 				}
 				
-				stage.find(".ProgressBarGroup")[0].setY(windowHeight - 40);
+				stage.find(".ProgressBarGroup")[0].setY(windowHeight * .955);
 				break;
 		}
 	}
@@ -376,7 +374,17 @@
 			opacity: 0.9,
 			stroke: 'black',
 			strokeWidth: 1
-		}).on('dragmove', function() {}); // set drag functions
+		})
+		.on('dragmove', function()
+						{
+							for(var i = 0; i < stage.find(".ClassGroup").length; i++)
+							{
+								if(stage.find(".ClassGroup")[i].getX() <= windowWidth / 5)
+								{
+									stage.find(".ClassGroup")[i].setPosition(25, -(this.getPosition().y - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * i));
+								}
+							}
+						}); // shifts classes in sidebar based on y position
 		
 		scrollBarGroup.add(scrollBarArea).add(scrollBar);
 		courseLayer.add(scrollBarGroup);
@@ -476,7 +484,7 @@
 					switch(choice) // snaps to sidebar if placed over it
 					{
 						case -1:
-							shape.setPosition(25, 10 + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
+							shape.setPosition(25, -(stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
 							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
 							drawProgressBar(1);
 							break;

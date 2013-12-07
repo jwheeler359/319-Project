@@ -125,6 +125,23 @@
 			stage.find(".ClassGroup")[i].getChildren()[0].setSize(posData[0], posData[1]); // size of rectangle
 			stage.find(".ClassGroup")[i].getChildren()[1].setFontSize(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() / 3); // font size
 			stage.find(".ClassGroup")[i].getChildren()[1].setOffsetY(-(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() / 3)); // center text
+			stage.find(".ClassGroup")[i].setClip([0, posData[1], posData[0], 0]);
+			
+			// Cuts off classes that go too high
+			if(stage.find(".ClassGroup")[i].getY() < 10) // highest visible element
+			{
+				stage.find(".ClassGroup")[i].setClipHeight(-(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() - Math.abs(10 - stage.find(".ClassGroup")[i].getY())));
+				
+				// Cuts off classes that go too low
+				if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)] != null) // lowest visible element
+				{
+					stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight((stage.find(".ClassGroup")[i].getChildren()[0].getHeight() - Math.abs(10 - stage.find(".ClassGroup")[i].getY())));
+				}
+			}
+			else
+			{
+				stage.find(".ClassGroup")[i].setClipHeight(0);
+			}
 			
 			if(scheduledClasses.indexOf(i) != -1) // if on semester row
 			{
@@ -248,12 +265,20 @@
 		{
 			x: posData[0],
 			y: posData[1],
+			clip: [0, posData[3], posData[2], 0],
 			name: "ClassGroup", // for selection by "shape.find()"
 			id: course.name + '\n' + course.program + '\n' + course.preReqs + '\n' + course.credits + '\n' + course.description, // this is used to store the information for the course
 			draggable: true
 		})
-		.on('dragstart', function(){snap(this, -2);}) // removes class when picked up
-		.on('dragend', function(){snap(this, -1);}); // adds class if placed on semester bar, snaps regardless
+		.on('dragstart', function() // removes class when picked up
+		{
+			this.setClipHeight(0);
+			snap(this, -2);
+		})
+		.on('dragend', function() // adds class if placed on semester bar, snaps regardless
+		{
+			snap(this, -1);
+		});
 		
 		var classRect = new Kinetic.Rect(
 		{
@@ -382,6 +407,22 @@
 								if(stage.find(".ClassGroup")[i].getX() <= windowWidth / 5)
 								{
 									stage.find(".ClassGroup")[i].setPosition(25, -(this.getPosition().y - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * i));
+									
+									// Cuts off classes that go too high
+									if(stage.find(".ClassGroup")[i].getY() < 10) // highest visible element
+									{
+										stage.find(".ClassGroup")[i].setClipHeight(-(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() - Math.abs(10 - stage.find(".ClassGroup")[i].getY())));
+										
+										// Cuts off classes that go too low
+										if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)] != null) // lowest visible element
+										{
+											stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight((stage.find(".ClassGroup")[i].getChildren()[0].getHeight() - Math.abs(10 - stage.find(".ClassGroup")[i].getY())));
+										}
+									}
+									else
+									{
+										stage.find(".ClassGroup")[i].setClipHeight(0);
+									}
 								}
 							}
 						}); // shifts classes in sidebar based on y position
@@ -486,6 +527,13 @@
 						case -1:
 							shape.setPosition(25, -(stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
 							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
+							
+							// Cuts off classes that go too high
+							if(shape.getY() < 10) // highest visible element
+							{
+								shape.setClipHeight(-(shape.getChildren()[0].getHeight() - Math.abs(10 - shape.getY())));
+							}
+							
 							drawProgressBar(1);
 							break;
 					}
@@ -627,4 +675,3 @@
 								break;
 						}
 					});
-	}

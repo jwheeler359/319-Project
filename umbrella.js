@@ -86,11 +86,6 @@
 		
 		for(var i = 0; i < stage.find(".ClassGroup").length; i++)
 		{
-			if(i >= Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10))) // sidebar capacity
-			{
-				break;
-			}
-			
 			if(stage.find(".ClassGroup")[i].getX() > windowWidth / 5) // if not in sidebar
 			{
 				scheduledClasses.push(i);
@@ -123,29 +118,6 @@
 			stage.find(".ClassGroup")[i].getChildren()[1].setOffsetY(-(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() / 3)); // center text
 			stage.find(".ClassGroup")[i].setClip([0, posData[1], posData[0], 0]);
 			
-			// Cuts off classes that go too high
-			if(stage.find(".ClassGroup")[i].getY() < 10) // highest visible element
-			{
-				stage.find(".ClassGroup")[i].setClipHeight(-(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() - Math.abs(10 - stage.find(".ClassGroup")[i].getY())));
-			}
-			else
-			{
-				stage.find(".ClassGroup")[i].setClipHeight(0);
-			}
-			
-			// cuts off classes that go too low, if they exist
-			if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)] != null)
-			{
-				if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY() > (windowHeight * .955)) // lowest visible element
-				{
-					stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight((stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getChildren()[0].getHeight() - Math.abs((windowHeight * .955) - stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY())));
-				}
-				else
-				{
-					stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight(0);
-				}
-			}
-			
 			if(scheduledClasses.indexOf(i) != -1) // if on semester row
 			{
 				snap(stage.find(".ClassGroup")[i], semester[j++]);
@@ -153,6 +125,52 @@
 			else // if on sidebar
 			{
 				stage.find(".ClassGroup")[i].setPosition(25, -(stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() - 10) + (yIncr * i)); // snap on sidebar
+			}
+			
+			if(stage.find(".ClassGroup")[i].getX() <= windowWidth / 5)
+			{
+				// cuts off classes that go too high
+				if(stage.find(".ClassGroup")[i].getY() < 10) // highest visible element
+				{
+					if(stage.find(".ClassGroup")[i].getY() < (10 - stage.find(".ClassGroup")[i].getChildren()[0].getHeight()))
+					{
+						stage.find(".ClassGroup")[i].hide();
+					}
+					else
+					{
+						stage.find(".ClassGroup")[i].show();
+						stage.find(".ClassGroup")[i].setClipY(stage.find(".ClassGroup")[i].getChildren()[0].getHeight());
+						stage.find(".ClassGroup")[i].setClipHeight(-(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() - Math.abs(10 - stage.find(".ClassGroup")[i].getY())));
+					}
+				}
+				
+				// cuts off classes that go too low, if they exist
+				if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)] != null)
+				{
+					if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].getY() < (windowHeight * .946428571)) // lowest visible element
+					{
+						if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].getY() > ((windowHeight * .946428571) + stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].getChildren()[0].getHeight()))
+						{
+							stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].hide();
+						}
+						else
+						{
+							stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].show();
+							stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].setClipY(0);
+							stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].setClipHeight((Math.abs(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].getY()- (windowHeight * .946428571))));
+						}
+					}
+				}
+				
+				if(stage.find(".ClassGroup")[i].getY() >= 10 && stage.find(".ClassGroup")[i].getY() <= ((windowHeight * .946428571) - stage.find(".ClassGroup")[i].getChildren()[0].getHeight()))
+				{
+					stage.find(".ClassGroup")[i].show();
+					stage.find(".ClassGroup")[i].setClipHeight(0);
+				}
+				else if(stage.find(".ClassGroup")[i].getY() < (10 - stage.find(".ClassGroup")[i].getChildren()[0].getHeight()) || stage.find(".ClassGroup")[i].getY() > ((windowHeight * .946428571) + stage.find(".ClassGroup")[i].getChildren()[0].getHeight()))
+				{
+					stage.find(".ClassGroup")[i].hide();
+				}
 			}
 		}
 		
@@ -251,20 +269,27 @@
 		
 		for(var i = 0; i < classList.length; i++)
 		{
-			
-			drawClassRect(classList[i], posData);
+			if(i >= maxSidebarCapacity)
+			{
+				drawClassRect(classList[i], posData, false);
+			}
+			else
+			{
+				drawClassRect(classList[i], posData, true);
+			}
 			
 			posData[1] += yIncr;
 		}
 	}
 	
-	function drawClassRect(course, posData)
+	function drawClassRect(course, posData, visible)
 	{
 		var classGroup = new Kinetic.Group(
 		{
 			x: posData[0],
 			y: posData[1],
 			clip: [0, posData[3], posData[2], 0],
+			visible: visible,
 			name: "ClassGroup", // for selection by "shape.find()"
 			id: course.name + '\n' + course.program + '\n' + course.preReqs + '\n' + course.credits + '\n' + course.description, // this is used to store the information for the course
 			draggable: true
@@ -410,24 +435,44 @@
 									// cuts off classes that go too high
 									if(stage.find(".ClassGroup")[i].getY() < 10) // highest visible element
 									{
-										stage.find(".ClassGroup")[i].setClipHeight(-(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() - Math.abs(10 - stage.find(".ClassGroup")[i].getY())));
-									}
-									else
-									{
-										stage.find(".ClassGroup")[i].setClipHeight(0);
+										if(stage.find(".ClassGroup")[i].getY() < (10 - stage.find(".ClassGroup")[i].getChildren()[0].getHeight()))
+										{
+											stage.find(".ClassGroup")[i].hide();
+										}
+										else
+										{
+											stage.find(".ClassGroup")[i].show();
+											stage.find(".ClassGroup")[i].setClipY(stage.find(".ClassGroup")[i].getChildren()[0].getHeight());
+											stage.find(".ClassGroup")[i].setClipHeight(-(stage.find(".ClassGroup")[i].getChildren()[0].getHeight() - Math.abs(10 - stage.find(".ClassGroup")[i].getY())));
+										}
 									}
 									
 									// cuts off classes that go too low, if they exist
 									if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)] != null)
 									{
-										if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY() > (windowHeight * .955)) // lowest visible element
+										if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY() < (windowHeight * .946428571)) // lowest visible element
 										{
-											stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight((stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getChildren()[0].getHeight() - Math.abs((windowHeight * .955) - stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY())));
+											if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY() > ((windowHeight * .946428571) + stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getChildren()[0].getHeight()))
+											{
+												stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].hide();
+											}
+											else
+											{
+												stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].show();
+												stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipY(0);
+												stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight((Math.abs(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY()- (windowHeight * .946428571))));
+											}
 										}
-										else
-										{
-											stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight(0);
-										}
+									}
+									
+									if(stage.find(".ClassGroup")[i].getY() >= 10 && stage.find(".ClassGroup")[i].getY() <= ((windowHeight * .946428571) - stage.find(".ClassGroup")[i].getChildren()[0].getHeight()))
+									{
+										stage.find(".ClassGroup")[i].show();
+										stage.find(".ClassGroup")[i].setClipHeight(0);
+									}
+									else if(stage.find(".ClassGroup")[i].getY() < (10 - stage.find(".ClassGroup")[i].getChildren()[0].getHeight()) || stage.find(".ClassGroup")[i].getY() > ((windowHeight * .946428571) + stage.find(".ClassGroup")[i].getChildren()[0].getHeight()))
+									{
+										stage.find(".ClassGroup")[i].hide();
 									}
 								}
 							}
@@ -534,10 +579,49 @@
 							shape.setPosition(25, -(stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
 							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
 							
+							shape.setPosition(25, -(this.getPosition().y - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * i));
+							
 							// cuts off classes that go too high
 							if(shape.getY() < 10) // highest visible element
 							{
-								shape.setClipHeight(-(shape.getChildren()[0].getHeight() - Math.abs(10 - shape.getY())));
+								if(shape.getY() < (10 - shape.getChildren()[0].getHeight()))
+								{
+									shape.hide();
+								}
+								else
+								{
+									shape.show();
+									shape.setClipY(shape.getChildren()[0].getHeight());
+									shape.setClipHeight(-(shape.getChildren()[0].getHeight() - Math.abs(10 - shape.getY())));
+								}
+							}
+							
+							// cuts off classes that go too low, if they exist
+							if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)] != null)
+							{
+								if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY() < (windowHeight * .946428571)) // lowest visible element
+								{
+									if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY() > ((windowHeight * .946428571) + stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getChildren()[0].getHeight()))
+									{
+										stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].hide();
+									}
+									else
+									{
+										stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].show();
+										stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipY(0);
+										stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight((Math.abs(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY()- (windowHeight * .946428571))));
+									}
+								}
+							}
+							
+							if(shape.getY() >= 10 && shape.getY() <= ((windowHeight * .946428571) - shape.getChildren()[0].getHeight()))
+							{
+								shape.show();
+								shape.setClipHeight(0);
+							}
+							else if(shape.getY() < (10 - shape.getChildren()[0].getHeight()) || shape.getY() > ((windowHeight * .946428571) + shape.getChildren()[0].getHeight()))
+							{
+								shape.hide();
 							}
 							
 							drawProgressBar(1);

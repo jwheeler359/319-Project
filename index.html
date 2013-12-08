@@ -11,7 +11,70 @@
 		<div id="background">
 			<table id="latitude">
 				<tr>
-					<td id="sidebar"></td>
+					<td id="sidebar">
+						<center id= "buttons">
+						<nav>
+						<ul id= "menu">
+							<li><a href="#">SELECT MAJOR</a>
+								<ul class= "sub-menu">
+									<li><a href="#">College of Engineering</a>
+                                                                                
+                                                                                <ul id="sub-sub-menu">
+                                                                                    <li>
+                                                                                        <a href="#" onclick=getXML("SECore.xml", 1)>Software Engineering</a>
+                                                                                    </li>
+                                                                                </ul>
+									</li>
+									<li>
+										<a href="#">College of Business</a>
+									</li>
+									<li>
+										<a href="#">College of Design</a>
+									</li>
+									<li>
+										<a href="#">College of Liberal Arts</a>
+									</li>
+									<li>
+										<a href="#">College of Human Sciences</a>
+									</li>
+								</ul>
+							</li>
+							<li><a href='#'>SELECT MINOR</a>
+								<ul class= "sub-menu">
+									<li>
+										<a href="#">College of Engineering</a>
+									</li>
+									<li>
+										<a href="#">College of Business</a>
+										
+										<ul id="sub-sub-menu">
+                                                                                    <li>
+                                                                                        <a href="#" onclick=getXML("EconMinor.xml",1)>Economics</a>
+                                                                                    </li>
+                                                                                </ul>
+									</li>
+									<li>
+										<a href="#">College of Design</a>
+									</li>
+									<li>
+										<a href="#">College of Liberal Arts</a>
+										
+										
+										<ul id="sub-sub-menu">
+                                                                                    <li>
+                                                                                        <a href="#" onclick=getXML("MathMinor.xml",1)>Mathematics</a>
+                                                                                    </li>
+                                                                                </ul>
+									</li>
+									<li>
+										<a href="#">College of Human Sciences</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						</nav>
+						</center>
+					</td>
 					<td id="timeline">
 						<table id="yearNames">
 							<tr id="freshman">

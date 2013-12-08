@@ -26,7 +26,7 @@
 		lineLayer = new Kinetic.Layer();
 		
 		//getXML("http://localhost:8080/TomcatProject/Project/Course.xml", 1); // for server use
-		getXML("SECore.xml", 1);
+		//getXML("SECore.xml", 1);
 		
 		buildSemesters(8); // create semesters
 		setCurrentSemester(0); // change current semester
@@ -35,6 +35,7 @@
 		
 		stage.add(lineLayer);
 		stage.add(courseLayer);
+		document.getElementById('menu').moveToTop();
 	});
 	
 	function buildSemesters(numSemesters) // builds semesters (8 normally)

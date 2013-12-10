@@ -25,13 +25,12 @@
 		courseLayer = new Kinetic.Layer();
 		lineLayer = new Kinetic.Layer();
 		
-		//getXML("http://localhost:8080/TomcatProject/Project/Course.xml", 1); // for server use
+		//getXML("http://localhost:8080/TomcatProject/Project/SECore.xml", 1); // for server use
 		//getXML("SECore.xml", 1);
 		
 		buildSemesters(8); // create semesters
 		setCurrentSemester(0); // change current semester
 		drawLines(); // draw semester lines
-		drawScrollBar(); // drag scroll bar on left end of sidebar
 		
 		stage.add(lineLayer);
 		stage.add(courseLayer);
@@ -197,10 +196,15 @@
 		////////////////
 		// Scroll Bar //
 		////////////////
+		var maximumCapacity = stage.find(".ClassGroup").length - (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)));
+		if(maximumCapacity < 1)
+		{
+			maximumCapacity = 1;
+		}
 		var sliderLocation = (stage.find(".ScrollBarGroup")[0].getChildren()[1].getY()) / (stage.find(".ScrollBarGroup")[0].getChildren()[0].getHeight() - stage.find(".ScrollBarGroup")[0].getChildren()[1].getHeight());
 		
-		stage.find(".ScrollBarGroup")[0].getChildren()[0].setHeight(windowHeight - 20); // background of scroll bar
-		stage.find(".ScrollBarGroup")[0].getChildren()[1].setHeight(windowHeight + 30 - stage.find(".ScrollBarGroup")[0].getChildren()[0].getHeight()); // the scroll bar slider
+		stage.find(".ScrollBarGroup")[0].getChildren()[0].setHeight(windowHeight - 40); // background of scroll bar
+		stage.find(".ScrollBarGroup")[0].getChildren()[1].setHeight(Math.abs(stage.find(".ScrollBarGroup")[0].getChildren()[0].getHeight() / maximumCapacity)); // the scroll bar slider
 		stage.find(".ScrollBarGroup")[0].getChildren()[1].setY((stage.find(".ScrollBarGroup")[0].getChildren()[0].getHeight() - stage.find(".ScrollBarGroup")[0].getChildren()[1].getHeight()) * sliderLocation); // set slider to equivalent positon when resized
 		
 		///////////
@@ -394,15 +398,20 @@
 		var scrollBarArea = new Kinetic.Rect(
 		{
 			width: 15,
-			height: windowHeight - 20,
+			height: windowHeight - 40,
 			fill: 'black',
 			opacity: 0.3
 		});
 		
+		var maximumCapacity = stage.find(".ClassGroup").length - (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)));
+		if(maximumCapacity < 1)
+		{
+			maximumCapacity = 1;
+		}
 		var scrollBar = new Kinetic.Rect(
 		{
 			width: 15,
-			height: windowHeight + 30 - scrollBarArea.getHeight(),
+			height: Math.abs(scrollBarArea.getHeight() / maximumCapacity),
 			fill: '#9f005b',
 			draggable: true,
 			dragBoundFunc: function(pos)
@@ -430,7 +439,7 @@
 							{
 								if(stage.find(".ClassGroup")[i].getX() <= windowWidth / 5)
 								{
-									stage.find(".ClassGroup")[i].setPosition(25, -(this.getPosition().y - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * i));
+									stage.find(".ClassGroup")[i].setPosition(25, -((this.getPosition().y * ((this.getHeight() + stage.find(".ClassGroup").length) / (maximumCapacity))) - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * i));
 									
 									// cuts off classes that go too high
 									if(stage.find(".ClassGroup")[i].getY() < 10) // highest visible element
@@ -762,6 +771,7 @@
 							default:
 								populateSidebar(classList); // fill sidebar
 								drawProgressBar(0); // draw progress bar
+								drawScrollBar(); // drag scroll bar on left end of sidebar
 								break;
 						}
 					});

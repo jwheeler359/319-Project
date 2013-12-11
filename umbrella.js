@@ -110,6 +110,8 @@
 			posData[0] = 270;
 		}
 		
+		var visibleClassHeight = Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) * yIncr;
+		var totalClassHeight = stage.find(".ClassGroup").length * yIncr;
 		for(var i = 0, j = 0; i < stage.find(".ClassGroup").length; i++)
 		{
 			stage.find(".ClassGroup")[i].getChildren()[0].setSize(posData[0], posData[1]); // size of rectangle
@@ -123,7 +125,7 @@
 			}
 			else // if on sidebar
 			{
-				stage.find(".ClassGroup")[i].setPosition(25, -(stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() - 10) + (yIncr * i)); // snap on sidebar
+				stage.find(".ClassGroup")[i].setPosition(25, -(((((stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() + (totalClassHeight / visibleClassHeight)) * Math.floor(totalClassHeight / visibleClassHeight)) - 10))) + (yIncr * i)); // snap on sidebar
 			}
 			
 			if(stage.find(".ClassGroup")[i].getX() <= windowWidth / 5)
@@ -197,10 +199,12 @@
 		// Scroll Bar //
 		////////////////
 		var maximumCapacity = stage.find(".ClassGroup").length - (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)));
+		
 		if(maximumCapacity < 1)
 		{
 			maximumCapacity = 1;
 		}
+		
 		var sliderLocation = (stage.find(".ScrollBarGroup")[0].getChildren()[1].getY()) / (stage.find(".ScrollBarGroup")[0].getChildren()[0].getHeight() - stage.find(".ScrollBarGroup")[0].getChildren()[1].getHeight());
 		
 		stage.find(".ScrollBarGroup")[0].getChildren()[0].setHeight(windowHeight - 40); // background of scroll bar
@@ -403,11 +407,13 @@
 			opacity: 0.3
 		});
 		
-		var maximumCapacity = stage.find(".ClassGroup").length - (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)));
+		var maximumCapacity = stage.find(".ClassGroup").length - Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10));
+		
 		if(maximumCapacity < 1)
 		{
 			maximumCapacity = 1;
 		}
+		
 		var scrollBar = new Kinetic.Rect(
 		{
 			width: 15,
@@ -435,11 +441,14 @@
 		})
 		.on('dragmove', function()
 						{
+							var classHeight = ((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01);
+							var visibleClassHeight = Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) * classHeight;
+							var totalClassHeight = stage.find(".ClassGroup").length * classHeight;
 							for(var i = 0; i < stage.find(".ClassGroup").length; i++)
 							{
 								if(stage.find(".ClassGroup")[i].getX() <= windowWidth / 5)
 								{
-									stage.find(".ClassGroup")[i].setPosition(25, -((this.getPosition().y * ((this.getHeight() + stage.find(".ClassGroup").length) / (maximumCapacity))) - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * i));
+									stage.find(".ClassGroup")[i].setPosition(25, -(((((this.getPosition().y + (totalClassHeight / visibleClassHeight)) * Math.floor(totalClassHeight / visibleClassHeight)) - 10))) + (classHeight * i));
 									
 									// cuts off classes that go too high
 									if(stage.find(".ClassGroup")[i].getY() < 10) // highest visible element

@@ -583,7 +583,7 @@
 							currentShapeWidth = shape.getChildren()[0].getWidth();
 							//alert("shape.getWidth() = " + currentShapeWidth);
 							var separationDistance = currentShapeWidth + currentShapeWidth * 0.13;
-							resizeSemester(sem);
+							//resizeSemester(sem); //BREAKS AUTOSNAP!
 							
 							var newX = border + separationDistance * (career[sem].getCourses().length - 1);
 							shape.setX(newX);

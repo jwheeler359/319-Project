@@ -125,7 +125,7 @@
 			}
 			else // if on sidebar
 			{
-				stage.find(".ClassGroup")[i].setPosition(25, -(((((stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() + (totalClassHeight / visibleClassHeight)) * Math.floor(totalClassHeight / visibleClassHeight)) - 10))) + (yIncr * i)); // snap on sidebar
+				stage.find(".ClassGroup")[i].setPosition(25, -(((((stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() + (totalClassHeight / visibleClassHeight)) * Math.floor(totalClassHeight / visibleClassHeight)) - 35))) + (yIncr * i)); // snap on sidebar
 			}
 			
 			if(stage.find(".ClassGroup")[i].getX() <= windowWidth / 5)
@@ -158,7 +158,7 @@
 						{
 							stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].show();
 							stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].setClipY(0);
-							stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].setClipHeight((Math.abs(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].getY()- (windowHeight * .946428571))));
+							stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].setClipHeight(Math.abs(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (posData[1] + 10)) - 1)].getY() - (windowHeight * .946428571)));
 						}
 					}
 				}
@@ -442,13 +442,14 @@
 		.on('dragmove', function()
 						{
 							var classHeight = ((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01);
-							var visibleClassHeight = Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) * classHeight;
+							var visibleClassHeight = (windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) * classHeight;
 							var totalClassHeight = stage.find(".ClassGroup").length * classHeight;
+							
 							for(var i = 0; i < stage.find(".ClassGroup").length; i++)
 							{
 								if(stage.find(".ClassGroup")[i].getX() <= windowWidth / 5)
 								{
-									stage.find(".ClassGroup")[i].setPosition(25, -(((((this.getPosition().y + (totalClassHeight / visibleClassHeight)) * Math.floor(totalClassHeight / visibleClassHeight)) - 10))) + (classHeight * i));
+									stage.find(".ClassGroup")[i].setPosition(25, -(((((this.getPosition().y + (totalClassHeight / visibleClassHeight)) * (totalClassHeight / visibleClassHeight)) - 35))) + (classHeight * i));
 									
 									// cuts off classes that go too high
 									if(stage.find(".ClassGroup")[i].getY() < 10) // highest visible element
@@ -478,7 +479,7 @@
 											{
 												stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].show();
 												stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipY(0);
-												stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight((Math.abs(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY()- (windowHeight * .946428571))));
+												stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight(Math.abs(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY() - (windowHeight * .946428571)));
 											}
 										}
 									}
@@ -594,10 +595,12 @@
 					switch(choice) // snaps to sidebar if placed over it
 					{
 						case -1:
-							shape.setPosition(25, -(stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * (stage.find(".ClassGroup").indexOf(shape))));
-							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
+							var classHeight = ((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01);
+							var visibleClassHeight = (windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) * classHeight;
+							var totalClassHeight = stage.find(".ClassGroup").length * classHeight;
 							
-							shape.setPosition(25, -(this.getPosition().y - 10) + ((((windowHeight / 8) - (windowHeight * 0.03)) + (windowHeight * 0.01)) * i));
+							shape.setPosition(25, -(((((stage.find(".ScrollBarGroup")[0].getChildren()[1].getY() + (totalClassHeight / visibleClassHeight)) * (totalClassHeight / visibleClassHeight)) - 35))) + (classHeight * stage.find(".ClassGroup").indexOf(shape)));
+							shape.getChildren()[0].setFill(colors[statusEnum.INCOM]);
 							
 							// cuts off classes that go too high
 							if(shape.getY() < 10) // highest visible element
@@ -615,20 +618,17 @@
 							}
 							
 							// cuts off classes that go too low, if they exist
-							if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)] != null)
+							else if(shape.getY() < (windowHeight * .946428571)) // lowest visible element
 							{
-								if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY() < (windowHeight * .946428571)) // lowest visible element
+								if(shape.getY() > ((windowHeight * .946428571) + shape.getChildren()[0].getHeight()))
 								{
-									if(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY() > ((windowHeight * .946428571) + stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getChildren()[0].getHeight()))
-									{
-										stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].hide();
-									}
-									else
-									{
-										stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].show();
-										stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipY(0);
-										stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].setClipHeight((Math.abs(stage.find(".ClassGroup")[i + (Math.floor(windowHeight / (((windowHeight / 8) - (windowHeight * 0.03)) + 10)) - 1)].getY()- (windowHeight * .946428571))));
-									}
+									shape.hide();
+								}
+								else
+								{
+									shape.show();
+									shape.setClipY(0);
+									shape.setClipHeight(Math.abs(shape.getY() - (windowHeight * .946428571)));
 								}
 							}
 							

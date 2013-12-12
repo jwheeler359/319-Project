@@ -420,7 +420,7 @@
 		{
 			width: 15,
 			height: Math.abs(scrollBarArea.getHeight() / maximumCapacity),
-			fill: '#9f005b',
+			fill: colors[2],
 			draggable: true,
 			dragBoundFunc: function(pos)
 			{
@@ -435,11 +435,9 @@
 					newY = scrollBarArea.getHeight() - this.getHeight() + 10;
 				}
 				
-				return {x: this.getAbsolutePosition().x, y: newY}
+				return {x: this.getAbsolutePosition().x, y: newY};
 			},
 			opacity: 0.9,
-			stroke: 'black',
-			strokeWidth: 1
 		})
 		.on('dragmove', function()
 						{
@@ -583,7 +581,6 @@
 							currentShapeWidth = shape.getChildren()[0].getWidth();
 							//alert("shape.getWidth() = " + currentShapeWidth);
 							var separationDistance = currentShapeWidth + currentShapeWidth * 0.13;
-							//resizeSemester(sem); //BREAKS AUTOSNAP!
 							
 							var newX = border + separationDistance * (career[sem].getCourses().length - 1);
 							shape.setX(newX);

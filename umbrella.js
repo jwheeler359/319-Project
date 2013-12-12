@@ -189,14 +189,13 @@
 		
 		for(var i = 0, j = 0; i < barData.length - 1; i++)
 		{
-			stage.find(".ProgressBarGroup")[0].getChildren()[i].setSize((posData[0] * barData[i]) / stage.find(".ClassGroup").length, (windowHeight / 16) - (windowHeight * 0.03));
-			stage.find(".ProgressBarGroup")[0].getChildren()[i].setX(j);
+			stage.find(".ProgressBarGroup")[0].getChildren()[i].setSize((posData[0] * barData[i]) / stage.find(".ClassGroup").length, (windowWidth / 16) - (windowWidth * 0.03));
+			stage.find(".ProgressBarGroup")[0].getChildren()[i].setY(j);
 			
-			j += stage.find(".ProgressBarGroup")[0].getChildren()[i].getWidth();
+			j += stage.find(".ProgressBarGroup")[0].getChildren()[i].getHeight();
 		}
 		
-		stage.find(".ProgressBarGroup")[0].setY(windowHeight * .955);
-		
+		stage.find(".ProgressBarGroup")[0].setX(windowWidth * .955);
 		////////////////
 		// Scroll Bar //
 		////////////////
@@ -335,7 +334,7 @@
 		stage.add(courseLayer);
 	}
 	
-	function drawProgressBar(update)
+function drawProgressBar(update)
 	{
 		var barData = [0, 0, 0, 0, 0]; // # of boxes of each color (+5th one in case of break)
 		
@@ -344,20 +343,15 @@
 			barData[colors.indexOf(stage.find(".ClassGroup")[i].getChildren()[0].getFill())]++; // index of the color that the rect currently is
 		}
 		
-		posData = (windowWidth / 5) - 35;
-		
-		if(posData < 305)
-		{
-			posData = 270;
-		}
+		posData = windowHeight-60;
 		
 		switch(update)
 		{
 			case 0: // first creation
 				var barGroup = new Kinetic.Group(
 				{
-					x: 25,
-					y: windowHeight * .955,
+					x: windowWidth*.93,
+					y: windowHeight -35,
 					name: "ProgressBarGroup",
 				});
 				
@@ -365,13 +359,13 @@
 				{
 					var barRect = new Kinetic.Rect(
 					{
-						x: j,
-						width: (posData * barData[i]) / stage.find(".ClassGroup").length, // number of classes with this status
-						height: (windowHeight / 16) - (windowHeight * 0.03),
+						y: j,
+						width: (windowWidth / 16),
+						height: -(posData * barData[i]) / stage.find(".ClassGroup").length, // number of classes with this status
 						fill: colors[i]
 					});
 					
-					j += barRect.getWidth(); // shifts next rect to right of previous one
+					j += barRect.getHeight(); // shifts next rect to right of previous one //not any more
 					barGroup.add(barRect);
 				}
 				
@@ -380,14 +374,14 @@
 				break;
 			default: // update
 				for(var i = 0, j = 0; i < barData.length - 1; i++)
-				{
-					stage.find(".ProgressBarGroup")[0].getChildren()[i].setSize((posData * barData[i]) / stage.find(".ClassGroup").length, (windowHeight / 16) - (windowHeight * 0.03));
-					stage.find(".ProgressBarGroup")[0].getChildren()[i].setX(j);
-					
-					j += stage.find(".ProgressBarGroup")[0].getChildren()[i].getWidth();
-				}
-				
-				stage.find(".ProgressBarGroup")[0].setY(windowHeight * .955);
+		{
+			stage.find(".ProgressBarGroup")[0].getChildren()[i].setSize(posData[0] * barData[i]) / stage.find(".ClassGroup").length, (posData[0] * barData[i]) / stage.find(".ClassGroup").length );
+			stage.find(".ProgressBarGroup")[0].getChildren()[i].setY(j);
+			
+			j += stage.find(".ProgressBarGroup")[0].getChildren()[i].getHeight();
+		}
+		
+		stage.find(".ProgressBarGroup")[0].setX(windowWidth * .955);
 				break;
 		}
 	}

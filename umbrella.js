@@ -6,6 +6,8 @@
 	var stage;
 	var lineLayer;
 	var courseLayer;
+	var minorSelected=false;
+	var majorSelected=false;
 	var colors = ["rgba(115, 182, 0, .8)",	// Green
 	              "rgba(18, 142, 182, .8)",	// Light Blue
 	              "rgba(182, 171, 9, .8)",	// Yellow
@@ -68,7 +70,8 @@
 										courseList[i][1], // program
 										courseList[i][2], // prerequisites
 										courseList[i][3], // credits
-										courseList[i][4], // description
+										courseList[i][4],
+										courseList[i][5],// description
 										statusEnum.INCOM));
 		}
 	}
@@ -299,7 +302,7 @@
 			clip: [0, posData[3], posData[2], 0],
 			visible: visible,
 			name: "ClassGroup", // for selection by "shape.find()"
-			id: course.name + '\n' + course.program + '\n' + course.preReqs + '\n' + course.credits + '\n' + course.description, // this is used to store the information for the course
+			id: course.name + '\n' + course.program + '\n' + course.preReqs + '\n' + course.credits + '\n' + course.description + '\n' + course.type, // this is used to store the information for the course
 			draggable: true
 		})
 		.on('dragstart', function() // removes class when picked up
@@ -662,7 +665,7 @@
 		}
 	}
 	
-	function course(name, program, preReqs, credits, description, status)
+	function course(name, program, preReqs, credits, description, type, status)
 	{
 		this.name = name;
 		this.program = program;
@@ -670,6 +673,7 @@
 		this.credits = credits;
 		this.description = description;
 		this.status = status;
+		this.type= type;
 	}
 	
 	function Semester()
@@ -707,9 +711,30 @@
 		return this.getCourses()[this.getCourses().indexOf(course)].getId().split(/(?!.)/); // split based on newline
 	}
 	
-	function getXML(source, updateView)
+	function getXML(source, updateView, type, selected)
 	{
 		var courseList = new Array(); // array of data
+		
+		if(type=='minor'){
+			viewMinor();
+		}
+		else if(type =='major'){
+			viewMajor();
+		}
+		
+		/*if(minorSelected==true && type=='minor'){
+			courseLayer.destroy();
+			courseLayer = new Kinetic.Layer();
+			drawScrollBar();
+			stage.add(courseLayer);
+		}
+		if(majorSelected==true && type=='major')
+		{
+			courseLayer.destroy();
+			courseLayer = new Kinetic.Layer();
+			drawScrollBar();
+			stage.add(courseLayer);
+		}*/
 		
 		$.get(source, function(data)
 		{
@@ -767,6 +792,17 @@
 				{
 					courseList[i][4] = '';
 				}
+				courseList[i][5] = type;
+			}
+			if(type=='major')
+			{
+				/*document.getElementById('Selected_Major').innerhtml= '<p>'+selected+'</p>';*/
+				majorSelected=true;
+			}
+			else
+			{
+				/*document.getElementById('Selected_Minor').innerhtml= '<p>'+selected+'</p>';*/
+				minorSelected=true;
 			}
 		},
 		"xml").done(function()
@@ -784,4 +820,41 @@
 								break;
 						}
 					});
+	}
+
+
+	function viewMajor()
+	{
+		for(var i=0; i<stage.find(".ClassGroup").length;i++)
+		{
+			var descript = stage.find(".ClassGroup")[i].getId().split('\n');
+			if(stage.find(".ClassGroup")[i].getX()==25 && descript[5]=='minor')
+			{
+				stage.find(".ClassGroup")[i].setVisible(false);
+			}
+			else
+			{
+				stage.find(".ClassGroup")[i].setVisible(true);
+			}
+		}
+		
+	}
+	
+	function viewMinor()
+	{
+		/*var descript = stage.find(".ClassGroup")[0].getId().split('\n');
+		alert(descript[5]);*/
+		for(var i=0; i<stage.find(".ClassGroup").length;i++)
+		{
+			var descript = stage.find(".ClassGroup")[i].getId().split('\n');
+			if(stage.find(".ClassGroup")[i].getX()==25 && descript[5]=='major')
+			{
+				stage.find(".ClassGroup")[i].setVisible(false);
+			}
+			else
+			{
+				stage.find(".ClassGroup")[i].setVisible(true);
+			}
+		}
+		/*stage.find(".ClassGroup")[0].hide();*/
 	}

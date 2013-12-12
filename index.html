@@ -18,7 +18,7 @@
 												<a href="#">College of Engineering</a>
 												<ul id="sub-sub-menu">
 													<li>
-														<a href="#" onclick="getXML('SECore.xml', 1)">Software Engineering</a>
+														<a href="#" onclick="getXML('SECore.xml', 1, 'major','Software Engineering')">Software Engineering</a>
 													</li>
 												</ul>
 											</li>
@@ -46,7 +46,7 @@
 												<a href="#">College of Business</a>
 												<ul id="sub-sub-menu">
 													<li>
-														<a href="#" onclick="getXML('EconMinor.xml',1)">Economics</a>
+														<a href="#" onclick="getXML('EconMinor.xml',1,'minor','Economics')">Economics</a>
 													</li>
 												</ul>
 											</li>
@@ -57,7 +57,7 @@
 												<a href="#">College of Liberal Arts</a>
 												<ul id="sub-sub-menu">
 													<li>
-														<a href="#" onclick="getXML('MathMinor.xml',1)">Mathematics</a>
+														<a href="#" onclick="getXML('MathMinor.xml',1,'minor','Mathematics')">Mathematics</a>
 													</li>
 												</ul>
 											</li>
@@ -68,6 +68,7 @@
 									</li>
 								</ul>
 							</nav>
+							<input type="submit" id= "major" value="VIEW MAJOR" onclick="viewMinor()"><input type="submit" id= "minor" value="VIEW MINOR" onclick="viewMinor()">
 		</div>
 		<div id="background">
 			<table id="latitude">

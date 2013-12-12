@@ -6,8 +6,8 @@
 	var stage;
 	var lineLayer;
 	var courseLayer;
-	var minorSelected=false;
-	var majorSelected=false;
+	var minorSelected = false;
+	var majorSelected = false;
 	var colors = ["rgba(115, 182, 0, .8)",	// Green
 	              "rgba(18, 142, 182, .8)",	// Light Blue
 	              "rgba(182, 171, 9, .8)",	// Yellow
@@ -36,7 +36,6 @@
 		
 		stage.add(lineLayer);
 		stage.add(courseLayer);
-		document.getElementById('menu').moveToTop();
 	});
 	
 	function buildSemesters(numSemesters) // builds semesters (8 normally)
@@ -70,8 +69,8 @@
 										courseList[i][1], // program
 										courseList[i][2], // prerequisites
 										courseList[i][3], // credits
-										courseList[i][4],
-										courseList[i][5],// description
+										courseList[i][4], // description
+										courseList[i][5], // type
 										statusEnum.INCOM));
 		}
 	}
@@ -672,8 +671,8 @@
 		this.preReqs = preReqs;
 		this.credits = credits;
 		this.description = description;
+		this.type = type;
 		this.status = status;
-		this.type= type;
 	}
 	
 	function Semester()
@@ -706,7 +705,7 @@
 		}
 	}
 	
-	Semester.prototype.getCourseInfo = function(course) // [0] = name, [1] = program, [2] = preReqs, [3] = credits, [4] = description
+	Semester.prototype.getCourseInfo = function(course) // [0] = name, [1] = program, [2] = preReqs, [3] = credits, [4] = description, [5] = type
 	{
 		return this.getCourses()[this.getCourses().indexOf(course)].getId().split(/(?!.)/); // split based on newline
 	}
@@ -715,12 +714,7 @@
 	{
 		var courseList = new Array(); // array of data
 		
-		if(type=='minor'){
-			viewMinor();
-		}
-		else if(type =='major'){
-			viewMajor();
-		}
+		viewClasses(type);
 		
 		/*if(minorSelected==true && type=='minor'){
 			courseLayer.destroy();
@@ -792,17 +786,20 @@
 				{
 					courseList[i][4] = '';
 				}
+				
 				courseList[i][5] = type;
 			}
-			if(type=='major')
+			
+			switch(type)
 			{
-				/*document.getElementById('Selected_Major').innerhtml= '<p>'+selected+'</p>';*/
-				majorSelected=true;
-			}
-			else
-			{
-				/*document.getElementById('Selected_Minor').innerhtml= '<p>'+selected+'</p>';*/
-				minorSelected=true;
+				case 0:
+					minorSelected = false;
+					majorSelected = true;
+					break;
+				case 1:
+					majorSelected = false;
+					minorSelected = true;
+					break;
 			}
 		},
 		"xml").done(function()
@@ -814,40 +811,45 @@
 							case 0:
 								break;
 							default:
-								populateSidebar(classList); // fill sidebar
-								drawProgressBar(0); // draw progress bar
-								drawScrollBar(); // drag scroll bar on left end of sidebar
+								if(stage.find(".ClassGroup")[0] == null)
+								{
+									populateSidebar(classList); // fill sidebar
+								}
+								else // placeholder for refreshing classes
+								{
+									
+								}
+								
+								if(stage.find(".ProgressBarGroup")[0] == null)
+								{
+									drawProgressBar(0); // draw progress bar
+								}
+								else
+								{
+									drawProgressBar(1); // update progress bar
+								}
+								
+								if(stage.find(".ScrollBarGroup")[0] == null)
+								{
+									drawScrollBar(); // drag scroll bar on left end of sidebar
+								}
+								else // placeholder for updating scroll bar size
+								{
+									
+								}
+								
 								break;
 						}
 					});
 	}
-
-
-	function viewMajor()
-	{
-		for(var i=0; i<stage.find(".ClassGroup").length;i++)
-		{
-			var descript = stage.find(".ClassGroup")[i].getId().split('\n');
-			if(stage.find(".ClassGroup")[i].getX()==25 && descript[5]=='minor')
-			{
-				stage.find(".ClassGroup")[i].setVisible(false);
-			}
-			else
-			{
-				stage.find(".ClassGroup")[i].setVisible(true);
-			}
-		}
-		
-	}
 	
-	function viewMinor()
-	{
-		/*var descript = stage.find(".ClassGroup")[0].getId().split('\n');
-		alert(descript[5]);*/
-		for(var i=0; i<stage.find(".ClassGroup").length;i++)
+	function viewClasses(field)	// 0 = Major
+	{							// 1 = Minor
+		for(var i = 0; i < stage.find(".ClassGroup").length; i++)
 		{
-			var descript = stage.find(".ClassGroup")[i].getId().split('\n');
-			if(stage.find(".ClassGroup")[i].getX()==25 && descript[5]=='major')
+			var descript = stage.find(".ClassGroup")[i].getId().split(/(?!.)/)[5];
+			
+			if(stage.find(".ClassGroup")[i].getX() <= windowWidth / 5 && descript != field)
 			{
 				stage.find(".ClassGroup")[i].setVisible(false);
 			}
@@ -856,5 +858,4 @@
 				stage.find(".ClassGroup")[i].setVisible(true);
 			}
 		}
-		/*stage.find(".ClassGroup")[0].hide();*/
 	}

@@ -1,6 +1,6 @@
 	// JavaScript Document
 	// author: AJ Hinkens and Franklin Nelson
-	// version 0.07
+	// version 0.08
 	
 	//general variables
 	var stage;
@@ -792,12 +792,15 @@
 				case 0:
 					minorSelected = false;
 					majorSelected = true;
+					//scream('very_loud');
 					break;
 				case 1:
 					majorSelected = false;
 					minorSelected = true;
+					//scream("notveryloud");
 					break;
 			}
+			viewClasses(type);
 		},
 		"xml").done(function()
 					{
@@ -856,3 +859,14 @@
 			}
 		}
 	}
+	
+function scream(howLoud){
+	
+	if(howLoud=='very_loud'){
+		alert("AHHHHHHHHHHHHHHHHHHHHHHHHHH!!!");
+	}
+	else{
+		alert("Ahh?")
+	}
+	
+}

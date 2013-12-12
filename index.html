@@ -12,10 +12,10 @@
 			<nav>
 				<ul id= "menu">
 					<li>
-						<a href="#">Select Major</a>
+						<a href="#" onclick="viewClasses(0)">Select Major</a>
 						<ul class= "sub-menu">
 							<li>
-								<a href="#">College of Engineering</a>
+								<a href="#" >College of Engineering</a>
 								<ul id="sub-sub-menu">
 									<li>
 										<a href="#" onclick="getXML('SECore.xml', 1, 0, 'Software Engineering')">Software Engineering</a>
@@ -37,7 +37,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href='#'>Select Minor</a>
+						<a href='#'  onclick="viewClasses(1)">Select Minor</a>
 						<ul class= "sub-menu">
 							<li>
 								<a href="#">College of Engineering</a>
@@ -68,8 +68,6 @@
 					</li>
 				</ul>
 			</nav>
-			<input type="button" id="major" value="VIEW MAJOR" onclick="viewClasses(0)">
-			<input type="button" id="minor" value="VIEW MINOR" onclick="viewClasses(1)">
 		</div>
 		<div id="background">
 			<table id="latitude">

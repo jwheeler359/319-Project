@@ -1,6 +1,6 @@
 	// JavaScript Document
 	// author: AJ Hinkens and Franklin Nelson
-	// version 0.06
+	// version 0.07
 	
 	//general variables
 	var stage;

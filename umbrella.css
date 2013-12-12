@@ -91,37 +91,54 @@ body
 	width: 20%;
 }
 
-nav{font-family:Arial, Helvetica, sans-serif; font-size:11px; margin-left:30px; border-radius:5px; width:90%;}
+#selectionMenus
+{
+	background-color: rgba(18, 142, 182, .7);
+	width: 20%;
+}
 
-nav ul{margin:0px; padding:0px;}
+nav
+{
+	font-family: Avenir, Arial, 
+	Helvetica, sans-serif;
+	font-size: 22px; 
+}
 
-nav ul li{list-style-type:none; display:inline-block; margin:0 0 0 -3px}
+nav ul{margin:0px; padding:0px; }
 
-nav ul li a{display:block; color:#fff; text-decoration:none; text-transform:uppercase; padding:20px 22px; background:#990099; border-right:solid 1px #663366}
+nav ul li{list-style-type:none; display:inline-block; margin:0 0 0 -3px; width:50%;}
 
-nav ul li:hover>a{background:#663366}
+nav ul li a{display:block; color:#fff; text-decoration:none; padding:20px 22px; rgba(18, 142, 182, .9);}
 
-nav ul li:first-child a{border-radius:5px 0 0 5px;}
+nav ul li:hover a{background-color: rgba(0, 80, 106,.9);}
 
-nav ul li:last-child a{border-radius:0 5px 5px 0;}
+nav ul li:first-child a{}
+
+nav ul li:last-child a{}
 
 /*...First-Level...*/
-nav ul li ul li:first-child a{border-top:solid 1px #fff}
+nav ul li ul{position:absolute; display:none; margin:0; z-index: 101;}
 
-nav ul li ul li:last-child a{border-bottom:solid 1px #fff}
+nav ul li:hover ul{display:block; width:10%;}
 
-nav ul li ul{position:absolute; display:none; width:140px; margin:0; z-index: 101;}
+nav ul li ul li{display:block; position:relative; border:none; left:3px; width:100%;}
 
-nav ul li:hover ul{display:block;}
+nav ul li ul li a{font-size:14px;}
 
-nav ul li ul li{display:block; position:relative; border:none}
+nav ul li ul li a:hover{background-color:rgba(18, 142, 182,.9);}
 
-nav ul li ul li a{border-bottom:solid 1px #f4f4f4; border-right:1px solid #fff; border-left:1px solid #fff; border-radius:0px!important; background:#990099; margin:0px; padding:10px;z-index: 101;}
+nav ul li ul li:last-child a{}
+
+/*nav ul li ul li a{background:#990099; margin:0px; padding:10px;z-index: 101;}
  
 /*...Second-Level...*/
 nav ul li:hover ul ul{display:none}
 
-nav ul li ul li:hover>ul{display:block}
+nav ul li ul li:hover ul{display:block; width:150px;}
+
+nav ul li ul li:hover ul li a{background-color: rgba(0, 80, 106,.9);}
+
+nav ul li ul li:hover ul li a:hover{background-color: rgba(18, 142, 182,.9);}
 
 /*...Third-Level...*/
-nav ul li ul li ul{display:none; background:#fff; position:absolute; top:-10%; left:145px; width:140px; z-index: 101;}
+nav ul li ul li ul{display:none; position:absolute; top:0px; left:100%; width:150px; z-index: 101;}

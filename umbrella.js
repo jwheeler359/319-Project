@@ -363,6 +363,11 @@
 			fill: 'white'
 		});
 		
+		classRect.on('dblclick', function(){
+			var descript = classGroup.getId().split('\n');
+			var description = "Course Name: "+descript[0]+"\n"+"Program: "+descript[1]+'\n'+ "Prerequisites: "+ descript[2]+'\n'+"Credits: "+ descript[3]+'\n'+ "Description: "+ descript[4];
+			alert(description);
+			});
 		classGroup.add(classRect).add(classText);
 		courseLayer.add(classGroup);
 		stage.add(courseLayer);

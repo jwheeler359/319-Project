@@ -18,9 +18,9 @@ body
 #background
 {
 	position: absolute;
-	z-index: -1;
 	width: 100%;
 	height: 100%;
+	z-index: -1;
 }
 
 #latitude
@@ -32,13 +32,56 @@ body
 	width: 100%;
 	height: 100%;
 }
-
+#latitude2
+{
+	position: absolute;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
 #sidebar
 {
 	width: 20%;
 	height: 91%;
 	min-width: 300px;
 	background-color: rgba(18, 142, 182, .7);
+}
+
+#sidebar2
+{
+	width: 20%;
+	height: 91%;
+	min-width: 300px;
+	background-color: rgba(18, 142, 182, .7);
+}
+
+#longitude
+{
+	width:100%;
+	height:100%;
+}
+
+#longitude2
+{
+	width:100%;
+	height:100%;
+}
+
+#selectionMenus
+{
+	width:100%;
+	height:5%;
+}
+
+#sidebarSpace
+{
+	height:95%;
+}
+#sidebarSpace2
+{
+	height:95%;
 }
 
 #yearNames
@@ -73,9 +116,17 @@ body
 	vertical-align: top;
 }
 
+#middleground
+{
+	position:absolute;
+	z-index: 0;
+}
+
 #foreground
 {
-	z-index: 0;
+	position:absolute;
+	z-index:1;
+	width:100%;
 }
 
 /*#buttons
@@ -91,17 +142,11 @@ body
 	width: 20%;
 }
 
-#selectionMenus
-{
-	background-color: rgba(18, 142, 182, .7);
-	width: 20%;
-}
-
 nav
 {
 	font-family: Avenir, Arial, 
 	Helvetica, sans-serif;
-	font-size: 22px; 
+	font-size: 22px;
 }
 
 nav ul{margin:0px; padding:0px; }
@@ -119,9 +164,9 @@ nav ul li:last-child a{}
 /*...First-Level...*/
 nav ul li ul{position:absolute; display:none; margin:0; z-index: 101;}
 
-nav ul li:hover ul{display:block; width:10%;}
+nav ul li:hover ul{display:block;}
 
-nav ul li ul li{display:block; position:relative; border:none; left:3px; width:100%;}
+nav ul li ul li{display:block; position:relative; border:none; left:3px; width:97.5%;}
 
 nav ul li ul li a{font-size:14px;}
 

@@ -393,7 +393,7 @@ function drawProgressBar(update)
 				var barGroup = new Kinetic.Group(
 				{
 					x: windowWidth - 40,
-					y: 0,
+					y: 20,
 					name: "ProgressBarGroup",
 				});
 				

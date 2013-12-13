@@ -54,7 +54,7 @@
 	{
 		stage = new Kinetic.Stage(
 		{
-			container: 'foreground',
+			container: 'middleground',
 			width: windowWidth,
 			height: windowHeight
 		});
@@ -442,14 +442,14 @@ function drawProgressBar(update)
 		var scrollBarGroup = new Kinetic.Group(
 		{
 			x: 5,
-			y: 10,
+			y: 120,
 			name: "ScrollBarGroup"
 		});
 		
 		var scrollBarArea = new Kinetic.Rect(
 		{
 			width: 15,
-			height: windowHeight - 40,
+			height: windowHeight-140,
 			fill: 'black',
 			opacity: 0.3
 		});
